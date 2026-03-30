@@ -9,8 +9,8 @@ public class botController : MonoBehaviour
     public float generalSpeed;
     public float rotationSpeed;
 
-    public float maxSpeed;
-    public float maxRotation;
+    //public float maxSpeed;
+    //public float maxRotation;
 
     
     public string upInput = "w";
@@ -18,34 +18,59 @@ public class botController : MonoBehaviour
     public string leftInput = "a";
     public string rightInput = "d";
 
+    private bool forward;
+    private bool backwards;
+    private bool leftTurn;
+    private bool rightTurn;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+
+    void Update()
     {
         if(Input.GetKey(upInput))
         {
-            rb.AddForce(transform.forward * generalSpeed);
-            //Debug.Log("Moving Forward");
+            forward = true;
         }
         else if(Input.GetKey(downInput))
         {
-            rb.AddForce(transform.forward * -1 * generalSpeed);
-            //Debug.Log("Moving Backwards");
+            backwards = true;
         }
 
         if(Input.GetKey(leftInput))
         {
-            rb.AddTorque(transform.up * -1 * rotationSpeed);
-            //Debug.Log("Rotating Left");
+            leftTurn = true;
         }
         else if(Input.GetKey(rightInput))
         {
+            rightTurn = true;
+        }
+    }
+    void FixedUpdate()
+    {
+        if(forward == true)
+        {
+            rb.AddForce(transform.forward * generalSpeed);
+            forward = false;
+        }
+        else if(backwards == true)
+        {
+            rb.AddForce(transform.forward * -1 * generalSpeed);
+            backwards = false;
+        }
+
+        if(leftTurn == true)
+        {
+            rb.AddTorque(transform.up * -1 * rotationSpeed);
+            leftTurn = false;
+        }
+        else if(rightTurn == true)
+        {
             rb.AddTorque(transform.up * rotationSpeed);
-            //Debug.Log("Rotating Right");
+            rightTurn = false;
         }
     }
 

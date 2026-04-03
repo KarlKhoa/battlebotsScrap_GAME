@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class botController : MonoBehaviour
 {
+    public GameObject playerBot;
+
     private Rigidbody rb;
-
-    public float generalSpeed;
-    public float rotationSpeed;
-
-    //public float maxSpeed;
-    //public float maxRotation;
-
+    private float botGeneralSpeed;
+    private float botRotationSpeed;
     
     public string upInput = "w";
     public string downInput = "s";
@@ -22,12 +19,15 @@ public class botController : MonoBehaviour
     private bool backwards;
     private bool leftTurn;
     private bool rightTurn;
+    
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-    }
+        rb = playerBot.GetComponent<Rigidbody>();
 
-    // Update is called once per frame
+        botGeneralSpeed = playerBot.GetComponentInParent<playerBot>().botData.generalSpeed;
+
+        botRotationSpeed = playerBot.GetComponentInParent<playerBot>().botData.rotationSpeed;
+    }
 
     void Update()
     {
@@ -49,27 +49,28 @@ public class botController : MonoBehaviour
             rightTurn = true;
         }
     }
+
     void FixedUpdate()
     {
         if(forward == true)
         {
-            rb.AddForce(transform.forward * generalSpeed);
+            rb.AddForce(transform.forward * botGeneralSpeed);
             forward = false;
         }
         else if(backwards == true)
         {
-            rb.AddForce(transform.forward * -1 * generalSpeed);
+            rb.AddForce(transform.forward * -1 * botGeneralSpeed);
             backwards = false;
         }
 
         if(leftTurn == true)
         {
-            rb.AddTorque(transform.up * -1 * rotationSpeed);
+            rb.AddTorque(transform.up * -1 * botRotationSpeed);
             leftTurn = false;
         }
         else if(rightTurn == true)
         {
-            rb.AddTorque(transform.up * rotationSpeed);
+            rb.AddTorque(transform.up * botRotationSpeed);
             rightTurn = false;
         }
     }

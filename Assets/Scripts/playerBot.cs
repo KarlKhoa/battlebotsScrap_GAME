@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class playerBot : MonoBehaviour
 {
-    public Bot botData;
+    public BaseBot botData;
+
+    
 }

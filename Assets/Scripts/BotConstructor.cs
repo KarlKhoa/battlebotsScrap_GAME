@@ -8,7 +8,7 @@ public class BotConstructor : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        playerBot.GetComponent<playerBot>().botData = new Bot(10, 12.5f, 7, 0, 0, 0, 0, 0, 0);
+        playerBot.GetComponent<playerBot>().botData = new BaseBot(10, 12.5f, 7, 0, 0, 0, 0, 0, 0);
 
     }
 

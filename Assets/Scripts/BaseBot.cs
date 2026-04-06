@@ -12,22 +12,22 @@ public class BaseBot : IBot
      public float weight;
      public float traction;
 
-     public int attachment1;
-     public int attachment2;
-     public int attachment3;
-     public int attachment4;
+     public GameObject attachment1;
+     public GameObject attachment2;
+     public GameObject attachment3;
+     public GameObject attachment4;
 
-     public BaseBot(float botHealth, float botGSpeed, float botRSpeed, float botWeight, float botTraction, int botAttachment1, int botAttachment2, int botAttachment3, int botAttachment4)
+     public BaseBot(float botHealth, float botGSpeed, float botRSpeed, float botWeight, float botTraction)
      {
         health = botHealth;
         generalSpeed = botGSpeed;
         rotationSpeed = botRSpeed;
         weight = botWeight;
         traction = botTraction;
-        attachment1 = botAttachment1;
-        attachment2 = botAttachment2;
-        attachment3 = botAttachment3;
-        attachment4 = botAttachment4;
+        // attachment1 = botAttachment1;
+        // attachment2 = botAttachment2;
+        // attachment3 = botAttachment3;
+        // attachment4 = botAttachment4;
      }
 
    public virtual void Move()

@@ -1,0 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Gun : BaseWeapon 
+{
+    public GameObject bulletPrefab;
+    public override void Fire()
+    {
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        Debug.Log("cooldown:"+cooldownTime); //gun firing code here
+    }
+}

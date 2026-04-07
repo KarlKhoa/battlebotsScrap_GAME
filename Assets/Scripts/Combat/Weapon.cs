@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class BaseWeapon : MonoBehaviour 
+public abstract class Weapon : MonoBehaviour 
 {
     public float cooldownTime;
     public float lastFired = -9999f;

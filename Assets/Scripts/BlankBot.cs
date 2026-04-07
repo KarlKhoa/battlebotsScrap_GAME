@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class BaseBot : IBot
+public class BlankBot : IBot
 {
     public float health;
      public float generalSpeed;
@@ -17,7 +17,7 @@ public class BaseBot : IBot
      public GameObject attachment3;
      public GameObject attachment4;
 
-     public BaseBot(float botHealth, float botGSpeed, float botRSpeed, float botWeight, float botTraction)
+     public BlankBot(float botHealth, float botGSpeed, float botRSpeed, float botWeight, float botTraction)
      {
         health = botHealth;
         generalSpeed = botGSpeed;

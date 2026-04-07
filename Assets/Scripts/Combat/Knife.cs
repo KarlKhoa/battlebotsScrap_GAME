@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : BaseWeapon
+public class Knife : Weapon 
 {
     public override void Fire()
     {
-        //shield code here
-        Debug.Log("Blocked!");
+        //knife code here
+        Debug.Log("Stab!");
     }
-    
 }

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grapple : BaseWeapon
+public class Shield : Weapon
 {
     public override void Fire()
     {
-        //grapple code here
-        Debug.Log("Yoink!");
+        //shield code here
+        Debug.Log("Blocked!");
     }
+    
 }

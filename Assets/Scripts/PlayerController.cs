@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class botController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public GameObject playerBot;
+    public GameObject playerData;
 
     private Rigidbody rb;
     private float botGeneralSpeed;
@@ -22,11 +22,11 @@ public class botController : MonoBehaviour
     
     void Start()
     {
-        rb = playerBot.GetComponent<Rigidbody>();
+        rb = playerData.GetComponent<Rigidbody>();
 
-        botGeneralSpeed = playerBot.GetComponentInParent<playerBot>().botData.generalSpeed;
+        botGeneralSpeed = playerData.GetComponentInParent<PlayerData>().botData.generalSpeed;
 
-        botRotationSpeed = playerBot.GetComponentInParent<playerBot>().botData.rotationSpeed;
+        botRotationSpeed = playerData.GetComponentInParent<PlayerData>().botData.rotationSpeed;
     }
 
     void Update()

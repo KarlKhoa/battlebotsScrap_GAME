@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseAttachments : MonoBehaviour
+public class Attachments : MonoBehaviour
 {
     
     private bool activated;

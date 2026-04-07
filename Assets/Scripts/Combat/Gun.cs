@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : BaseWeapon 
+public class Gun : Weapon 
 {
     public GameObject bulletPrefab;
     public override void Fire()

@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerBot : MonoBehaviour
+public class PlayerData : MonoBehaviour
 {
-    public BaseBot botData;
-
+    public BlankBot botData;
     
 }

@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1146e6606e7fba7489460959117f6751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 8444135708080311164, guid: 18d3500d4f01ee44686b101783fb1929,
+    type: 3}
   livePlayer: {fileID: 0}
   weapons: []
 --- !u!114 &3688418723683610991

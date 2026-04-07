@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class BotConstructor : MonoBehaviour
 {
-    public GameObject playerBot;
+    public GameObject playerPrefab;
+    public GameObject livePlayer;
+    public List<BaseWeapon> weapons;
     // Start is called before the first frame update
     void Awake()
     {
-        playerBot.GetComponent<playerBot>().botData = new BaseBot(10, 12.5f, 7, 0, 0);
+        //spawn player object
+        //configure player object
+        //redirect inputs to player object
+
+        //playerBot.GetComponent<playerBot>().botData = new BaseBot(10, 12.5f, 7, 0, 0);
 
     }
 

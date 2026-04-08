@@ -128,9 +128,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892a1cbfda2f0424a86a0eda1ae44fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalSpeed: 12.2
-  rotationSpeed: 6
-  upInput: w
-  downInput: s
-  leftInput: a
-  rightInput: d
+  botGeneralSpeed: 5
+  botRotationSpeed: 3

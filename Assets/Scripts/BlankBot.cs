@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class BlankBot : IBot
@@ -24,10 +25,6 @@ public class BlankBot : IBot
         rotationSpeed = botRSpeed;
         weight = botWeight;
         traction = botTraction;
-        // attachment1 = botAttachment1;
-        // attachment2 = botAttachment2;
-        // attachment3 = botAttachment3;
-        // attachment4 = botAttachment4;
      }
 
    public virtual void Move()

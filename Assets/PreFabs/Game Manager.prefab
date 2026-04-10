@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3772332253449945003}
   - component: {fileID: 8678898848146641437}
   - component: {fileID: 1897427510}
-  - component: {fileID: 1897427513}
+  - component: {fileID: 2340717173766350405}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponsRegistry: {fileID: 11400000, guid: 653d3ab32c5cb9b4594df13a91df8191, type: 2}
+  spawnPoints: []
 --- !u!114 &1897427510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +66,19 @@ MonoBehaviour:
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_PlayerLeftEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -92,7 +105,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &1897427513
+--- !u!114 &2340717173766350405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,11 +114,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2710888079969662496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d479fe507ec020446912a84316afe5a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fba61da0cb412244802a96db9c0c6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spawnPoints:
+  - {fileID: 3326990476963710698, guid: a7283ce248ec2e645aa43db95819e3ff, type: 3}
+  - {fileID: 6911671270604987545, guid: b722c559b863700458ee0ced3e46b66f, type: 3}
+  - {fileID: 8168033761242929632, guid: 167e51c30a3fc0d49867a9be005c8bc0, type: 3}
+  - {fileID: 6113138332725848766, guid: 1b906a06c2a41564e8a04b0cab64ab3c, type: 3}
+  playerCount: 0

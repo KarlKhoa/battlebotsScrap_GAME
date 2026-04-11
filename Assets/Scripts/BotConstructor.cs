@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 public class BotConstructor : MonoBehaviour
 {
     //Player prefab is the saved prefab between scenes, if this is empty the script constructs a generic/blank bot instead
-    private BlankBot playerData;
+    public BlankBot playerData;
     public GameObject playerPrefab;
+    public GameObject parentObject;
     private PlayerInput playerInput;
     private PlayerController playerController;
     
@@ -54,10 +55,12 @@ public class BotConstructor : MonoBehaviour
 
             //Creates a bot at pos of playerInput on SpawnPointManager, makes it current liveplayer
             playerInput = GetComponent<PlayerInput>();
-            livePlayer = Instantiate(playerPrefab, playerInput.transform.position, playerInput.transform.rotation);
-            
+            //creates a bot, and put it into the live player, and makes that object a child of the client, if you want the bots to spawn in certain areas, need to make it so that clients spawn in those areas
+            livePlayer = Instantiate(playerPrefab, parentObject.transform);
+
             constructionRequest = false;
 
         }
     }
+
 }

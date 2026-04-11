@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, PlayerInputs.IPlayerActions
 {
-    // private BlankBot playerData;
+    private BlankBot playerData;
     private PlayerInput playerInput;
     private PlayerInputs playerInputs;
     private Rigidbody rb;
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour, PlayerInputs.IPlayerActions
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //botGenSpd = playerData.GetComponentInParent<PlayerData>().botData.generalSpeed;
+        botGenSpd = GetComponentInParent<BotConstructor>().playerData.generalSpeed;
 
         //botRotationSpeed = playerData.GetComponentInParent<PlayerData>().botData.rotationSpeed;
     }

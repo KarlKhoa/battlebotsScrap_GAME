@@ -28,11 +28,11 @@ public class BotConstructor : MonoBehaviour
         //configure player object
         //redirect inputs to player object
         
-        playerInput = GetComponent<PlayerInput>();
-        if (playerInput is null)
+        /*playerInput = GetComponent<PlayerInput>();
+        if (playerInput != null)
         {
             Debug.LogError("Player Input is NULL");
-        }
+        }*/
         
 
     }
@@ -47,18 +47,19 @@ public class BotConstructor : MonoBehaviour
         //code checks for when construction is requested and creates a generic bot class for bot prefab to used in combat
         if (constructionRequest == true)
         {
-            //this if statement creates a generic bot class of player if bot data is empty, could use this with a game object instead if needed
-            if(playerData == null)
+            //this if statement creates a generic bot class of player if bot data is empty
+            if(playerData != null)
             {
-                playerData = new BlankBot(10, 12.5f, 7, 0, 0);
+                playerData = new BlankBot(10, 500, 100, 0, 0);
             }
 
             //Creates a bot at pos of playerInput on SpawnPointManager, makes it current liveplayer
             playerInput = GetComponent<PlayerInput>();
-            //creates a bot, and put it into the live player, and makes that object a child of the client, if you want the bots to spawn in certain areas, need to make it so that clients spawn in those areas
+            //creates a bot, and put it into the live player, and makes that object a child of the client
             livePlayer = Instantiate(playerPrefab, parentObject.transform);
 
             constructionRequest = false;
+
 
         }
     }

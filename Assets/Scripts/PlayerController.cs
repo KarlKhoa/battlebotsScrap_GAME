@@ -3,68 +3,62 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, PlayerInputs.IPlayerActions
+public class PlayerController : MonoBehaviour
 {
-    private BlankBot playerData;
-    private PlayerInput playerInput;
-    private PlayerInputs playerInputs;
+    private BlankBot mPlayerData;
     private Rigidbody rb;
 
+    private Vector2 moveInput;
+    public InputActionReference move;
 
     [SerializeField] private float botGenSpd;
     [SerializeField] private float botRotSpd;
-    [SerializeField] private Vector3 movement;
-
-    private Vector2 moveInput;
-
-
-    public void MoveBot(Vector3 forwardBack)
-    {
-        rb.velocity = forwardBack * botGenSpd * Time.fixedDeltaTime;
-
-        //turn
-        //transform.Rotate(transform.up, botRotSpd * moveInput.x * Time.deltaTime);
-    }
-
 
     private void Awake()
     {
-        // if(rb is null)
-        // {
-        //     Debug.LogError("RigidBody is NULL");
-        // }
-        // playerInput = GetComponent<PlayerInput>();
-        // if (playerInput is null)
-        // {
-        //     Debug.LogError("Player Input is NULL");
-        // }
-
-        // playerInputs = new PlayerInputs();
+        rb = GetComponent<Rigidbody>();
+        mPlayerData = GetComponentInParent<BotConstructor>().playerData;
 
 
     }
     
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        botGenSpd = GetComponentInParent<BotConstructor>().playerData.generalSpeed;
+        botGenSpd = mPlayerData.generalSpeed;
+        botRotSpd = mPlayerData.rotationSpeed;
 
-        //botRotationSpeed = playerData.GetComponentInParent<PlayerData>().botData.rotationSpeed;
     }
 
     void Update()
     {
-
-        //move forwards + backwards (legacy)
-        movement = new Vector3(0, 0 ,Input.GetAxis("Vertical")).normalized;
-
+        moveInput = move.action.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
     {
-        MoveBot(movement);
-    }
+        if(moveInput == new Vector2(0,1))
+        {
+            rb.AddForce(transform.forward * botGenSpd);
+            Debug.Log("Moving Forward");
+        }
+        else if(moveInput == new Vector2(0,-1))
+        {
+            rb.AddForce(transform.forward * botGenSpd * -1);
+            Debug.Log("Moving Backwards");
+        }
 
+        if(moveInput == new Vector2(1,0))
+        {
+            rb.AddTorque(transform.up * botRotSpd);
+            //Debug.Log("Turning Right");
+        }
+        else if (moveInput == new Vector2(-1,0))
+        {
+            rb.AddTorque(transform.up * botRotSpd * -1);
+            //Debug.Log("Turning Left");
+        }
+    }
+    
     // public void OnMove(InputValue value)
     // {
     //     //store value recieved from input
@@ -76,16 +70,5 @@ public class PlayerController : MonoBehaviour, PlayerInputs.IPlayerActions
     //     //store value recieved from input
     //     lookAmnt = value.Get<Vector2>();
     // }
-
-    public void OnMove(InputAction.CallbackContext contxt)
-    {
-        //Vector2 moveInput = contxt.ReadValue<Vector2>();
-        //rb.AddForce(new Vector3 (moveInput.x, 0, moveInput.y) * botGenSpd * Time.deltaTime);
-    }
-
-    public void OnFire(InputAction.CallbackContext contxt)
-    {
-        //
-    }
 
 }

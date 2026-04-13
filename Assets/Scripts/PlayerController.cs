@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     private Vector2 moveInput;
-    public InputActionReference move;
 
+    
     [SerializeField] private float botGenSpd;
     [SerializeField] private float botRotSpd;
 
@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         mPlayerData = GetComponentInParent<BotConstructor>().playerData;
-
 
     }
     
@@ -29,22 +28,18 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        moveInput = move.action.ReadValue<Vector2>();
-    }
 
     void FixedUpdate()
     {
         if(moveInput == new Vector2(0,1))
         {
             rb.AddForce(transform.forward * botGenSpd);
-            Debug.Log("Moving Forward");
+            //Debug.Log("Moving Forward");
         }
         else if(moveInput == new Vector2(0,-1))
         {
             rb.AddForce(transform.forward * botGenSpd * -1);
-            Debug.Log("Moving Backwards");
+            //Debug.Log("Moving Backwards");
         }
 
         if(moveInput == new Vector2(1,0))
@@ -58,17 +53,10 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Turning Left");
         }
     }
-    
-    // public void OnMove(InputValue value)
-    // {
-    //     //store value recieved from input
-    //     moveInput = value.Get<Vector2>();
-    // }
 
-    // public void OnLook(InputValue value)
-    // {
-    //     //store value recieved from input
-    //     lookAmnt = value.Get<Vector2>();
-    // }
+    private void OnMove(InputValue  input) 
+    {
+        moveInput = input.Get<Vector2>();
+    }
 
 }

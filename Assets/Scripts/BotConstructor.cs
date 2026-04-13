@@ -8,13 +8,13 @@ public class BotConstructor : MonoBehaviour
 {
     //Player prefab is the saved prefab between scenes, if this is empty the script constructs a generic/blank bot instead
     public BlankBot playerData;
-    public GameObject playerPrefab;
+    public PlayerController playerPrefab;
     public GameObject parentObject;
     private PlayerInput playerInput;
     private PlayerController playerController;
     
     //liveplayer is the bot being used in the scene, this can be deleted and reconstructed, and uses the player prefab as a base
-    public GameObject livePlayer;
+    public PlayerController livePlayer;
     //I think this is pulling from the public list of weapons in the game manager (check with someone else)
     public List<Weapon> weapons;
     //this constructionRequest is something the game manager should do between rounds
@@ -57,11 +57,14 @@ public class BotConstructor : MonoBehaviour
             playerInput = GetComponent<PlayerInput>();
             //creates a bot, and put it into the live player, and makes that object a child of the client
             livePlayer = Instantiate(playerPrefab, parentObject.transform);
+    
 
             constructionRequest = false;
 
 
         }
     }
+
+    
 
 }

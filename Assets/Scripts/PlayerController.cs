@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private BlankBot mPlayerData;
+    private float playerHealth;
     private Rigidbody rb;
 
     private Vector2 moveInput;
@@ -13,6 +14,11 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private float botGenSpd;
     [SerializeField] private float botRotSpd;
+
+    private bool isMovingForward;
+    private bool isMovingBackward;
+    private bool isTurningRight;
+    private bool isTurningLeft;
 
     private void Awake()
     {
@@ -28,28 +34,58 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-    void FixedUpdate()
+    void Update()
     {
         if(moveInput == new Vector2(0,1))
         {
-            rb.AddForce(transform.forward * botGenSpd);
-            //Debug.Log("Moving Forward");
+            isMovingForward = true;
+            isMovingBackward = false;
         }
-        else if(moveInput == new Vector2(0,-1))
+
+        if(moveInput == new Vector2(0,-1))
         {
-            rb.AddForce(transform.forward * botGenSpd * -1);
-            //Debug.Log("Moving Backwards");
+            isMovingBackward = true;
+            isMovingForward = false;
         }
 
         if(moveInput == new Vector2(1,0))
         {
+            isTurningRight = true;
+            isTurningLeft = false;
+        }
+
+        if(moveInput == new Vector2(-1,0))
+        {
+            isTurningLeft = true;
+            isTurningRight = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(isMovingForward == true)
+        {
+            rb.AddForce(transform.forward * botGenSpd);
+            isMovingForward = false;
+            //Debug.Log("Moving Forward");
+        }
+        else if(isMovingBackward == true)
+        {
+            rb.AddForce(transform.forward * botGenSpd * -1);
+            isMovingBackward = false;
+            //Debug.Log("Moving Backwards");
+        }
+
+        if(isTurningRight == true)
+        {
             rb.AddTorque(transform.up * botRotSpd);
+            isTurningRight = false;
             //Debug.Log("Turning Right");
         }
-        else if (moveInput == new Vector2(-1,0))
+        else if (isTurningLeft == true)
         {
             rb.AddTorque(transform.up * botRotSpd * -1);
+            isTurningLeft = false;
             //Debug.Log("Turning Left");
         }
     }

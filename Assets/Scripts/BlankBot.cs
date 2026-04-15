@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [System.Serializable]
-public class BlankBot : IBot
+public class BlankBot : MonoBehaviour
 {
     public float health;
      public float generalSpeed;
@@ -27,38 +27,4 @@ public class BlankBot : IBot
         traction = botTraction;
      }
 
-   public virtual void Move()
-   {
-
-   }
-   public virtual void Turn()
-   {
-
-   }
-
-    public virtual void Activate1()
-    {
-
-    }
-    public virtual void Activate2()
-    {
-
-    }
-    public virtual void Activate3()
-    {
-
-    }
-    public virtual void Activate4()
-    {
-
-    }
-
-    public virtual void TakeDamage()
-    {
-
-    }
-    public virtual void Die()
-    {
-
-    }
 }

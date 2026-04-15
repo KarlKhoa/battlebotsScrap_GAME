@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6772729957531028299}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.21, z: 0.296}
+  m_LocalPosition: {x: 0, y: 1.44, z: 0.296}
   m_LocalScale: {x: 0.08465954, y: 0.7163456, z: 0.36873}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,7 +93,7 @@ BoxCollider:
   m_GameObject: {fileID: 6772729957531028299}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8444135708080311160}
   - component: {fileID: 8444135708080311163}
   - component: {fileID: 8444135708080311162}
-  - component: {fileID: 745146472797961270}
+  - component: {fileID: -2036927007548885848}
   - component: {fileID: 7057291760100272469}
   - component: {fileID: -9035548095944102316}
   - component: {fileID: 7091728030425992330}
@@ -185,7 +185,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &745146472797961270
+--- !u!64 &-2036927007548885848
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

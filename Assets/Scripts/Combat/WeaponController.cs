@@ -23,7 +23,7 @@ public class WeaponController : MonoBehaviour
     void Start()
     {
         //script instantiates object and offsets it from the parent, need to do this 3 more times but in different directions
-        Instantiate(m_attachment1, this.transform.position + transform.forward * 0.6f, new Quaternion(0,0,0,0), this.transform);
+        Instantiate(m_attachment1, this.transform.position + transform.forward * 0.7f, new Quaternion(0,0,0,0), this.transform);
     }
 
     // Update is called once per frame

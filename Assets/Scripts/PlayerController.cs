@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+
+        playerHealth = mPlayerData.health;
         botGenSpd = mPlayerData.generalSpeed;
         botRotSpd = mPlayerData.rotationSpeed;
 
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         if(moveInput == new Vector2(0,1))
         {
             isMovingForward = true;
@@ -94,5 +97,20 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = input.Get<Vector2>();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+      float damageDealt = other.gameObject.GetComponent<Weapon>().baseDamage;
+      if(damageDealt != null)
+      {
+        playerHealth = playerHealth - damageDealt;
+        Debug.Log(playerHealth);
+      }
+      if(playerHealth <= 0)
+      {
+        Destroy(this.gameObject);
+      }
+    }
+
 
 }

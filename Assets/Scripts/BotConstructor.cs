@@ -50,9 +50,9 @@ public class BotConstructor : MonoBehaviour
         if (constructionRequest == true)
         {
             //this if statement creates a generic bot class of player if bot data is empty
-            if(playerData != null)
+            if(playerData == null)
             {
-                playerData = new BlankBot(10, 500, 100, 0, 0);
+                playerData = new BlankBot(10, 400, 100, 0, 0);
             }
 
             //Creates a bot at pos of playerInput on SpawnPointManager, makes it current liveplayer

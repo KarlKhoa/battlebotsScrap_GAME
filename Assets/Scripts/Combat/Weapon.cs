@@ -7,6 +7,6 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour 
 {
     public float cooldownTime;
-    public int baseDamage;
+    public float baseDamage;
     public virtual void Fire(){}
 }

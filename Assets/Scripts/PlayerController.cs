@@ -98,14 +98,17 @@ public class PlayerController : MonoBehaviour
         moveInput = input.Get<Vector2>();
     }
 
+    //Checks when a collider come in contact with this objects collider
     private void OnTriggerEnter(Collider other)
     {
+        //when it hits, it will check the gameObject this collided with for a baseDamage number and put into the damageDealt variable
       float damageDealt = other.gameObject.GetComponent<Weapon>().baseDamage;
+      //if it isn't empty it will take that damage variable and apply it to this game object
       if(damageDealt != null)
       {
-        playerHealth = playerHealth - damageDealt;
-        Debug.Log(playerHealth);
+        playerHealth -= damageDealt;
       }
+      //if it is below 0 it will destory the game object (this should be changed to a method)
       if(playerHealth <= 0)
       {
         Destroy(this.gameObject);

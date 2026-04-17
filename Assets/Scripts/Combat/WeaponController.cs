@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
@@ -10,6 +11,15 @@ public class WeaponController : MonoBehaviour
     private GameObject m_attachment3;
     private GameObject m_attachment4;
 
+    //holds weapon script of attachemnt to use the fire function on it
+    private Weapon attachmentScript1;
+
+    private Vector2 fireInput;
+
+    private bool fireAttachment1;
+    private bool fireAttachment2;
+    private bool fireAttachment3;
+    private bool fireAttachment4;
 
     void Awake() 
     {
@@ -24,11 +34,64 @@ public class WeaponController : MonoBehaviour
     {
         //script instantiates object and offsets it from the parent, need to do this 3 more times but in different directions
         Instantiate(m_attachment1, this.transform.position + transform.forward * 0.7f, new Quaternion(0,0,0,0), this.transform);
+        
+        attachmentScript1 = m_attachment1.GetComponent<Weapon>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //checks the input and changes a bool to allow for movement in fixed update
+        if(fireInput == new Vector2(0,1))
+        {
+            fireAttachment1 = true;
+        }
+
+        if(fireInput == new Vector2(1,0))
+        {
+            fireAttachment4 = true;
+        }
+
+        if(fireInput == new Vector2(0,-1))
+        {
+            fireAttachment2 = true;
+        }
+
+        if(fireInput == new Vector2(-1,0))
+        {
+            fireAttachment3 = true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        //executes the input
+        if(fireAttachment1 == true)
+        {
+            //this script is going to be repeated for every other variable
+            attachmentScript1.Fire();
+            fireAttachment1 = false;
+            Debug.Log("Attachment 1 Fired!");
+        }
+        if(fireAttachment2 == true)
+        {
+            fireAttachment2 = false;
+            Debug.Log("Attachment 2 Fired!");
+        }
+        if(fireAttachment3 == true)
+        {
+            fireAttachment3 = false;
+            Debug.Log("Attachment 3 Fired!");
+        }
+        if(fireAttachment4 == true)
+        {
+            fireAttachment4 = false;
+            Debug.Log("Attachment 4 Fired");
+        }
+    }
+
+    private void OnFire(InputValue input)
+    {
+        fireInput = input.Get<Vector2>();
     }
 }

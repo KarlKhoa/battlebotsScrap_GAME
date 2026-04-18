@@ -14,6 +14,9 @@ public class BotConstructor : MonoBehaviour
     
     //temprorary code to test bot attachments;
     public GameObject c_attachment1;
+    public GameObject c_attachment2;
+    public GameObject c_attachment3;
+    public GameObject c_attachment4;
 
     //liveplayer is the bot being used in the scene, this can be deleted and reconstructed, and uses the player prefab as a base
     public PlayerController livePlayer;

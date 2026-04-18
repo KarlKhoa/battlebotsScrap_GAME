@@ -29,12 +29,33 @@ public class WeaponController : MonoBehaviour
         }
         Debug.Log(m_attachment1);
 
+        if( m_attachment2 == null)
+        {
+            m_attachment2 = GetComponentInParent<BotConstructor>().c_attachment2; //change code in future to add from player data class instead
+        }
+        Debug.Log(m_attachment2);
+
+        if( m_attachment3 == null)
+        {
+            m_attachment3 = GetComponentInParent<BotConstructor>().c_attachment3; //change code in future to add from player data class instead
+        }
+        Debug.Log(m_attachment3);
+
+        if( m_attachment4 == null)
+        {
+            m_attachment4 = GetComponentInParent<BotConstructor>().c_attachment4; //change code in future to add from player data class instead
+        }
+        Debug.Log(m_attachment4);
+
     }
     void Start()
     {
-        //script instantiates object and offsets it from the parent, need to do this 3 more times but in different directions
+        //script instantiates object and offsets it from the parent
         Instantiate(m_attachment1, this.transform.position + transform.forward * 0.7f, new Quaternion(0,0,0,0), this.transform);
-        
+        Instantiate(m_attachment2, this.transform.position + transform.forward * -0.7f, new Quaternion(0,0,0,0), this.transform);
+        Instantiate(m_attachment3, this.transform.position + transform.right * 0.7f, new Quaternion(0,0,0,0), this.transform);
+        Instantiate(m_attachment4, this.transform.position + transform.right * -0.7f, new Quaternion(0,0,0,0), this.transform);
+
         attachmentScript1 = m_attachment1.GetComponent<Weapon>();
     }
 

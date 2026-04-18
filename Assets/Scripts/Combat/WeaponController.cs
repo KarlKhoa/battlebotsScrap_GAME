@@ -55,7 +55,7 @@ public class WeaponController : MonoBehaviour
         Instantiate(m_attachment2, this.transform.position + transform.forward * -0.7f, new Quaternion(0,0,0,0), this.transform);
         Instantiate(m_attachment3, this.transform.position + transform.right * 0.7f, new Quaternion(0,0,0,0), this.transform);
         Instantiate(m_attachment4, this.transform.position + transform.right * -0.7f, new Quaternion(0,0,0,0), this.transform);
-
+        //gets the script of the weapon attached so the function on it are available to this sript to be used when firing the weapons
         attachmentScript1 = m_attachment1.GetComponent<Weapon>();
     }
 

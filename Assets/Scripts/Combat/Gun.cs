@@ -7,7 +7,7 @@ public class Gun : Weapon
     public GameObject bulletPrefab;
     public override void Fire()
     {
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        Instantiate(bulletPrefab);
         Debug.Log("cooldown:"+cooldownTime); //gun firing code here
     }
 }

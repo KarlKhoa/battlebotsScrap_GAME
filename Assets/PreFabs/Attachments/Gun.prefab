@@ -241,7 +241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0
-  lastFired: -9999
   baseDamage: 0
-  bulletPrefab: {fileID: 4003639315426722632, guid: 451fca3f393d4af4186b687aad58a4f9,
+  bulletPrefab: {fileID: 8571058972734593901, guid: e64fac28da8f3ca4c98b74615ae467a2,
     type: 3}

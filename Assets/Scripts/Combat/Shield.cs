@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Shield : Weapon
 {
-    public override void Fire()
-    {
-        //shield code here
-        Debug.Log("Blocked!");
-    }
+
     
 }

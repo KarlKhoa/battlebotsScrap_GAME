@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class Knife : Weapon 
 {
-    public override void Fire()
-    {
-        //knife code here
-        Debug.Log("Stab!");
-    }
+
 }

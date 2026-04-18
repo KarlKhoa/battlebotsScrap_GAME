@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public WeaponRegistry WeaponsRegistry;
 
     public Transform[] spawnPoints;
-    // public int playerCount;
 
     private void Awake() 
     {

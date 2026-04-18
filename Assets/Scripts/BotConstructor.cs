@@ -26,17 +26,6 @@ public class BotConstructor : MonoBehaviour
     void Awake()
     {
 
-        
-        //configure player object
-        //redirect inputs to player object
-        
-        /*playerInput = GetComponent<PlayerInput>();
-        if (playerInput != null)
-        {
-            Debug.LogError("Player Input is NULL");
-        }*/
-        
-
     }
 
     
@@ -45,7 +34,6 @@ public class BotConstructor : MonoBehaviour
     void Update()
     {
         playerController = GetComponent<PlayerController>();
-        //playerController.PlayerMovement();
         //code checks for when construction is requested and creates a generic bot class for bot prefab to used in combat
         if (constructionRequest == true)
         {

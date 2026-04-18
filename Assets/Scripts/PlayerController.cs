@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+        //checking inputs
         if(moveInput == new Vector2(0,1))
         {
             isMovingForward = true;
@@ -66,30 +66,27 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        //moving player
         if(isMovingForward == true)
         {
             rb.AddForce(transform.forward * botGenSpd);
             isMovingForward = false;
-            //Debug.Log("Moving Forward");
         }
         else if(isMovingBackward == true)
         {
             rb.AddForce(transform.forward * botGenSpd * -1);
             isMovingBackward = false;
-            //Debug.Log("Moving Backwards");
         }
 
         if(isTurningRight == true)
         {
             rb.AddTorque(transform.up * botRotSpd);
             isTurningRight = false;
-            //Debug.Log("Turning Right");
         }
         else if (isTurningLeft == true)
         {
             rb.AddTorque(transform.up * botRotSpd * -1);
             isTurningLeft = false;
-            //Debug.Log("Turning Left");
         }
     }
 

@@ -244,3 +244,5 @@ MonoBehaviour:
   baseDamage: 0
   bulletPrefab: {fileID: 8571058972734593901, guid: e64fac28da8f3ca4c98b74615ae467a2,
     type: 3}
+  weaponController: {fileID: 0}
+  liveBullet: {fileID: 0}

@@ -39,13 +39,40 @@ namespace UnityEngine.InputSystem
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Fire"",
-                    ""type"": ""Value"",
+                    ""name"": ""Fire 1"",
+                    ""type"": ""Button"",
                     ""id"": ""6c2ab1b8-8984-453a-af3d-a3c78ae1679a"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""b491b2e6-21e7-436a-ae0f-50d8af40f027"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""a0455606-61ac-4d1d-9fd5-c03aec357381"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire 4"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0a15e2e-e82e-482d-b59a-b7e92c67bd16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -204,158 +231,92 @@ namespace UnityEngine.InputSystem
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""WASD"",
-                    ""id"": ""f91abbe8-2fb9-4b44-8c02-798c6a2263b0"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": ""Press"",
+                    ""name"": """",
+                    ""id"": ""ad1278fa-8138-4817-8bf3-2fad86d832c2"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": true,
+                    ""action"": ""Fire 1"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""2c1c5a87-3836-402d-b57a-7536480dd1f2"",
+                    ""name"": """",
+                    ""id"": ""4fdeb320-0a81-472b-9894-1556f028306b"",
                     ""path"": ""<Keyboard>/7"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Fire"",
+                    ""groups"": """",
+                    ""action"": ""Fire 1"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""69d2e20f-4370-4fc7-860f-b8cf004bced1"",
+                    ""name"": """",
+                    ""id"": ""88ba1991-7075-4a7a-9168-fe3aa60d9f90"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae641cb8-cf2f-4904-9e75-82fc1d49626c"",
                     ""path"": ""<Keyboard>/8"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Fire 2"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""132ce596-371e-4f13-a42e-7a6eec054c8e"",
+                    ""name"": """",
+                    ""id"": ""c19e0a50-f533-4ead-b5b9-18d44207ddd8"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a10de6d6-976f-4c14-a99c-0aad5e8acbf3"",
                     ""path"": ""<Keyboard>/9"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Fire 3"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""64e9951e-1df4-4ba7-bba2-24998d222ac1"",
+                    ""name"": """",
+                    ""id"": ""9fa4ce35-9482-456d-ad48-7222d3c485d6"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97c2fa38-0078-4898-a1e7-81afcc6e2784"",
                     ""path"": ""<Keyboard>/0"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Fire 4"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Face Buttons"",
-                    ""id"": ""b268d07f-8ab1-4eae-ac36-dd175c8ed9e9"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""f500d856-395d-4d70-a53e-2c32598048ff"",
-                    ""path"": ""<DualShockGamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""2b1d6844-57b4-4a5e-ab42-9320cfb8febb"",
-                    ""path"": ""<XInputController>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""62515339-ac61-450c-8ed5-d28e56b765ca"",
-                    ""path"": ""<DualShockGamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""7dece5ca-06df-4f33-b4e8-e1bf878b22e9"",
-                    ""path"": ""<XInputController>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""416a84c2-2b42-454b-a93e-a9cdbbc815b7"",
-                    ""path"": ""<DualShockGamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""37f760b7-8f3a-48ba-83e5-ad9a202d4aac"",
-                    ""path"": ""<XInputController>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""3030fb48-d5c6-4081-b5ab-6f287a8558d0"",
-                    ""path"": ""<DualShockGamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""5eeaf418-a206-4a5f-99ce-5e2549bff687"",
-                    ""path"": ""<XInputController>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -426,7 +387,10 @@ namespace UnityEngine.InputSystem
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_Fire1 = m_Player.FindAction("Fire 1", throwIfNotFound: true);
+            m_Player_Fire2 = m_Player.FindAction("Fire 2", throwIfNotFound: true);
+            m_Player_Fire3 = m_Player.FindAction("Fire 3", throwIfNotFound: true);
+            m_Player_Fire4 = m_Player.FindAction("Fire 4", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -487,13 +451,19 @@ namespace UnityEngine.InputSystem
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_Fire1;
+        private readonly InputAction m_Player_Fire2;
+        private readonly InputAction m_Player_Fire3;
+        private readonly InputAction m_Player_Fire4;
         public struct PlayerActions
         {
             private @PlayerInputs m_Wrapper;
             public PlayerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
-            public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            public InputAction @Fire1 => m_Wrapper.m_Player_Fire1;
+            public InputAction @Fire2 => m_Wrapper.m_Player_Fire2;
+            public InputAction @Fire3 => m_Wrapper.m_Player_Fire3;
+            public InputAction @Fire4 => m_Wrapper.m_Player_Fire4;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -506,9 +476,18 @@ namespace UnityEngine.InputSystem
                     @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                    @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                    @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                    @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                    @Fire1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                    @Fire1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                    @Fire1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                    @Fire2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire2;
+                    @Fire2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire2;
+                    @Fire2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire2;
+                    @Fire3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire3;
+                    @Fire3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire3;
+                    @Fire3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire3;
+                    @Fire4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire4;
+                    @Fire4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire4;
+                    @Fire4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire4;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -516,9 +495,18 @@ namespace UnityEngine.InputSystem
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
-                    @Fire.started += instance.OnFire;
-                    @Fire.performed += instance.OnFire;
-                    @Fire.canceled += instance.OnFire;
+                    @Fire1.started += instance.OnFire1;
+                    @Fire1.performed += instance.OnFire1;
+                    @Fire1.canceled += instance.OnFire1;
+                    @Fire2.started += instance.OnFire2;
+                    @Fire2.performed += instance.OnFire2;
+                    @Fire2.canceled += instance.OnFire2;
+                    @Fire3.started += instance.OnFire3;
+                    @Fire3.performed += instance.OnFire3;
+                    @Fire3.canceled += instance.OnFire3;
+                    @Fire4.started += instance.OnFire4;
+                    @Fire4.performed += instance.OnFire4;
+                    @Fire4.canceled += instance.OnFire4;
                 }
             }
         }
@@ -571,7 +559,10 @@ namespace UnityEngine.InputSystem
         public interface IPlayerActions
         {
             void OnMove(InputAction.CallbackContext context);
-            void OnFire(InputAction.CallbackContext context);
+            void OnFire1(InputAction.CallbackContext context);
+            void OnFire2(InputAction.CallbackContext context);
+            void OnFire3(InputAction.CallbackContext context);
+            void OnFire4(InputAction.CallbackContext context);
         }
     }
 }

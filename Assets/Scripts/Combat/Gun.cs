@@ -4,27 +4,11 @@ using UnityEngine;
 
 public class Gun : Weapon 
 {
-    public GameObject bulletPrefab; //originally GameObject
+    public GameObject bulletPrefab;
     public GameObject weaponController;
-    public GameObject liveBullet;
-    //private bool isFired = false;
-    //private Transform bulletOrigin;
 
-    public override void Fire()
+    public override void Fire(Vector3 pos, Quaternion rot)
     {
-        //isFired = true;
-        //fire bullet
-        //trouble finding correct transform because bullet instances can't be parented to Gun
-        //var botConstructor = GetComponentInParent<BotConstructor>();
-        //Instantiate(bulletPrefab, botConstructor.livePlayer.transform.position, botConstructor.livePlayer.transform.rotation);
-        //instantiate bullet at position of weaponcontroller.m_attachment1? this.transform.position? botconstructor.liveplayer
-        //if (isFired) { }
-        //try raycast?
-
-        liveBullet = Instantiate(bulletPrefab, this.transform); //iterates a bullet, at position of gun (ideally) (should grab transform from parent, why?)
-        
-        Debug.Log("cooldown:"+cooldownTime);
- 
-        
+        Instantiate(bulletPrefab, pos, rot); //iterates a bullet at position of gun in WeaponController
     }
 }

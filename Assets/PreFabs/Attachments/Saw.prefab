@@ -203,10 +203,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2365628661187548559}
-  - component: {fileID: 928161253861368216}
+  - component: {fileID: 8696595463102178488}
   - component: {fileID: -4706531458855596546}
   m_Layer: 0
-  m_Name: Knife
+  m_Name: Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &928161253861368216
+--- !u!114 &8696595463102178488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,11 +238,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5590844197962418955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85423adce4fb0d14b920509d6b23de08, type: 3}
+  m_Script: {fileID: 11500000, guid: 07673cfaf6d22fd4889e5bfba375d993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1
-  baseDamage: 2
+  cooldownTime: 0
+  baseDamage: 0
 --- !u!65 &-4706531458855596546
 BoxCollider:
   m_ObjectHideFlags: 0

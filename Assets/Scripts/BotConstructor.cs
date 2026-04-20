@@ -10,7 +10,7 @@ public class BotConstructor : MonoBehaviour
     public BlankBot playerData;
     public PlayerController playerPrefab;
     
-    //temprorary code to test bot attachments;
+    //temprorary code to test bot attachments
     public GameObject c_attachment1;
     public GameObject c_attachment2;
     public GameObject c_attachment3;
@@ -18,7 +18,7 @@ public class BotConstructor : MonoBehaviour
 
     //liveplayer is the bot being used in the scene, this can be deleted and reconstructed, and uses the player prefab as a base
     public PlayerController livePlayer;
-    //I think this is pulling from the public list of weapons in the game manager (check with someone else)
+    //Create a List of weapons in inspector; currently not doing anything but could be used to keep track of players' current weapons
     public List<Weapon> weapons;
     //this constructionRequest is something the game manager should do between rounds
     public bool constructionRequest = true;
@@ -43,7 +43,7 @@ public class BotConstructor : MonoBehaviour
                 playerData = new BlankBot(10, 400, 100, 0, 0);
             }
 
-            //creates a bot, puts it into the live player, and makes that object a child of the client
+            //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
             livePlayer = Instantiate(playerPrefab, this.transform);
     
 

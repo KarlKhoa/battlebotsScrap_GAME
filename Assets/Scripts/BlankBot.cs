@@ -12,7 +12,9 @@ public class BlankBot : MonoBehaviour
 
      public float weight;
      public float traction;
+   
 
+   //use in future instad of in BotConstructor
      public GameObject attachment1;
      public GameObject attachment2;
      public GameObject attachment3;

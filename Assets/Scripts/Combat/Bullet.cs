@@ -6,22 +6,27 @@ public class Bullet : Weapon
 {
     
     private Rigidbody rb;
-    //[SerializeField] private GameObject bulletOrigin; 
-    //private Weapon gun;
-    //liveplayer pos/make a child of Gun?
 
     void Awake()
     {
-        //gun = GetComponentInParent<BotConstructor>(this);
         rb = this.GetComponent<Rigidbody>();
     }
     void Start() 
     {
         if(rb != null)
         {
-            //this.transform.position = bulletOrigin.transform.position; //gun pos
-            rb.velocity = new Vector3(10,0,0);
-            Debug.Log("Bullet Fired!");
+            //move bullet forward
+            rb.velocity = transform.forward * 10;
+
+            //destroy automatically after whatever seconds (aka range)
+            Destroy(this.gameObject, 0.5f);
         }
     }
+
+    //destroy self on collision
+    private void OnCollisionEnter(Collision other) 
+    {
+        Destroy(this.gameObject);
+    }
+
 }

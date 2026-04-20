@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Knife : Weapon 
+public class Saw : Weapon 
 {
-
+    //"fire" blade
 }

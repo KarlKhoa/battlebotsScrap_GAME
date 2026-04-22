@@ -112,7 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0
+  timeoutDestructor: 0
   baseDamage: 4
+  bulletSpeed: 25
 --- !u!54 &-1953114993646886909
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -18,13 +18,20 @@ public class WeaponController : MonoBehaviour
     private Weapon attachmentScript3;
     private Weapon attachmentScript4;
 
-    private Vector2 fireInput;
+    //variable to hold the cooldown variable from the weapon script
+    private float a1Cooldown;
+    private float a2Cooldown;
+    private float a3Cooldown;
+    private float a4Cooldown;
 
-    private bool fireAttachment1;
-    private bool fireAttachment2;
-    private bool previouslyFireAttachment2;
-    private bool fireAttachment3;
-    private bool fireAttachment4;
+    //this is the variable that the timer uses
+    private float m_cooldownTime1 = 0;
+
+    private bool a1_isFireable;
+    private bool a2_isFireable;
+    private bool a3_isFireable;
+    private bool a4_isFireable;
+
     private Vector3 m_attachment1Pos;
     private Vector3 m_attachment2Pos;
     private Vector3 m_attachment3Pos;
@@ -89,6 +96,9 @@ public class WeaponController : MonoBehaviour
         attachmentScript3 = m_attachment3.GetComponent<Weapon>();
         attachmentScript4 = m_attachment4.GetComponent<Weapon>(); 
 
+        //gets the cooldown variable from the weapon attached
+        a1Cooldown = attachmentScript1.cooldownTime;
+
 
     }
 
@@ -102,14 +112,29 @@ public class WeaponController : MonoBehaviour
 
     void FixedUpdate()
     {
-       
+        //timer to check if the weapon is fireable
+        if(a1Cooldown <= m_cooldownTime1)
+        {
+            a1_isFireable = true;
+        }
+        else
+        {
+            m_cooldownTime1 ++;
+        }
     }
 
 
     //magic, i guess
     private void OnFire1(InputValue input)
     {
-        attachmentScript1.Fire(m_attachment1Pos, m_attachment1Rot);
+        //before firing it checks if the weapon is fireable
+        if(a1_isFireable == true)
+        {
+            attachmentScript1.Fire(m_attachment1Pos, m_attachment1Rot);
+            //sets the bool to false and the timer to 0 so the cooldown essentailly resets
+            a1_isFireable = false;
+            m_cooldownTime1 = 0;
+        }
     }
 
     private void OnFire2(InputValue input)

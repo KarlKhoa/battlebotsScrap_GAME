@@ -108,8 +108,13 @@ public class PlayerController : MonoBehaviour
       //if it is below 0 it will destory the game object (this should be changed to a method)
       if(playerHealth <= 0)
       {
-        Destroy(this.gameObject);
+        Die();
       }
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
     }
 
 

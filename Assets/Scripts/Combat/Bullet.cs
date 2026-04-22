@@ -6,6 +6,7 @@ public class Bullet : Weapon
 {
     
     private Rigidbody rb;
+    public float bulletSpeed;
 
     void Awake()
     {
@@ -16,7 +17,7 @@ public class Bullet : Weapon
         if(rb != null)
         {
             //move bullet forward
-            rb.velocity = transform.forward * 10;
+            rb.velocity = transform.forward * bulletSpeed;
 
             //destroy automatically after whatever seconds (aka range)
             Destroy(this.gameObject, 0.5f);

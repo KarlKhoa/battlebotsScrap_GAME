@@ -41,22 +41,22 @@ public class WeaponController : MonoBehaviour
         //grab gameobject from parent (change to be more elegant- from playerdata? in future)
         if( m_attachment1 == null)
         {
-            m_attachment1 = GetComponentInParent<BotConstructor>().c_attachment1;
+            m_attachment1 = GetComponentInParent<BotCloner>().c_attachment1;
         }
 
         if( m_attachment2 == null)
         {
-            m_attachment2 = GetComponentInParent<BotConstructor>().c_attachment2; 
+            m_attachment2 = GetComponentInParent<BotCloner>().c_attachment2; 
         }
 
         if( m_attachment3 == null)
         {
-            m_attachment3 = GetComponentInParent<BotConstructor>().c_attachment3; 
+            m_attachment3 = GetComponentInParent<BotCloner>().c_attachment3; 
         }
 
         if( m_attachment4 == null)
         {
-            m_attachment4 = GetComponentInParent<BotConstructor>().c_attachment4; 
+            m_attachment4 = GetComponentInParent<BotCloner>().c_attachment4; 
         }
 
     }
@@ -109,6 +109,7 @@ public class WeaponController : MonoBehaviour
     //magic, i guess
     private void OnFire1(InputValue input)
     {
+        //attachmentScript1.isMyWeapon = true;
         attachmentScript1.Fire(m_attachment1Pos, m_attachment1Rot);
     }
 

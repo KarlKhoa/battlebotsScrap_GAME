@@ -5,34 +5,38 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private BlankBot mPlayerData;
-    private float playerHealth;
+    private BlankBot myData;
+    
     private Rigidbody rb;
 
     private Vector2 moveInput;
 
-    
-    [SerializeField] private float botGenSpd;
-    [SerializeField] private float botRotSpd;
+    private float myHealth;
+    private float myGenSpd;
+    private float myRotSpd;
 
     private bool isMovingForward;
     private bool isMovingBackward;
     private bool isTurningRight;
     private bool isTurningLeft;
 
+    public int myID;
+    public int playerCount = 0;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        mPlayerData = GetComponentInParent<BotConstructor>().playerData;
+        myData = GetComponentInParent<BotCloner>().playerData; //Data generated from BlankBot on the clone
 
     }
     
     void Start()
     {
 
-        playerHealth = mPlayerData.health;
-        botGenSpd = mPlayerData.generalSpeed;
-        botRotSpd = mPlayerData.rotationSpeed;
+        myHealth = myData.health;
+        myGenSpd = myData.genSpeed;
+        myRotSpd = myData.rotSpeed;
+        myID = myData.playerID;
 
     }
 
@@ -69,28 +73,28 @@ public class PlayerController : MonoBehaviour
         //moving player
         if(isMovingForward == true)
         {
-            rb.AddForce(transform.forward * botGenSpd);
+            rb.AddForce(transform.forward * myGenSpd);
             isMovingForward = false;
         }
         else if(isMovingBackward == true)
         {
-            rb.AddForce(transform.forward * botGenSpd * -1);
+            rb.AddForce(transform.forward * myGenSpd * -1);
             isMovingBackward = false;
         }
 
         if(isTurningRight == true)
         {
-            rb.AddTorque(transform.up * botRotSpd);
+            rb.AddTorque(transform.up * myRotSpd);
             isTurningRight = false;
         }
         else if (isTurningLeft == true)
         {
-            rb.AddTorque(transform.up * botRotSpd * -1);
+            rb.AddTorque(transform.up * myRotSpd * -1);
             isTurningLeft = false;
         }
     }
 
-    private void OnMove(InputValue  input) 
+    private void OnMove(InputValue input) 
     {
         moveInput = input.Get<Vector2>();
     }
@@ -100,13 +104,14 @@ public class PlayerController : MonoBehaviour
     {
       //when it hits, it will check the gameObject this collided with for a baseDamage number and put into the damageDealt variable
       float damageDealt = other.gameObject.GetComponent<Weapon>().baseDamage;
+
       //if it isn't empty it will take that damage variable and apply it to this game object
-      if(damageDealt != null)
+      if(damageDealt != null)// && myID != other.gameObject.GetComponent<Weapon>().weaponID) // if weaponID does not match myID
       {
-        playerHealth -= damageDealt;
+        myHealth -= damageDealt;
       }
       //if it is below 0 it will destory the game object (this should be changed to a method)
-      if(playerHealth <= 0)
+      if(myHealth <= 0)
       {
         Destroy(this.gameObject);
       }

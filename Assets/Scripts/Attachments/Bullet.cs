@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Bullet : Weapon
 {
-    
     private Rigidbody rb;
+    private int[] bulletID;
 
     void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
+        baseDamage = 12;
     }
     void Start() 
     {
@@ -24,8 +25,9 @@ public class Bullet : Weapon
     }
 
     //destroy self on collision
-    private void OnCollisionEnter(Collision other) 
+    private void OnTriggerEnter(Collider other)
     {
+        //if(weaponID != other.gameObject.GetComponent<PlayerController>().myID)
         Destroy(this.gameObject);
     }
 

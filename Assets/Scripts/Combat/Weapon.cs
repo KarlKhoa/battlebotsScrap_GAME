@@ -7,10 +7,7 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     public float cooldownTime;
-    public float baseDamage;
-
     public int timeoutDestructor;
-    public int weaponID; //make equal to playerID
-
+    public float baseDamage;
     public virtual void Fire(Vector3 pos, Quaternion rot){}
 }

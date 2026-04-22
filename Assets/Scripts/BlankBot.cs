@@ -6,13 +6,12 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class BlankBot : MonoBehaviour
 {
-     public float health;
-     public float genSpeed;
-     public float rotSpeed;
+    public float health;
+     public float generalSpeed;
+     public float rotationSpeed;
+
      public float weight;
      public float traction;
-
-     public int playerID;
    
 
    //use in future instad of in BotConstructor
@@ -21,14 +20,13 @@ public class BlankBot : MonoBehaviour
      public GameObject attachment3;
      public GameObject attachment4;
 
-     public BlankBot(float botHealth, float botGenSpeed, float botRotSpeed, float botWeight, float botTraction, int botID)
+     public BlankBot(float botHealth, float botGSpeed, float botRSpeed, float botWeight, float botTraction)
      {
         health = botHealth;
-        genSpeed = botGenSpeed;
-        rotSpeed = botRotSpeed;
+        generalSpeed = botGSpeed;
+        rotationSpeed = botRSpeed;
         weight = botWeight;
         traction = botTraction;
-        playerID = botID;
      }
 
 }

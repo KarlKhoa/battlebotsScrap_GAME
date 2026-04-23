@@ -7,11 +7,19 @@ public class Bullet : Weapon
     
     private Rigidbody rb;
     public float bulletSpeed;
+    private bool hasCollided;
+
+    public int bulletID;
+    
 
     void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
+        baseDamage = 12;
+        bulletSpeed = 10;
+        hasCollided = false;
     }
+
     void Start() 
     {
         if(rb != null)
@@ -19,15 +27,30 @@ public class Bullet : Weapon
             //move bullet forward
             rb.velocity = transform.forward * bulletSpeed;
 
-            //destroy automatically after whatever seconds (aka range)
-            Destroy(this.gameObject, 0.5f);
+            Die();
         }
     }
 
     //destroy self on collision
-    private void OnCollisionEnter(Collision other) 
+    private void OnTriggerEnter(Collider other) 
     {
-        Destroy(this.gameObject);
+        hasCollided = true;
+        Die();
+    }
+
+
+    private void Die()
+    {
+        //destroy after hitting something
+        if (hasCollided == true)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            //destroy automatically after whatever seconds (aka range)
+            Destroy(this.gameObject, 0.3f);
+        }
     }
 
 }

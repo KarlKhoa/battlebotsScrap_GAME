@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -655,7 +655,7 @@ PrefabInstance:
     - target: {fileID: 8678898848146641437, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
       propertyPath: spawnPoints.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8678898848146641437, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
@@ -821,6 +821,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ring
       objectReference: {fileID: 0}
+    - target: {fileID: 1434270589615742160, guid: 9db474cf240a803428f401f071db6493,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157428929292075985, guid: 9db474cf240a803428f401f071db6493,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3280789177615536261, guid: 9db474cf240a803428f401f071db6493,
         type: 3}
       propertyPath: m_RootOrder
@@ -874,6 +884,16 @@ PrefabInstance:
     - target: {fileID: 3280789177615536261, guid: 9db474cf240a803428f401f071db6493,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509389395563552324, guid: 9db474cf240a803428f401f071db6493,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878224160093521491, guid: 9db474cf240a803428f401f071db6493,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

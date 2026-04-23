@@ -117,6 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fba61da0cb412244802a96db9c0c6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 7427395673138357246, guid: 01d0a16f730201e4cb5649c64cdce20b,
+    type: 3}
   spawnPoints:
   - {fileID: 3326990476963710698, guid: a7283ce248ec2e645aa43db95819e3ff, type: 3}
   - {fileID: 6911671270604987545, guid: b722c559b863700458ee0ced3e46b66f, type: 3}

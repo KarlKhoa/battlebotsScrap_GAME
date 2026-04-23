@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class BotConstructor : MonoBehaviour
+public class BotSpawner : MonoBehaviour
 {
     //Player prefab is the saved prefab between scenes, if this is empty the script constructs a generic/blank bot instead
     public BlankBot playerData;
     public PlayerController playerPrefab;
-    
+
     //temprorary code to test bot attachments
     public GameObject c_attachment1;
     public GameObject c_attachment2;
@@ -21,7 +21,14 @@ public class BotConstructor : MonoBehaviour
     //Create a List of weapons in inspector; currently not doing anything but could be used to keep track of players' current weapons
     public List<Weapon> weapons;
     //this constructionRequest is something the game manager should do between rounds
-    public bool constructionRequest = true;
+    private bool spawnRequest = true;
+
+
+    //instantiate wrapper auto pairs devices + tracks players. currently returns error
+    //static PlayerInput Instantiate(GameObject prefab, int playerIndex = -1, string controlScheme = null, int splitScreenIndex = -1, InputDevice pairWithDevice = null)
+    //{
+        
+    //}
 
 
     void Awake()
@@ -35,19 +42,19 @@ public class BotConstructor : MonoBehaviour
     void Update()
     {
         //code checks for when construction is requested and creates a generic bot class for bot prefab to used in combat
-        if (constructionRequest == true)
+        if (spawnRequest == true)
         {
             //creates a generic bot class of player if bot data is empty
             if(playerData == null)
             {
-                playerData = new BlankBot(10, 400, 100, 0, 0);
+                playerData = new BlankBot(50, 400, 100, 0, 0);
             }
 
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
             livePlayer = Instantiate(playerPrefab, this.transform);
-    
 
-            constructionRequest = false;
+
+            spawnRequest = false;
 
 
         }

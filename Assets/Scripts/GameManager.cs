@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public Transform[] spawnPoints;
 
+    //public int playerIndex { get; } //unique zero-based player index. assign to each player + keep track
+
     private void Awake() 
     {
         if(Instance != null)

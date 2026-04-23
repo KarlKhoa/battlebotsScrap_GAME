@@ -13,6 +13,7 @@ public class WeaponController : MonoBehaviour
     private GameObject m_attachment4;
 
     //holds weapon script of attachment to use the fire function on it
+    [SerializeField]
     private Weapon attachmentScript1;
     private Weapon attachmentScript2;
     private Weapon attachmentScript3;
@@ -26,6 +27,9 @@ public class WeaponController : MonoBehaviour
 
     //this is the variable that the timer uses
     private float m_cooldownTime1 = 0;
+    private float m_cooldownTime2 = 0;
+    private float m_cooldownTime3 = 0;
+    private float m_cooldownTime4 = 0;
 
     private bool a1_isFireable;
     private bool a2_isFireable;
@@ -48,22 +52,22 @@ public class WeaponController : MonoBehaviour
         //grab gameobject from parent (change to be more elegant- from playerdata? in future)
         if( m_attachment1 == null)
         {
-            m_attachment1 = GetComponentInParent<BotConstructor>().c_attachment1;
+            m_attachment1 = GetComponentInParent<BotSpawner>().c_attachment1;
         }
 
         if( m_attachment2 == null)
         {
-            m_attachment2 = GetComponentInParent<BotConstructor>().c_attachment2; 
+            m_attachment2 = GetComponentInParent<BotSpawner>().c_attachment2; 
         }
 
         if( m_attachment3 == null)
         {
-            m_attachment3 = GetComponentInParent<BotConstructor>().c_attachment3; 
+            m_attachment3 = GetComponentInParent<BotSpawner>().c_attachment3; 
         }
 
         if( m_attachment4 == null)
         {
-            m_attachment4 = GetComponentInParent<BotConstructor>().c_attachment4; 
+            m_attachment4 = GetComponentInParent<BotSpawner>().c_attachment4; 
         }
 
     }
@@ -98,7 +102,9 @@ public class WeaponController : MonoBehaviour
 
         //gets the cooldown variable from the weapon attached
         a1Cooldown = attachmentScript1.cooldownTime;
-
+        a2Cooldown = attachmentScript2.cooldownTime;
+        a3Cooldown = attachmentScript3.cooldownTime;
+        a4Cooldown = attachmentScript4.cooldownTime;
 
     }
 
@@ -121,6 +127,33 @@ public class WeaponController : MonoBehaviour
         {
             m_cooldownTime1 ++;
         }
+
+        if (a2Cooldown <= m_cooldownTime2)
+        {
+            a2_isFireable = true;
+        }
+        else
+        {
+            m_cooldownTime2++;
+        }
+
+        if (a3Cooldown <= m_cooldownTime3)
+        {
+            a3_isFireable = true;
+        }
+        else
+        {
+            m_cooldownTime3++;
+        }
+
+        if (a4Cooldown <= m_cooldownTime4)
+        {
+            a4_isFireable = true;
+        }
+        else
+        {
+            m_cooldownTime4++;
+        }
     }
 
 
@@ -139,17 +172,35 @@ public class WeaponController : MonoBehaviour
 
     private void OnFire2(InputValue input)
     {
-        attachmentScript2.Fire(m_attachment2Pos, m_attachment2Rot);
+        if(a2_isFireable == true)
+        {
+            attachmentScript2.Fire(m_attachment2Pos, m_attachment2Rot);
+            a2_isFireable = false;
+            m_cooldownTime2 = 0;
+        }
+        
     }
 
     private void OnFire3(InputValue input)
     {
-        attachmentScript3.Fire(m_attachment3Pos, m_attachment3Rot);
+        if(a3_isFireable == true)
+        {
+            attachmentScript3.Fire(m_attachment3Pos, m_attachment3Rot);
+            a3_isFireable = false;
+            m_cooldownTime3 = 0;
+        }
+        
     }
 
     private void OnFire4(InputValue input)
     {
-        attachmentScript4.Fire(m_attachment4Pos, m_attachment4Rot);
+        if(a4_isFireable == true)
+        {
+            attachmentScript4.Fire(m_attachment4Pos, m_attachment4Rot);
+            a4_isFireable = false;
+            m_cooldownTime4 = 0;
+        }
+        
     }
 
 

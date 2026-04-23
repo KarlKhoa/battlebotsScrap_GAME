@@ -9,11 +9,17 @@ public class PlayerController : MonoBehaviour
     private float playerHealth;
     private Rigidbody rb;
 
+
+    public int playerIndex { get; }
+
+    private PlayerInput playerInput;
+
     private Vector2 moveInput;
 
     
     [SerializeField] private float botGenSpd;
     [SerializeField] private float botRotSpd;
+    [SerializeField] private float playerID;
 
     private bool isMovingForward;
     private bool isMovingBackward;
@@ -23,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        mPlayerData = GetComponentInParent<BotConstructor>().playerData;
+        mPlayerData = GetComponentInParent<BotSpawner>().playerData;
 
     }
     
@@ -100,12 +106,13 @@ public class PlayerController : MonoBehaviour
     {
       //when it hits, it will check the gameObject this collided with for a baseDamage number and put into the damageDealt variable
       float damageDealt = other.gameObject.GetComponent<Weapon>().baseDamage;
-      //if it isn't empty it will take that damage variable and apply it to this game object
-      if(damageDealt != null)
+
+      //if it isn't empty it will take that damage variable and apply it to this game object.
+      if(damageDealt != null) //&& bulletID != playerInput.playerIndex)
       {
         playerHealth -= damageDealt;
       }
-      //if it is below 0 it will destory the game object (this should be changed to a method)
+      //if it is below 0 it will destory the game object
       if(playerHealth <= 0)
       {
         Die();

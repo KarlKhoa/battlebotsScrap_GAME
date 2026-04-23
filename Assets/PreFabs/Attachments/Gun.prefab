@@ -204,6 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4937365607266357087}
   - component: {fileID: 4066605228556767782}
+  - component: {fileID: 5286646815103006646}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -240,9 +241,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71af7e5b5a0317409a66100bd11edb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 100
+  cooldownTime: 0.5
   timeoutDestructor: 0
   baseDamage: 0
   bulletPrefab: {fileID: 8571058972734593901, guid: e64fac28da8f3ca4c98b74615ae467a2,
     type: 3}
   weaponController: {fileID: 0}
+--- !u!95 &5286646815103006646
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161115784969718708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

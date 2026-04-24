@@ -10,7 +10,6 @@ public class Bullet : Weapon
     private bool hasCollided;
 
     public int bulletID;
-    
 
     void Awake()
     {
@@ -30,6 +29,11 @@ public class Bullet : Weapon
             Die();
         }
     }
+
+     public override void Fire(Vector3 pos, Quaternion rot)
+     {
+        Debug.Log("I sploded!");
+     }
 
     //destroy self on collision
     private void OnTriggerEnter(Collider other) 

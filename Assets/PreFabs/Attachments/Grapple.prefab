@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6071887097204482042}
   - component: {fileID: 4611417075412430389}
+  - component: {fileID: 1966996047187221332}
   m_Layer: 0
   m_Name: Grapple
   m_TagString: Untagged
@@ -46,8 +47,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0
-  lastFired: -9999
+  timeoutDestructor: 0
   baseDamage: 0
+  bulletPrefab: {fileID: 8571058972734593901, guid: e64fac28da8f3ca4c98b74615ae467a2,
+    type: 3}
+  weaponController: {fileID: 0}
+--- !u!95 &1966996047187221332
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054923794620599936}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &6576307281662776332
 GameObject:
   m_ObjectHideFlags: 0

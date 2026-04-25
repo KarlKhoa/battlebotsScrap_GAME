@@ -6,15 +6,14 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class BlankBot : MonoBehaviour
 {
-    public float health;
+     public float health;
      public float generalSpeed;
      public float rotationSpeed;
-
      public float weight;
      public float traction;
    
 
-   //use in future instad of in BotConstructor
+     //use in future instad of in BotSpawner
      public GameObject attachment1;
      public GameObject attachment2;
      public GameObject attachment3;

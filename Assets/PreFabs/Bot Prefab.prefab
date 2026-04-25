@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892a1cbfda2f0424a86a0eda1ae44fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerID: 0
   botGenSpd: 200
   botRotSpd: 200
 --- !u!114 &7091728030425992330
@@ -241,3 +242,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7862f37a7c76b945814c96484677f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachmentScript1: {fileID: 0}

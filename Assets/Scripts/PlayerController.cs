@@ -6,20 +6,16 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private BlankBot mPlayerData;
-    private float playerHealth;
+    
     private Rigidbody rb;
 
-
-    public int playerIndex { get; }
-
-    private PlayerInput playerInput;
+    public int m_playerID;
 
     private Vector2 moveInput;
 
-    
+    private float playerHealth;
     [SerializeField] private float botGenSpd;
     [SerializeField] private float botRotSpd;
-    [SerializeField] private float playerID;
 
     private bool isMovingForward;
     private bool isMovingBackward;
@@ -30,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         mPlayerData = GetComponentInParent<BotSpawner>().playerData;
+        m_playerID = GetComponentInParent<BotSpawner>().playerID; //currrently is weird/out of sync
 
     }
     
@@ -106,11 +103,14 @@ public class PlayerController : MonoBehaviour
     {
       //when it hits, it will check the gameObject this collided with for a baseDamage number and put into the damageDealt variable
       float damageDealt = other.gameObject.GetComponent<Weapon>().baseDamage;
+      //check other gameobject for bulletID
+      int bulletID = other.gameObject.GetComponent<Bullet>().bulletID;
 
-      //if it isn't empty it will take that damage variable and apply it to this game object.
-      if(damageDealt != null) //&& bulletID != playerInput.playerIndex)
+      //if it isn't empty (and the IDs of the bullet and player are different) it will take that damage variable and apply it to this game object.
+      if(damageDealt != null)// && bulletID != m_playerID)
       {
-        playerHealth -= damageDealt;
+            Debug.Log("Ow");
+            playerHealth -= damageDealt;
       }
       //if it is below 0 it will destory the game object
       if(playerHealth <= 0)

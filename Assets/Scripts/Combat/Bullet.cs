@@ -8,8 +8,7 @@ public class Bullet : Weapon
     private Rigidbody rb;
     public float bulletSpeed;
     private bool hasCollided;
-
-    public int bulletID;
+    public int bulletID; //make this equal to current playerID
 
     void Awake()
     {
@@ -17,6 +16,7 @@ public class Bullet : Weapon
         baseDamage = 12;
         bulletSpeed = 10;
         hasCollided = false;
+        
     }
 
     void Start() 

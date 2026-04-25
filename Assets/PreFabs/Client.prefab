@@ -48,6 +48,9 @@ MonoBehaviour:
   playerData: {fileID: 0}
   playerPrefab: {fileID: -9035548095944102316, guid: 18d3500d4f01ee44686b101783fb1929,
     type: 3}
+  gameManagerPrefab: {fileID: 2710888079969662496, guid: d1255ab0d7647804eafa8698baa3d652,
+    type: 3}
+  playerID: 0
   c_attachment1: {fileID: 6161115784969718708, guid: 0a684a1b3bd56c543b57cad19a2bc99c,
     type: 3}
   c_attachment2: {fileID: 5590844197962418955, guid: 5ff048db738257248a26abb9aa5e5ed1,
@@ -58,7 +61,6 @@ MonoBehaviour:
     type: 3}
   livePlayer: {fileID: 0}
   weapons: []
-  constructionRequest: 1
 --- !u!114 &3688418723683610991
 MonoBehaviour:
   m_ObjectHideFlags: 0

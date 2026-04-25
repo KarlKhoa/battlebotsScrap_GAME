@@ -10,6 +10,8 @@ public class BotSpawner : MonoBehaviour
     public BlankBot playerData;
     public PlayerController playerPrefab;
 
+    public int playerID;
+
     //temprorary code to test bot attachments
     public GameObject c_attachment1;
     public GameObject c_attachment2;
@@ -22,21 +24,6 @@ public class BotSpawner : MonoBehaviour
     public List<Weapon> weapons;
     //this constructionRequest is something the game manager should do between rounds
     private bool spawnRequest = true;
-
-
-    //instantiate wrapper auto pairs devices + tracks players. currently returns error
-    //static PlayerInput Instantiate(GameObject prefab, int playerIndex = -1, string controlScheme = null, int splitScreenIndex = -1, InputDevice pairWithDevice = null)
-    //{
-        
-    //}
-
-
-    void Awake()
-    {
-
-    }
-
-    
 
     // Update is called once per frame
     void Update()
@@ -53,13 +40,16 @@ public class BotSpawner : MonoBehaviour
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
             livePlayer = Instantiate(playerPrefab, this.transform);
 
+            //gets playerIndex from PlayerInput
+            var playerInput = GetComponent<PlayerInput>();
+            playerID = playerInput.playerIndex;
 
             spawnRequest = false;
-
-
         }
     }
 
-    
-
+    public void OnPlayerJoined(PlayerInput playerInput)
+    {
+        playerPrefab.m_playerID = playerInput.playerIndex;
+    }
 }

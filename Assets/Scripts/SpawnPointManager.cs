@@ -5,20 +5,12 @@ using UnityEngine.InputSystem;
 
 public class SpawnPointManager : MonoBehaviour
 {
-    [SerializeField] public GameObject playerPrefab;
+    [SerializeField] private GameObject playerPrefab;
 
     [SerializeField] private Transform[] spawnPoints;
 
-    [SerializeField] public int playerCount;
-    //[SerializeField] public int playerIndex {  get; }
+    private int playerCount; //counts how many players have joined to determine where to put them
 
-
-
-    //wrapping for instantiate
-    //public static PlayerInput Instantiate(GameObject prefab, int playerIndex = -1, string controlScheme = null, int splitScreenIndex = -1, InputDevice pairWithDevice = null)
-    //{
-    //    //
-    //}
 
     void Start()
     {
@@ -31,8 +23,6 @@ public class SpawnPointManager : MonoBehaviour
         //position of new client = position of transform at current playerCount number in array
         playerInput.transform.position = spawnPoints[playerCount].transform.position;
         playerCount++;
-
-        //playerInput.playerIndex++; //read only
 
     }
 

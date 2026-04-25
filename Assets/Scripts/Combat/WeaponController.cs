@@ -40,10 +40,13 @@ public class WeaponController : MonoBehaviour
     private Vector3 m_attachment2Pos;
     private Vector3 m_attachment3Pos;
     private Vector3 m_attachment4Pos;
+
+
     private Quaternion m_attachment1Rot;
     private Quaternion m_attachment2Rot;
     private Quaternion m_attachment3Rot;
     private Quaternion m_attachment4Rot;
+
 
 
     void Awake() 

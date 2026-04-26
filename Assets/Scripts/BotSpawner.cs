@@ -9,6 +9,10 @@ public class BotSpawner : MonoBehaviour
     //Player prefab is the saved prefab between scenes, if this is empty the script constructs a generic/blank bot instead
     public BlankBot playerData;
     public PlayerController playerPrefab;
+    //allows the the client to access function in its script
+    public GameManager gameManager;
+
+    public int playerScore;
 
     public int playerID;
 
@@ -24,6 +28,19 @@ public class BotSpawner : MonoBehaviour
     public List<Weapon> weapons;
     //this constructionRequest is something the game manager should do between rounds
     private bool spawnRequest = true;
+
+    void Awake()
+    {
+        //on awake it will surch for the Game Manager script so it can add to the player count
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
+
+    void Start()
+    {
+        //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
+        gameManager.AddPlayerCount();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -51,5 +68,10 @@ public class BotSpawner : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         playerPrefab.m_playerID = playerInput.playerIndex;
+    }
+
+    public void AddPoints(int points)
+    {
+        playerScore += points;
     }
 }

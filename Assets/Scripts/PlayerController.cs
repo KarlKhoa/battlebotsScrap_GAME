@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     
     private Rigidbody rb;
 
+    private GameManager gameManager;
+
+    private BotSpawner botSpawner;
+
     public int m_playerID;
 
     private Vector2 moveInput;
@@ -27,6 +31,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         mPlayerData = GetComponentInParent<BotSpawner>().playerData;
         m_playerID = GetComponentInParent<BotSpawner>().playerID; //currrently is weird/out of sync
+        gameManager = GetComponentInParent<BotSpawner>().gameManager;
+        botSpawner = GetComponentInParent<BotSpawner>();//if we're grabbing the Bot Spawner script we'll probably have to make the code above more effiecient cause it's weird for us to go through hoops to grab certain variable and also just grab the script itself and do nothing with it
 
     }
     
@@ -121,6 +127,8 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        gameManager.LastPlayerCheck();
+        botSpawner.AddPoints(gameManager.ScorePoints());
         Destroy(this.gameObject);
     }
 

@@ -29,16 +29,10 @@ public class BotSpawner : MonoBehaviour
     //this constructionRequest is something the game manager should do between rounds
     private bool spawnRequest = true;
 
-    void Awake()
-    {
-        //on awake it will surch for the Game Manager script so it can add to the player count
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-    }
-
     void Start()
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
-        gameManager.AddPlayerCount();
+        GameManager.Instance.AddPlayerCount();
     }
 
 

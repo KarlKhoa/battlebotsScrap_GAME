@@ -33,6 +33,7 @@ public class BotSpawner : MonoBehaviour
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
         GameManager.Instance.AddPlayerCount();
+        c_attachment1 = GameManager.Instance.WeaponsRegistry.AvailableWeapons[1];
     }
 
 

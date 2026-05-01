@@ -14,7 +14,7 @@ public class Bullet : Weapon
     {
         rb = this.GetComponent<Rigidbody>();
         baseDamage = 12;
-        bulletSpeed = 10;
+        bulletSpeed = 800;
         hasCollided = false;
         
     }
@@ -24,7 +24,7 @@ public class Bullet : Weapon
         if(rb != null)
         {
             //move bullet forward
-            rb.velocity = transform.forward * bulletSpeed;
+            rb.AddForce(transform.forward * bulletSpeed);
 
             Die();
         }
@@ -53,7 +53,7 @@ public class Bullet : Weapon
         else
         {
             //destroy automatically after whatever seconds (aka range)
-            Destroy(this.gameObject, 0.3f);
+            Destroy(this.gameObject, 0.2f);
         }
     }
 

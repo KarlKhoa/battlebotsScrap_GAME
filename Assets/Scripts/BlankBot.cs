@@ -13,7 +13,7 @@ public class BlankBot : MonoBehaviour
      public float traction;
    
 
-     //use in future instad of in BotSpawner
+     //use in future instad of in BotSpawner?
      public GameObject attachment1;
      public GameObject attachment2;
      public GameObject attachment3;

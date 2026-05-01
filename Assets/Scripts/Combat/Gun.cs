@@ -15,7 +15,7 @@ public class Gun : Weapon
     private GameObject m_bulletSpawned;
     private Bullet m_bulletScript;
 
-    public int playerIndex { get; }
+    //public int playerIndex { get; }
 
 
     //private PlayerInput playerInput;
@@ -37,7 +37,6 @@ public class Gun : Weapon
             else
             {
                 m_bulletScript = bulletPrefab.GetComponent<Bullet>();
-                //m_bulletScript.bulletID = playerIndex;
                 m_bulletScript.Fire(pos,rot);
                 hasBulletDetonate = true;
             }

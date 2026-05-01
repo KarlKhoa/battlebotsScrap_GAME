@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public WeaponRegistry WeaponsRegistry;
 
-    public Transform[] spawnPoints;
+    //public Transform[] spawnPoints;
 
     private int rounds = 3;
 

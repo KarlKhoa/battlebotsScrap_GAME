@@ -8,7 +8,6 @@ public class Bullet : Weapon
     private Rigidbody rb;
     public float bulletSpeed;
     private bool hasCollided;
-    public int bulletID; //make this equal to current playerID
 
     void Awake()
     {
@@ -19,19 +18,26 @@ public class Bullet : Weapon
         
     }
 
-    void Start() 
+    void Start()
     {
-        if(rb != null)
+        //if (rb != null)
+        //{
+        //    //move bullet forward
+        //    rb.AddForce(transform.forward * bulletSpeed);
+
+        //    Die();
+        //}
+    }
+
+    public override void Fire(Vector3 pos, Quaternion rot)
+     {
+        if (rb != null)
         {
             //move bullet forward
             rb.AddForce(transform.forward * bulletSpeed);
 
             Die();
         }
-    }
-
-     public override void Fire(Vector3 pos, Quaternion rot)
-     {
         Debug.Log("I sploded!");
      }
 

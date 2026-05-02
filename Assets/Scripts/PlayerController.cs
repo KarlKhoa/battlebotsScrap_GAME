@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private BlankBot mPlayerData;
-    
+
     private Rigidbody rb;
 
     private BotSpawner botSpawner;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         botSpawner = GetComponentInParent<BotSpawner>();
         mPlayerData = botSpawner.playerData;
-        m_playerID = botSpawner.playerID; //currrently is weird/out of sync
+        
 
     }
     
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         playerHealth = mPlayerData.health;
         botGenSpd = mPlayerData.generalSpeed;
         botRotSpd = mPlayerData.rotationSpeed;
-
+        m_playerID = botSpawner.playerID;
     }
 
     void Update()
@@ -106,20 +106,21 @@ public class PlayerController : MonoBehaviour
     {
       //when it hits, it will check the gameObject this collided with for a baseDamage number and put into the damageDealt variable
       float damageDealt = other.gameObject.GetComponent<Weapon>().baseDamage;
-      //check other gameobject for bulletID
-      int bulletID = other.gameObject.GetComponent<Bullet>().bulletID;
+      //check other gameobject for weaponID
+      int weaponID = other.gameObject.GetComponent<Weapon>().weaponID;
 
       //if it isn't empty (and the IDs of the bullet and player are different) it will take that damage variable and apply it to this game object.
-      if(damageDealt != null)// && bulletID != m_playerID)
+      if(damageDealt != null && weaponID != m_playerID)
       {
             Debug.Log("Ow");
             playerHealth -= damageDealt;
       }
+      else { Debug.Log("light work no reaction"); }
       //if it is below 0 it will destory the game object
-      if(playerHealth <= 0)
-      {
-        Die();
-      }
+      if (playerHealth <= 0)
+        {
+            Die();
+        }
     }
 
     private void Die()

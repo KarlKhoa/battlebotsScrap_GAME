@@ -52,7 +52,7 @@ public class BotSpawner : MonoBehaviour
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
             livePlayer = Instantiate(playerPrefab, this.transform);
 
-            //gets playerIndex from PlayerInput
+            //gets playerIndex from PlayerInput and returns value to playerID
             var playerInput = GetComponent<PlayerInput>();
             playerID = playerInput.playerIndex;
 
@@ -62,7 +62,7 @@ public class BotSpawner : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        playerPrefab.m_playerID = playerInput.playerIndex;
+        
     }
 
     public void AddPoints(int points)

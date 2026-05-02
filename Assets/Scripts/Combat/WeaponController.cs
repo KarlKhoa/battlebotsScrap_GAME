@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//bugs: can't fire while moving
 public class WeaponController : MonoBehaviour
 {
 
@@ -11,6 +10,7 @@ public class WeaponController : MonoBehaviour
     private GameObject m_attachment2;
     private GameObject m_attachment3;
     private GameObject m_attachment4;
+    //private GameObject bulletPrefab; //bullet (all of these labelled bullet do the same as m_bulletScript = weaponID in Gun but I thought doing it this way would help for whatever reason.)
 
     //holds weapon script of attachment to use the fire function on it
     [SerializeField]
@@ -18,6 +18,9 @@ public class WeaponController : MonoBehaviour
     private Weapon attachmentScript2;
     private Weapon attachmentScript3;
     private Weapon attachmentScript4;
+    //private Weapon bulletScript; //bullet
+
+    private BotSpawner botSpawner;
 
     //variable to hold the cooldown variable from the weapon script
     private float a1Cooldown;
@@ -41,36 +44,39 @@ public class WeaponController : MonoBehaviour
     private Vector3 m_attachment3Pos;
     private Vector3 m_attachment4Pos;
 
-
     private Quaternion m_attachment1Rot;
     private Quaternion m_attachment2Rot;
     private Quaternion m_attachment3Rot;
     private Quaternion m_attachment4Rot;
 
+    private static int m_weaponID;
+
 
 
     void Awake() 
     {
+        botSpawner = GetComponentInParent<BotSpawner>();
 
         //grab gameobject from parent (change to be more elegant- from playerdata? in future)
         if( m_attachment1 == null)
         {
-            m_attachment1 = GetComponentInParent<BotSpawner>().c_attachment1;
+            m_attachment1 = botSpawner.c_attachment1;
+            //bulletPrefab = m_attachment1.GetComponent<Gun>().bulletPrefab; //bullet
         }
 
         if( m_attachment2 == null)
         {
-            m_attachment2 = GetComponentInParent<BotSpawner>().c_attachment2; 
+            m_attachment2 = botSpawner.c_attachment2; 
         }
 
         if( m_attachment3 == null)
         {
-            m_attachment3 = GetComponentInParent<BotSpawner>().c_attachment3; 
+            m_attachment3 = botSpawner.c_attachment3; 
         }
 
         if( m_attachment4 == null)
         {
-            m_attachment4 = GetComponentInParent<BotSpawner>().c_attachment4; 
+            m_attachment4 = botSpawner.c_attachment4; 
         }
 
     }
@@ -91,23 +97,33 @@ public class WeaponController : MonoBehaviour
         m_attachment3Rot = new Quaternion(0,0,0,0);
         m_attachment4Rot = new Quaternion(0,0,0,0);
 
-        //instantiate using above offets
-        Instantiate(m_attachment1, m_attachment1Pos, m_attachment1Rot, this.transform);
-        Instantiate(m_attachment2, m_attachment2Pos, m_attachment2Rot, this.transform);
-        Instantiate(m_attachment3, m_attachment3Pos, m_attachment3Rot, this.transform);
-        Instantiate(m_attachment4, m_attachment4Pos, m_attachment3Rot, this.transform);
-
         //gets the script of the weapon attached so the functions on it are available to this script to be used when firing the weapons
         attachmentScript1 = m_attachment1.GetComponent<Weapon>();
         attachmentScript2 = m_attachment2.GetComponent<Weapon>();
         attachmentScript3 = m_attachment3.GetComponent<Weapon>();
-        attachmentScript4 = m_attachment4.GetComponent<Weapon>(); 
+        attachmentScript4 = m_attachment4.GetComponent<Weapon>();
+        //bulletScript = bulletPrefab.GetComponent<Weapon>(); //bullet
 
         //gets the cooldown variable from the weapon attached
         a1Cooldown = attachmentScript1.cooldownTime;
         a2Cooldown = attachmentScript2.cooldownTime;
         a3Cooldown = attachmentScript3.cooldownTime;
         a4Cooldown = attachmentScript4.cooldownTime;
+
+        //make weaponID the same as playerID
+        attachmentScript1.weaponID = botSpawner.playerID;
+        attachmentScript2.weaponID = botSpawner.playerID;
+        attachmentScript3.weaponID = botSpawner.playerID;
+        attachmentScript4.weaponID = botSpawner.playerID;
+
+        m_weaponID = botSpawner.playerID;
+        //bulletScript.weaponID = m_weaponID; //bullet
+
+        //instantiate using above offsets, parent to this transform
+        Instantiate(m_attachment1, m_attachment1Pos, m_attachment1Rot, this.transform);
+        Instantiate(m_attachment2, m_attachment2Pos, m_attachment2Rot, this.transform);
+        Instantiate(m_attachment3, m_attachment3Pos, m_attachment3Rot, this.transform);
+        Instantiate(m_attachment4, m_attachment4Pos, m_attachment3Rot, this.transform);
 
     }
 
@@ -166,6 +182,7 @@ public class WeaponController : MonoBehaviour
         //before firing it checks if the weapon is fireable
         if(a1_isFireable == true)
         {
+            //Instantiate(bulletPrefab, m_attachment1Pos, m_attachment1Rot, this.transform); //successfully makes bullet a child of Bot but does not fix the ID thing
             attachmentScript1.Fire(m_attachment1Pos, m_attachment1Rot);
             //sets the bool to false and the timer to 0 so the cooldown essentailly resets
             a1_isFireable = false;

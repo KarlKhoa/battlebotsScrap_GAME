@@ -242,12 +242,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0.5
-  timeoutDestructor: 0
   baseDamage: 0
+  weaponID: 0
   playerPrefab: {fileID: 0}
   bulletPrefab: {fileID: 8571058972734593901, guid: e64fac28da8f3ca4c98b74615ae467a2,
     type: 3}
-  weaponController: {fileID: 0}
   isBulletDetonate: 0
   hasBulletDetonate: 0
 --- !u!95 &5286646815103006646

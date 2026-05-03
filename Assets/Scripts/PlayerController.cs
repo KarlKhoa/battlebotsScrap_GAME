@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        GameManager.Instance.LastPlayerCheck();
+        GameManager.Instance.LastPlayerCheck(this.gameObject);
         botSpawner.AddPoints(GameManager.Instance.ScorePoints());
         Destroy(this.gameObject);
     }

@@ -33,6 +33,7 @@ public class BotSpawner : MonoBehaviour
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
         GameManager.Instance.AddPlayerCount();
+        GameManager.Instance.ReturnClient(this.gameObject);
         c_attachment1 = GameManager.Instance.WeaponsRegistry.AvailableWeapons[1];
     }
 
@@ -63,6 +64,23 @@ public class BotSpawner : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         
+    }
+
+    public void SpawnRequest()
+    {
+            if(playerData == null)
+            {
+                playerData = new BlankBot(50, 400, 100, 0, 0);
+            }
+
+            //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
+            livePlayer = Instantiate(playerPrefab, this.transform);
+
+            //gets playerIndex from PlayerInput and returns value to playerID
+            var playerInput = GetComponent<PlayerInput>();
+            playerID = playerInput.playerIndex;
+
+            spawnRequest = false;
     }
 
     public void AddPoints(int points)

@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
 
     public WeaponRegistry WeaponsRegistry;
 
+    public List<GameObject> c_players;
+
+    public GameObject menus;
+
+    private MenuManager menuManager;
+
     //public Transform[] spawnPoints;
 
     private int rounds = 3;
@@ -33,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         //on start this will set the live player count to the saved playercount, this should be changed later to do this at the start of every round so we can get a freshed reset clock every round
         livePlayerCount = savedPlayerCount;
+        menuManager = menus.GetComponent<MenuManager>();
     }
 
     public void AddPlayerCount()
@@ -45,12 +52,13 @@ public class GameManager : MonoBehaviour
         savedPlayerCount--;
     }
 
-    public void LastPlayerCheck()
+    public void LastPlayerCheck(GameObject bot)
     {
         //on death the bots will call this function, which will check if the this bot is the last bot, by minusing the amount whenever a bot dies, until it hits one (the last playar)
         if(livePlayerCount <= 1)
         {
             EndRound();
+            Destroy(bot);
         }
         else
         {
@@ -66,7 +74,23 @@ public class GameManager : MonoBehaviour
 
     public void EndRound()
     {
-        Debug.Log("Game Over Man");
+        menuManager.WeaponSelectOnOff();
+    }
+
+    public void StartRound()
+    {
+        for(int i = 0; i < savedPlayerCount; i++)
+        {
+            c_players[i].GetComponent<BotSpawner>().SpawnRequest();
+        }
+        
+        roundCount++;
+        livePlayerCount = savedPlayerCount;
+    }
+
+    public void ReturnClient(GameObject player)
+    {
+        c_players.Add(player);
     }
 
 }

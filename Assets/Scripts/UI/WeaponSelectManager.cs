@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class WeaponSelectManager : MonoBehaviour
 {
-    private MenuManager menuManager;
-    public List<GameObject> weaponPool;
+    [SerializeField] private MenuManager menuManager;
+    [SerializeField] private WeaponAttachManager attachManager;
+    public List<Weapon> weaponPool;
+    public bool UIIsBusy;
 
-    [SerializeField] private GameObject weapon1;
-    [SerializeField] private GameObject weapon2;
-    [SerializeField] private GameObject weapon3;
-    [SerializeField] private GameObject weapon4;
-    [SerializeField] private GameObject weapon5;
+    [SerializeField] private Weapon weapon1;
+    [SerializeField] private Weapon weapon2;
+    [SerializeField] private Weapon weapon3;
+    [SerializeField] private Weapon weapon4;
+    [SerializeField] private Weapon weapon5;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        menuManager = GetComponentInParent<MenuManager>();
-        CreateWeaponPool();
-    }
+    private BotSpawner m_client;
+
 
     // Update is called once per frame
     void Update()
@@ -26,7 +24,37 @@ public class WeaponSelectManager : MonoBehaviour
 
     }
 
-    private void CreateWeaponPool()
+    public void WeaponSelectionSequence()
+    {
+        StartCoroutine(WeaponSelectionSequence_Internal());
+    }
+
+    IEnumerator WeaponSelectionSequence_Internal()
+    {
+        CreateWeaponPool();
+
+        foreach(var player in GameManager.Instance.c_players)
+        {
+            var playerClient = player.GetComponent<BotSpawner>();
+            playerClient.ToggleUIAccess(false);
+        }
+
+        foreach(var player in GameManager.Instance.c_players)
+        {
+            UIIsBusy = true;
+            var playerClient = player.GetComponent<BotSpawner>();
+            playerClient.ToggleUIAccess(true);
+            SelectWeaponForClient(playerClient);
+            yield return new WaitUntil(() => !UIIsBusy);
+            playerClient.ToggleUIAccess(false);
+        }
+
+        GameManager.Instance.StartRound();
+    }
+
+
+
+    public void CreateWeaponPool()
     {
             for(int i = 0; i < GameManager.Instance.WeaponsRegistry.AvailableWeapons.Count + 1; i++)
             {
@@ -54,14 +82,20 @@ public class WeaponSelectManager : MonoBehaviour
                  weapon5 = weaponPool[4];
             }
     }
+
+    public void SelectWeaponForClient(BotSpawner client)
+    {
+        menuManager.ToggleWeaponSelectionUI(true);
+        m_client = client;
+    }
     
-    private void SelectWeapon(GameObject weapon)
+    private void SelectWeapon(Weapon weapon)
     {
         if(weapon != null)
         {
-            menuManager.GetSelectedWeapon(weapon);
-            menuManager.WeaponAttachOnOff();
-            menuManager.WeaponSelectOnOff();
+            Debug.Log("BINDING");
+            menuManager.ToggleWeaponSelectionUI(false);
+            attachManager.BindWeaponForClient(m_client, weapon);
         }
         else
         {

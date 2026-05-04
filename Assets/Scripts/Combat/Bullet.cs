@@ -2,65 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : Weapon
+public class Bullet : Projectile
 {
+
+    private const float DEFAULT_LIFETIME = 0.2f;
     
     private Rigidbody rb;
     public float bulletSpeed;
-    private bool hasCollided;
+
+    private float baseDamage;
 
     void Awake()
     {
-        rb = this.GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         baseDamage = 12;
         bulletSpeed = 800;
-        hasCollided = false;
         
     }
 
     void Start()
     {
-        //if (rb != null)
-        //{
-        //    //move bullet forward
-        //    rb.AddForce(transform.forward * bulletSpeed);
-
-        //    Die();
-        //}
-    }
-
-    public override void Fire(Vector3 pos, Quaternion rot)
-     {
         if (rb != null)
         {
             //move bullet forward
             rb.AddForce(transform.forward * bulletSpeed);
 
-            Die();
+            Die(DEFAULT_LIFETIME);
         }
-        Debug.Log("I sploded!");
-     }
+    }
 
     //destroy self on collision
     private void OnTriggerEnter(Collider other) 
     {
-        hasCollided = true;
-        Die();
-    }
-
-
-    private void Die()
-    {
-        //destroy after hitting something
-        if (hasCollided == true)
+        Debug.Log("am hitting");
+        
+        if(other.TryGetComponent<PlayerController>(out var playerController))
         {
-            Destroy(this.gameObject);
+            Debug.Log(playerController);
+            //if our client is the same as player we hit
+            if(Owner == playerController.Owner)
+            {
+                Debug.Log("You hit yourself idiot");
+                return; //do nothing
+            }
+            else
+            {
+                //hurt player
+                playerController.Hurt(baseDamage);
+                Debug.Log("I hit lmao");
+            }
         }
         else
         {
-            //destroy automatically after whatever seconds (aka range)
-            Destroy(this.gameObject, 0.2f);
+            Debug.Log("u didn't find it lmao");
+            Debug.Log(other);
         }
+
+        Die();
+    }
+
+    //destroy self (optional delay)
+    private void Die(float delay = 0)
+    {
+        Destroy(gameObject, delay);
     }
 
 }

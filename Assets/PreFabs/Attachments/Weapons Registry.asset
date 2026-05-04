@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapons Registry
   m_EditorClassIdentifier: 
   AvailableWeapons:
-  - {fileID: 3054923794620599936, guid: 6086938fb112b974ab3f842029ece34e, type: 3}
-  - {fileID: 6161115784969718708, guid: 0a684a1b3bd56c543b57cad19a2bc99c, type: 3}
-  - {fileID: 5590844197962418955, guid: 5ff048db738257248a26abb9aa5e5ed1, type: 3}
-  - {fileID: 1937752591543476311, guid: 193fec65e6d577042a012afe1d4846d9, type: 3}
+  - {fileID: 4611417075412430389, guid: 6086938fb112b974ab3f842029ece34e, type: 3}
+  - {fileID: 4066605228556767782, guid: 0a684a1b3bd56c543b57cad19a2bc99c, type: 3}
+  - {fileID: 8696595463102178488, guid: 5ff048db738257248a26abb9aa5e5ed1, type: 3}
+  - {fileID: 8794582841978183134, guid: 193fec65e6d577042a012afe1d4846d9, type: 3}

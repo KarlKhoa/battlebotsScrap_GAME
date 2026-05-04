@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject menus;
 
     private MenuManager menuManager;
+    [SerializeField] private WeaponSelectManager weaponSelectManager;
 
     //public Transform[] spawnPoints;
 
@@ -74,7 +75,12 @@ public class GameManager : MonoBehaviour
 
     public void EndRound()
     {
-        menuManager.WeaponSelectOnOff();
+        BeginWeaponSelectionSequence();
+    }
+
+    private void BeginWeaponSelectionSequence()
+    {
+        weaponSelectManager.WeaponSelectionSequence();
     }
 
     public void StartRound()

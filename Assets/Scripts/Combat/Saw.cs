@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class Saw : Weapon 
 {
+    public void Awake()
+    {
+        baseDamage = 4;
+    }
     //"fire" blade
 }

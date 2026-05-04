@@ -14,13 +14,11 @@ public class BotSpawner : MonoBehaviour
 
     public int playerScore;
 
-    public int playerID;
-
     //temprorary code to test bot attachments
-    public GameObject c_attachment1;
-    public GameObject c_attachment2;
-    public GameObject c_attachment3;
-    public GameObject c_attachment4;
+    public Weapon c_attachment1;
+    public Weapon c_attachment2;
+    public Weapon c_attachment3;
+    public Weapon c_attachment4;
 
     //liveplayer is the bot being used in the scene, this can be deleted and reconstructed, and uses the player prefab as a base
     public PlayerController livePlayer;
@@ -29,12 +27,15 @@ public class BotSpawner : MonoBehaviour
     //this constructionRequest is something the game manager should do between rounds
     private bool spawnRequest = true;
 
+    public PlayerInput Input;
+
     void Start()
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
         GameManager.Instance.AddPlayerCount();
-        GameManager.Instance.ReturnClient(this.gameObject);
+        GameManager.Instance.ReturnClient(gameObject);
         c_attachment1 = GameManager.Instance.WeaponsRegistry.AvailableWeapons[1];
+        Input = GetComponent<PlayerInput>();
     }
 
 
@@ -53,17 +54,13 @@ public class BotSpawner : MonoBehaviour
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
             livePlayer = Instantiate(playerPrefab, this.transform);
 
-            //gets playerIndex from PlayerInput and returns value to playerID
-            var playerInput = GetComponent<PlayerInput>();
-            playerID = playerInput.playerIndex;
-
             spawnRequest = false;
         }
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        
+    
     }
 
     public void SpawnRequest()
@@ -76,15 +73,19 @@ public class BotSpawner : MonoBehaviour
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
             livePlayer = Instantiate(playerPrefab, this.transform);
 
-            //gets playerIndex from PlayerInput and returns value to playerID
-            var playerInput = GetComponent<PlayerInput>();
-            playerID = playerInput.playerIndex;
-
             spawnRequest = false;
     }
 
     public void AddPoints(int points)
     {
         playerScore += points;
+    }
+
+    public void ToggleUIAccess(bool enabled)
+    {
+        if(enabled)
+            Input.SwitchCurrentActionMap("UI");
+        else
+            Input.SwitchCurrentActionMap("Player");
     }
 }

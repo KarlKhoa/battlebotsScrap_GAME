@@ -11,11 +11,11 @@ public class PlayerController : MonoBehaviour
 
     private BotSpawner botSpawner;
 
-    public int m_playerID;
+    public BotSpawner Owner => botSpawner;
 
     private Vector2 moveInput;
 
-    private float playerHealth;
+    [SerializeField] private float playerHealth;
     [SerializeField] private float botGenSpd;
     [SerializeField] private float botRotSpd;
 
@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
         playerHealth = mPlayerData.health;
         botGenSpd = mPlayerData.generalSpeed;
         botRotSpd = mPlayerData.rotationSpeed;
-        m_playerID = botSpawner.playerID;
     }
 
     void Update()
@@ -72,6 +71,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        //Debug.Log($"fwd{isMovingForward} bck{isMovingBackward} tl{isTurningLeft} tr{isTurningRight}");
+
         //moving player
         if(isMovingForward == true)
         {
@@ -96,28 +98,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnMove(InputValue  input) 
+    private void OnMove(InputValue input) 
     {
+    
         moveInput = input.Get<Vector2>();
     }
 
     //Checks when a collider come in contact with this objects collider
-    private void OnTriggerEnter(Collider other)
-    {
-      //when it hits, it will check the gameObject this collided with for a baseDamage number and put into the damageDealt variable
-      float damageDealt = other.gameObject.GetComponent<Weapon>().baseDamage;
-      //check other gameobject for weaponID
-      int weaponID = other.gameObject.GetComponent<Weapon>().weaponID;
 
-      //if it isn't empty (and the IDs of the bullet and player are different) it will take that damage variable and apply it to this game object.
-      if(damageDealt != null && weaponID != m_playerID)
-      {
-            Debug.Log("Ow");
-            playerHealth -= damageDealt;
-      }
-      else { Debug.Log("light work no reaction"); }
-      //if it is below 0 it will destory the game object
-      if (playerHealth <= 0)
+    public void Hurt(float damage)
+    {
+        playerHealth = playerHealth - damage;
+        if(playerHealth <= 0)
         {
             Die();
         }

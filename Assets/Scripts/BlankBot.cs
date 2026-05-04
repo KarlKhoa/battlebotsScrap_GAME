@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [System.Serializable]
-public class BlankBot : MonoBehaviour
+public class BlankBot
 {
      public float health;
      public float generalSpeed;

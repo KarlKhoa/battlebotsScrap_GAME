@@ -45,21 +45,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1146e6606e7fba7489460959117f6751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
+  playerData:
+    health: 10
+    generalSpeed: 300
+    rotationSpeed: 100
+    weight: 0
+    traction: 0
+    attachment1: {fileID: 0}
+    attachment2: {fileID: 0}
+    attachment3: {fileID: 0}
+    attachment4: {fileID: 0}
   playerPrefab: {fileID: -9035548095944102316, guid: 18d3500d4f01ee44686b101783fb1929,
     type: 3}
   gameManager: {fileID: 0}
   playerScore: 0
-  playerID: 0
-  c_attachment1: {fileID: 0}
-  c_attachment2: {fileID: 5590844197962418955, guid: 5ff048db738257248a26abb9aa5e5ed1,
+  c_attachment1: {fileID: 4066605228556767782, guid: 0a684a1b3bd56c543b57cad19a2bc99c,
     type: 3}
-  c_attachment3: {fileID: 3054923794620599936, guid: 6086938fb112b974ab3f842029ece34e,
+  c_attachment2: {fileID: 4066605228556767782, guid: 0a684a1b3bd56c543b57cad19a2bc99c,
     type: 3}
-  c_attachment4: {fileID: 1937752591543476311, guid: 193fec65e6d577042a012afe1d4846d9,
+  c_attachment3: {fileID: 4066605228556767782, guid: 0a684a1b3bd56c543b57cad19a2bc99c,
+    type: 3}
+  c_attachment4: {fileID: 4066605228556767782, guid: 0a684a1b3bd56c543b57cad19a2bc99c,
     type: 3}
   livePlayer: {fileID: 0}
   weapons: []
+  Input: {fileID: 0}
 --- !u!114 &3688418723683610991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +132,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b491b2e6-21e7-436a-ae0f-50d8af40f027
     m_ActionName: Player/Fire 2[/Keyboard/8]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1

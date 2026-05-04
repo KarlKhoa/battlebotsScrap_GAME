@@ -6,10 +6,6 @@ using UnityEngine.InputSystem;
 public class WeaponController : MonoBehaviour
 {
 
-    private GameObject m_attachment1;
-    private GameObject m_attachment2;
-    private GameObject m_attachment3;
-    private GameObject m_attachment4;
     //private GameObject bulletPrefab; //bullet (all of these labelled bullet do the same as m_bulletScript = weaponID in Gun but I thought doing it this way would help for whatever reason.)
 
     //holds weapon script of attachment to use the fire function on it
@@ -57,74 +53,28 @@ public class WeaponController : MonoBehaviour
     {
         botSpawner = GetComponentInParent<BotSpawner>();
 
-        //grab gameobject from parent (change to be more elegant- from playerdata? in future)
-        if( m_attachment1 == null)
-        {
-            m_attachment1 = botSpawner.c_attachment1;
-            //bulletPrefab = m_attachment1.GetComponent<Gun>().bulletPrefab; //bullet
-        }
-
-        if( m_attachment2 == null)
-        {
-            m_attachment2 = botSpawner.c_attachment2; 
-        }
-
-        if( m_attachment3 == null)
-        {
-            m_attachment3 = botSpawner.c_attachment3; 
-        }
-
-        if( m_attachment4 == null)
-        {
-            m_attachment4 = botSpawner.c_attachment4; 
-        }
-
     }
     void Start()
     {
-        //make these into functions later
 
         //offsets position from parent 
         Vector3 attachmentPerch = this.transform.position + transform.up * 0.15f;
-        m_attachment1Pos = attachmentPerch + transform.forward * 0.6f;
-        m_attachment2Pos = attachmentPerch + transform.forward * -0.6f;
-        m_attachment3Pos = attachmentPerch + transform.right * 0.6f;
-        m_attachment4Pos = attachmentPerch + transform.right * -0.6f;
 
-        // set rotation
-        m_attachment1Rot = new Quaternion(0,90,0,0);
-        m_attachment2Rot = new Quaternion(0,0,0,0);
-        m_attachment3Rot = new Quaternion(0,0,0,0);
-        m_attachment4Rot = new Quaternion(0,0,0,0);
+        attachmentScript1 = BuildAndAttachWeapon(botSpawner.c_attachment1, attachmentPerch + transform.forward * 0.6f, Quaternion.identity);
+        attachmentScript2 = BuildAndAttachWeapon(botSpawner.c_attachment2, attachmentPerch + transform.forward * -0.6f, Quaternion.identity);
+        attachmentScript3 = BuildAndAttachWeapon(botSpawner.c_attachment3, attachmentPerch + transform.right * 0.6f, Quaternion.identity);
+        attachmentScript4 = BuildAndAttachWeapon(botSpawner.c_attachment4, attachmentPerch + transform.right * -0.6f, Quaternion.identity);
 
-        //gets the script of the weapon attached so the functions on it are available to this script to be used when firing the weapons
-        attachmentScript1 = m_attachment1.GetComponent<Weapon>();
-        attachmentScript2 = m_attachment2.GetComponent<Weapon>();
-        attachmentScript3 = m_attachment3.GetComponent<Weapon>();
-        attachmentScript4 = m_attachment4.GetComponent<Weapon>();
-        //bulletScript = bulletPrefab.GetComponent<Weapon>(); //bullet
 
-        //gets the cooldown variable from the weapon attached
-        a1Cooldown = attachmentScript1.cooldownTime;
-        a2Cooldown = attachmentScript2.cooldownTime;
-        a3Cooldown = attachmentScript3.cooldownTime;
-        a4Cooldown = attachmentScript4.cooldownTime;
+    }
 
-        //make weaponID the same as playerID
-        attachmentScript1.weaponID = botSpawner.playerID;
-        attachmentScript2.weaponID = botSpawner.playerID;
-        attachmentScript3.weaponID = botSpawner.playerID;
-        attachmentScript4.weaponID = botSpawner.playerID;
-
-        m_weaponID = botSpawner.playerID;
-        //bulletScript.weaponID = m_weaponID; //bullet
-
-        //instantiate using above offsets, parent to this transform
-        Instantiate(m_attachment1, m_attachment1Pos, m_attachment1Rot, this.transform);
-        Instantiate(m_attachment2, m_attachment2Pos, m_attachment2Rot, this.transform);
-        Instantiate(m_attachment3, m_attachment3Pos, m_attachment3Rot, this.transform);
-        Instantiate(m_attachment4, m_attachment4Pos, m_attachment3Rot, this.transform);
-
+    //instantiate weapons at attachment transforms, make their Owner client
+    private Weapon BuildAndAttachWeapon(Weapon attachment, Vector3 attachmentOffset, Quaternion attachmentOrientation)
+    {
+        if(!attachment) return null;
+        var newWeapon = Instantiate(attachment, attachmentOffset, attachmentOrientation, this.transform);
+        newWeapon.Owner = botSpawner; 
+        return newWeapon;
     }
 
     // Update is called once per frame
@@ -183,7 +133,7 @@ public class WeaponController : MonoBehaviour
         if(a1_isFireable == true)
         {
             //Instantiate(bulletPrefab, m_attachment1Pos, m_attachment1Rot, this.transform); //successfully makes bullet a child of Bot but does not fix the ID thing
-            attachmentScript1.Fire(m_attachment1Pos, m_attachment1Rot);
+            attachmentScript1?.Fire(m_attachment1Pos, m_attachment1Rot);
             //sets the bool to false and the timer to 0 so the cooldown essentailly resets
             a1_isFireable = false;
             m_cooldownTime1 = 0;
@@ -194,7 +144,7 @@ public class WeaponController : MonoBehaviour
     {
         if(a2_isFireable == true)
         {
-            attachmentScript2.Fire(m_attachment2Pos, m_attachment2Rot);
+            attachmentScript2?.Fire(m_attachment2Pos, m_attachment2Rot);
             a2_isFireable = false;
             m_cooldownTime2 = 0;
         }
@@ -205,7 +155,7 @@ public class WeaponController : MonoBehaviour
     {
         if(a3_isFireable == true)
         {
-            attachmentScript3.Fire(m_attachment3Pos, m_attachment3Rot);
+            attachmentScript3?.Fire(m_attachment3Pos, m_attachment3Rot);
             a3_isFireable = false;
             m_cooldownTime3 = 0;
         }
@@ -216,7 +166,7 @@ public class WeaponController : MonoBehaviour
     {
         if(a4_isFireable == true)
         {
-            attachmentScript4.Fire(m_attachment4Pos, m_attachment4Rot);
+            attachmentScript4?.Fire(m_attachment4Pos, m_attachment4Rot);
             a4_isFireable = false;
             m_cooldownTime4 = 0;
         }

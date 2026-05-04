@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject weaponSelect;
     public GameObject weaponAttach;
-    public GameObject selectedWeapon;
+
 
     public GameObject weaponSelectFirstButton;
     public GameObject weaponAttachFirstButton;
@@ -24,54 +24,28 @@ public class MenuManager : MonoBehaviour
 
     }
 
-    public void WeaponSelectOnOff()
+    public void ToggleWeaponSelectionUI(bool state)
     {
-        if(isNotFirstSelectionOfRound == false)
+        weaponSelect.SetActive(state);
+        if(state)
         {
-            playerCount = GameManager.Instance.savedPlayerCount;
-            isNotFirstSelectionOfRound = true;
-        }
-
-        if(weaponSelect.activeSelf == false)
-        {
-            weaponSelect.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(weaponSelectFirstButton);
         }
-        else
-        {
-            weaponSelect.SetActive(false);
-        }
+        
     }
 
-    public void WeaponAttachOnOff()
+    public void ToggleWeaponBindingUI(bool state)
     {
-        if(weaponAttach.activeSelf == false)
+        weaponAttach.SetActive(state);
+        if(state)
         {
-            weaponAttach.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(weaponAttachFirstButton);
-
-        }
-        else
-        {
-            weaponAttach.SetActive(false);
         }
     }
 
-    public void GetSelectedWeapon(GameObject weapon)
-    {
-        selectedWeapon = weapon;
-    }
 
-    public void PlayerHasSelected()
-    {
-        playersThatHaveSelected ++;
-        if(playersThatHaveSelected >= playerCount)
-        {
-            WeaponSelectOnOff();
-            GameManager.Instance.StartRound();
-        }
-    }
+
 
 }

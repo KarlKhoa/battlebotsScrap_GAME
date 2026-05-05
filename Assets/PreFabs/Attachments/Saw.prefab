@@ -243,6 +243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 0
   baseDamage: 0
+  selectSprite: {fileID: 21300000, guid: 108381ef3ca67504fac64752a4236456, type: 3}
+  Owner: {fileID: 0}
+  playerPrefab: {fileID: 0}
 --- !u!65 &-4706531458855596546
 BoxCollider:
   m_ObjectHideFlags: 0

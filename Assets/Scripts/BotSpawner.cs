@@ -12,7 +12,7 @@ public class BotSpawner : MonoBehaviour
     //allows the the client to access function in its script
     public GameManager gameManager;
 
-    public int playerScore;
+    public int playerScore = 0;
 
     //temprorary code to test bot attachments
     public Weapon c_attachment1;
@@ -60,7 +60,7 @@ public class BotSpawner : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-    
+
     }
 
     public void SpawnRequest()

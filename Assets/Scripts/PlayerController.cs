@@ -115,11 +115,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die(bool isLastDeath = false)
     {
-        GameManager.Instance.LastPlayerCheck(this.gameObject);
-        botSpawner.AddPoints(GameManager.Instance.ScorePoints());
-        Destroy(this.gameObject);
+        if(isLastDeath)
+        {
+            GameManager.Instance.LastPlayerCheck(true);
+            botSpawner.AddPoints(GameManager.Instance.ScorePoints());
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            GameManager.Instance.LastPlayerCheck();
+            botSpawner.AddPoints(GameManager.Instance.ScorePoints());
+            Destroy(this.gameObject);
+        }
+        
     }
 
 }

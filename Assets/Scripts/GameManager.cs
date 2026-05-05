@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     //
     public int savedPlayerCount;
 
-    private int livePlayerCount;
+    public int livePlayerCount;
 
     //public int playerIndex { get; } //unique zero-based player index. assign to each player + keep track
 
@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //on start this will set the live player count to the saved playercount, this should be changed later to do this at the start of every round so we can get a freshed reset clock every round
-        livePlayerCount = savedPlayerCount;
         menuManager = menus.GetComponent<MenuManager>();
     }
 
@@ -53,28 +52,38 @@ public class GameManager : MonoBehaviour
         savedPlayerCount--;
     }
 
-    public void LastPlayerCheck(GameObject bot)
+    public void LastPlayerCheck(bool isLastPlayer = false)
     {
+        livePlayerCount--;
         //on death the bots will call this function, which will check if the this bot is the last bot, by minusing the amount whenever a bot dies, until it hits one (the last playar)
-        if(livePlayerCount <= 1)
+        if(livePlayerCount <= 1 && isLastPlayer == false)
         {
             EndRound();
-            Destroy(bot);
-        }
-        else
-        {
-            livePlayerCount--;
         }
     }
     
     public int ScorePoints()
     {
-        int maxPlayers = 4;
+        int maxPlayers = 5;
         return maxPlayers - livePlayerCount;
     }
 
     public void EndRound()
     {
+        for(int i = 0; i < c_players.Count; i++)
+        {
+            if(c_players[i].GetComponentInChildren<PlayerController>() != null)
+            {
+                c_players[i].GetComponentInChildren<PlayerController>().Die(true);
+            }
+        }
+        
+        c_players.Sort(SortByPlayerScore);
+        for(int i = 0; 1 < c_players.Count; i++)
+        {
+            Debug.Log(c_players[i].GetComponent<BotSpawner>().playerScore);
+        }
+
         BeginWeaponSelectionSequence();
     }
 
@@ -97,6 +106,11 @@ public class GameManager : MonoBehaviour
     public void ReturnClient(GameObject player)
     {
         c_players.Add(player);
+    }
+
+    private int SortByPlayerScore(GameObject gameObject1, GameObject gameObject2)
+    {
+        return gameObject1.GetComponent<BotSpawner>().playerScore.CompareTo(gameObject2.GetComponent<BotSpawner>().playerScore);
     }
 
 }

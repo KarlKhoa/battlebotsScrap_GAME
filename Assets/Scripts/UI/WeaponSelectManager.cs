@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponSelectManager : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class WeaponSelectManager : MonoBehaviour
 
     private BotSpawner m_client;
 
+    public Sprite noWeapon;
 
+    public List<Image> weaponSelectButtonList;
+    
     // Update is called once per frame
     void Update()
     {
@@ -42,6 +46,7 @@ public class WeaponSelectManager : MonoBehaviour
         foreach(var player in GameManager.Instance.c_players)
         {
             UIIsBusy = true;
+            UpdateButtonDisplay();
             var playerClient = player.GetComponent<BotSpawner>();
             playerClient.ToggleUIAccess(true);
             SelectWeaponForClient(playerClient);
@@ -56,7 +61,7 @@ public class WeaponSelectManager : MonoBehaviour
 
     public void CreateWeaponPool()
     {
-            for(int i = 0; i < GameManager.Instance.WeaponsRegistry.AvailableWeapons.Count + 1; i++)
+            for(int i = 0; i < GameManager.Instance.c_players.Count + 1; i++)
             {
                 weaponPool.Add(GameManager.Instance.WeaponsRegistry.AvailableWeapons[Random.Range(0, GameManager.Instance.WeaponsRegistry.AvailableWeapons.Count)]);
             }
@@ -127,5 +132,33 @@ public class WeaponSelectManager : MonoBehaviour
     {
         SelectWeapon(weapon5);
         weapon5 = null;
+    }
+
+    public void UpdateButtonDisplay()
+    {
+        for(int i = 0; i < weaponPool.Count; i++)
+        {
+            weaponSelectButtonList[i].sprite = weaponPool[i].selectSprite;
+        }
+        if(weapon1 == null)
+        {
+            weaponSelectButtonList[0].sprite = noWeapon;
+        }
+        if(weapon2 == null)
+        {
+            weaponSelectButtonList[1].sprite = noWeapon;
+        }
+        if(weapon3 == null)
+        {
+            weaponSelectButtonList[2].sprite = noWeapon;
+        }
+        if(weapon4 == null)
+        {
+            weaponSelectButtonList[3].sprite = noWeapon;
+        }
+         if(weapon5 == null)
+        {
+            weaponSelectButtonList[4].sprite = noWeapon;
+        }
     }
 }

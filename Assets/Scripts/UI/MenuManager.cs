@@ -16,7 +16,6 @@ public class MenuManager : MonoBehaviour
     private bool currentRoundClock;
 
     private int playerCount;
-    private int playersThatHaveSelected  = 0;
 
 
     void Start()

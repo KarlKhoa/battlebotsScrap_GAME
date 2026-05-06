@@ -70,21 +70,31 @@ public class GameManager : MonoBehaviour
 
     public void EndRound()
     {
-        for(int i = 0; i < c_players.Count; i++)
+        roundCount++;
+        if(roundCount >= rounds)
         {
-            if(c_players[i].GetComponentInChildren<PlayerController>() != null)
+            EndGame();
+        }
+        else
+        {
+            for(int i = 0; i < c_players.Count; i++)
             {
-                c_players[i].GetComponentInChildren<PlayerController>().Die(true);
+                if(c_players[i].GetComponentInChildren<PlayerController>() != null)
+                {
+                    c_players[i].GetComponentInChildren<PlayerController>().Die(true);
+                }
             }
-        }
         
-        c_players.Sort(SortByPlayerScore);
-        for(int i = 0; 1 < c_players.Count; i++)
-        {
-            Debug.Log(c_players[i].GetComponent<BotSpawner>().playerScore);
-        }
+            c_players.Sort(SortByPlayerScore);
+            /*
+            for(int i = 0; 1 < c_players.Count; i++)
+            {
+                Debug.Log(c_players[i].GetComponent<BotSpawner>().playerScore);
+            }
+            */
 
-        BeginWeaponSelectionSequence();
+            BeginWeaponSelectionSequence();
+        }
     }
 
     private void BeginWeaponSelectionSequence()
@@ -111,6 +121,24 @@ public class GameManager : MonoBehaviour
     private int SortByPlayerScore(GameObject gameObject1, GameObject gameObject2)
     {
         return gameObject1.GetComponent<BotSpawner>().playerScore.CompareTo(gameObject2.GetComponent<BotSpawner>().playerScore);
+    }
+
+    public void StartGame()
+    {
+        foreach(var player in c_players)
+        {
+            if(player.GetComponentInChildren<PlayerController>() != null)
+            {
+                player.GetComponentInChildren<PlayerController>().FirstDieToStart();
+            }
+        }
+        BeginWeaponSelectionSequence();
+    }
+    private void EndGame()
+    {
+        c_players.Sort(SortByPlayerScore);
+        c_players.Reverse();
+        Debug.Log(c_players[0] + "has won");
     }
 
 }

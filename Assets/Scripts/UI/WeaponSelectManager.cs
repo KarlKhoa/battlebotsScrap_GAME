@@ -36,7 +36,7 @@ public class WeaponSelectManager : MonoBehaviour
     IEnumerator WeaponSelectionSequence_Internal()
     {
         CreateWeaponPool();
-
+        
         foreach(var player in GameManager.Instance.c_players)
         {
             var playerClient = player.GetComponent<BotSpawner>();
@@ -98,13 +98,13 @@ public class WeaponSelectManager : MonoBehaviour
     {
         if(weapon != null)
         {
-            Debug.Log("BINDING");
+            //Debug.Log("BINDING");
             menuManager.ToggleWeaponSelectionUI(false);
             attachManager.BindWeaponForClient(m_client, weapon);
         }
         else
         {
-            Debug.Log("oops no weapon");
+            //Debug.Log("oops no weapon");
         }
     }
 

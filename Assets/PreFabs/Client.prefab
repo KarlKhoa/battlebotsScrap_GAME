@@ -69,7 +69,7 @@ MonoBehaviour:
     type: 3}
   livePlayer: {fileID: 0}
   weapons: []
-  Input: {fileID: 0}
+  Input: {fileID: 3688418723683610991}
 --- !u!114 &3688418723683610991
 MonoBehaviour:
   m_ObjectHideFlags: 0

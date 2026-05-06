@@ -29,6 +29,8 @@ public class BotSpawner : MonoBehaviour
 
     public PlayerInput Input;
 
+    public bool playerComtroller;
+
     void Start()
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
@@ -84,8 +86,14 @@ public class BotSpawner : MonoBehaviour
     public void ToggleUIAccess(bool enabled)
     {
         if(enabled)
-            Input.SwitchCurrentActionMap("UI");
+        {
+            Input.actions.Enable();
+            Debug.Log(Input.actions);
+        }
         else
-            Input.SwitchCurrentActionMap("Player");
+        {
+            Input.actions.Disable();
+            Debug.Log(Input.actions);
+        }
     }
 }

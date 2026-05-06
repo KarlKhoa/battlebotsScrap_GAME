@@ -132,4 +132,9 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void FirstDieToStart()
+    {
+        Destroy(gameObject);
+    }
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> c_players;
 
     public GameObject menus;
-
+    public GameObject firstSelectedWeaponUI; //store this so we can force users to select the correct UI component when reenabling UI controls - MEL
     private MenuManager menuManager;
     [SerializeField] private WeaponSelectManager weaponSelectManager;
 

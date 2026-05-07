@@ -156,7 +156,7 @@ public class WeaponSelectManager : MonoBehaviour
         {
             weaponSelectButtonList[3].sprite = noWeapon;
         }
-         if(weapon5 == null)
+        if(weapon5 == null)
         {
             weaponSelectButtonList[4].sprite = noWeapon;
         }

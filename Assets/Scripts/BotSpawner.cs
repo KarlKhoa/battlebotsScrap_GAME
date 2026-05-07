@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 
 public class BotSpawner : MonoBehaviour
@@ -9,9 +10,7 @@ public class BotSpawner : MonoBehaviour
     //Player prefab is the saved prefab between scenes, if this is empty the script constructs a generic/blank bot instead
     public BlankBot playerData;
     public PlayerController playerPrefab;
-    //allows the the client to access function in its script
-    public GameManager gameManager;
-
+    
     public int playerScore = 0;
 
     //temprorary code to test bot attachments
@@ -28,9 +27,9 @@ public class BotSpawner : MonoBehaviour
     private bool spawnRequest = true;
 
     public PlayerInput Input;
-
-    public bool playerComtroller;
-
+    private MultiplayerEventSystem _multiplayerEventSystem;
+    private InputSystemUIInputModule _uiInputModule;
+    
     void Start()
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
@@ -38,6 +37,14 @@ public class BotSpawner : MonoBehaviour
         GameManager.Instance.ReturnClient(gameObject);
         c_attachment1 = GameManager.Instance.WeaponsRegistry.AvailableWeapons[1];
         Input = GetComponent<PlayerInput>();
+        
+        //Locate and bind the per-client event system to the shared UI - MEL
+        _multiplayerEventSystem = GetComponent<MultiplayerEventSystem>();
+        _multiplayerEventSystem.playerRoot = GameManager.Instance.menus;
+        _multiplayerEventSystem.firstSelectedGameObject = GameManager.Instance.firstSelectedWeaponUI;
+        _uiInputModule = GetComponent<InputSystemUIInputModule>();
+        _uiInputModule.actionsAsset = Input.actions;
+
     }
 
 
@@ -83,17 +90,10 @@ public class BotSpawner : MonoBehaviour
         playerScore += points;
     }
 
-    public void ToggleUIAccess(bool enabled)
+    public void ToggleUIAccess(bool enabled, GameObject selectedUIElement = null)
     {
-        if(enabled)
-        {
-            Input.actions.Enable();
-            Debug.Log(Input.actions);
-        }
-        else
-        {
-            Input.actions.Disable();
-            Debug.Log(Input.actions);
-        }
+        _uiInputModule.enabled = enabled; //turn off mouse events
+        _multiplayerEventSystem.sendNavigationEvents = enabled; //disable normal navigation
+        _multiplayerEventSystem.SetSelectedGameObject(GameManager.Instance.firstSelectedWeaponUI); //reset selected element to ensure player uses UI properly
     }
 }

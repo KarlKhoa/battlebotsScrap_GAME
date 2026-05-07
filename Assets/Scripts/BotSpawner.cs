@@ -33,8 +33,7 @@ public class BotSpawner : MonoBehaviour
     void Start()
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
-        GameManager.Instance.AddPlayerCount();
-        GameManager.Instance.ReturnClient(gameObject);
+        GameManager.Instance.RegisterClient(this);
         c_attachment1 = GameManager.Instance.WeaponsRegistry.AvailableWeapons[1];
         Input = GetComponent<PlayerInput>();
         
@@ -44,28 +43,11 @@ public class BotSpawner : MonoBehaviour
         _multiplayerEventSystem.firstSelectedGameObject = GameManager.Instance.firstSelectedWeaponUI;
         _uiInputModule = GetComponent<InputSystemUIInputModule>();
         _uiInputModule.actionsAsset = Input.actions;
+        
+        SpawnRequest();
 
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        //code checks for when construction is requested and creates a generic bot class for bot prefab to used in combat
-        if (spawnRequest == true)
-        {
-            //creates a generic bot class of player if bot data is empty
-            if(playerData == null)
-            {
-                playerData = new BlankBot(50, 400, 100, 0, 0);
-            }
-
-            //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
-            livePlayer = Instantiate(playerPrefab, this.transform);
-
-            spawnRequest = false;
-        }
-    }
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -81,12 +63,12 @@ public class BotSpawner : MonoBehaviour
 
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
             livePlayer = Instantiate(playerPrefab, this.transform);
-
-            spawnRequest = false;
+            GameManager.Instance.RegisterPlayer(livePlayer);
     }
 
     public void AddPoints(int points)
     {
+        Debug.Log($"Scored {points}");
         playerScore += points;
     }
 

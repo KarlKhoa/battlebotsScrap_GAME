@@ -37,13 +37,13 @@ public class WeaponSelectManager : MonoBehaviour
     {
         CreateWeaponPool();
         
-        foreach(var player in GameManager.Instance.c_players)
+        foreach(var player in GameManager.Instance.registeredClients)
         {
             var playerClient = player.GetComponent<BotSpawner>();
             playerClient.ToggleUIAccess(false);
         }
 
-        foreach(var player in GameManager.Instance.c_players)
+        foreach(var player in GameManager.Instance.registeredClients)
         {
             UIIsBusy = true;
             UpdateButtonDisplay();
@@ -54,6 +54,7 @@ public class WeaponSelectManager : MonoBehaviour
             playerClient.ToggleUIAccess(false);
         }
 
+        weaponPool.Clear();
         GameManager.Instance.StartRound();
     }
 
@@ -61,7 +62,7 @@ public class WeaponSelectManager : MonoBehaviour
 
     public void CreateWeaponPool()
     {
-            for(int i = 0; i < GameManager.Instance.c_players.Count + 1; i++)
+            for(int i = 0; i < GameManager.Instance.registeredClients.Count + 1; i++)
             {
                 weaponPool.Add(GameManager.Instance.WeaponsRegistry.AvailableWeapons[Random.Range(0, GameManager.Instance.WeaponsRegistry.AvailableWeapons.Count)]);
             }

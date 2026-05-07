@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     private BotSpawner botSpawner;
 
     public BotSpawner Owner => botSpawner;
-
+    public bool IsAlive => playerHealth > 0;
+    
+    
     private Vector2 moveInput;
 
     [SerializeField] private float playerHealth;
@@ -117,19 +119,9 @@ public class PlayerController : MonoBehaviour
 
     public void Die(bool isLastDeath = false)
     {
-        if(isLastDeath)
-        {
-            GameManager.Instance.LastPlayerCheck(true);
-            botSpawner.AddPoints(GameManager.Instance.ScorePoints());
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            GameManager.Instance.LastPlayerCheck();
-            botSpawner.AddPoints(GameManager.Instance.ScorePoints());
-            Destroy(this.gameObject);
-        }
-        
+        botSpawner.AddPoints(GameManager.Instance.ScorePoints());
+        Destroy(gameObject);
+        GameManager.Instance.OnPlayerDeath(this);
     }
 
     public void FirstDieToStart()

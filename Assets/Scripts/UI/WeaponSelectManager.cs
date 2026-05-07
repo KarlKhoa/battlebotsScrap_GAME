@@ -16,7 +16,7 @@ public class WeaponSelectManager : MonoBehaviour
     [SerializeField] private Weapon weapon4;
     [SerializeField] private Weapon weapon5;
 
-    private BotSpawner m_client;
+    private Client m_client;
 
     public Sprite noWeapon;
 
@@ -39,7 +39,7 @@ public class WeaponSelectManager : MonoBehaviour
         
         foreach(var player in GameManager.Instance.registeredClients)
         {
-            var playerClient = player.GetComponent<BotSpawner>();
+            var playerClient = player.GetComponent<Client>();
             playerClient.ToggleUIAccess(false);
         }
 
@@ -47,7 +47,7 @@ public class WeaponSelectManager : MonoBehaviour
         {
             UIIsBusy = true;
             UpdateButtonDisplay();
-            var playerClient = player.GetComponent<BotSpawner>();
+            var playerClient = player.GetComponent<Client>();
             playerClient.ToggleUIAccess(true);
             SelectWeaponForClient(playerClient);
             yield return new WaitUntil(() => !UIIsBusy);
@@ -89,7 +89,7 @@ public class WeaponSelectManager : MonoBehaviour
             }
     }
 
-    public void SelectWeaponForClient(BotSpawner client)
+    public void SelectWeaponForClient(Client client)
     {
         menuManager.ToggleWeaponSelectionUI(true);
         m_client = client;

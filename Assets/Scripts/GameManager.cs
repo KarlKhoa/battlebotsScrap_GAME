@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public WeaponRegistry WeaponsRegistry;
 
-    public List<BotSpawner> registeredClients;
+    public List<Client> registeredClients;
 
     public GameObject menus;
     public GameObject firstSelectedWeaponUI; //store this so we can force users to select the correct UI component when reenabling UI controls - MEL
@@ -75,12 +75,6 @@ public class GameManager : MonoBehaviour
             }
         
             registeredClients.Sort(SortByPlayerScore);
-            /*
-            for(int i = 0; 1 < c_players.Count; i++)
-            {
-                Debug.Log(c_players[i].GetComponent<BotSpawner>().playerScore);
-            }
-            */
 
             BeginWeaponSelectionSequence();
         }
@@ -103,7 +97,7 @@ public class GameManager : MonoBehaviour
         roundCount++;
     }
 
-    public void RegisterClient(BotSpawner client)
+    public void RegisterClient(Client client)
     {
         registeredClients.Add(client);
     }
@@ -113,7 +107,7 @@ public class GameManager : MonoBehaviour
         ActivePlayers.Add(player);
     }
 
-    private int SortByPlayerScore(BotSpawner client1, BotSpawner client2)
+    private int SortByPlayerScore(Client client1, Client client2)
     {
         return client1.playerScore.CompareTo(client2.playerScore);
     }

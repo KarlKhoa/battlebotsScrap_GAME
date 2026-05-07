@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
 
-public class BotSpawner : MonoBehaviour
+public class Client : MonoBehaviour
 {
     //Player prefab is the saved prefab between scenes, if this is empty the script constructs a generic/blank bot instead
     public BlankBot playerData;
@@ -23,8 +23,6 @@ public class BotSpawner : MonoBehaviour
     public PlayerController livePlayer;
     //Create a List of weapons in inspector; currently not doing anything but could be used to keep track of players' current weapons
     public List<Weapon> weapons;
-    //this constructionRequest is something the game manager should do between rounds
-    private bool spawnRequest = true;
 
     public PlayerInput Input;
     private MultiplayerEventSystem _multiplayerEventSystem;

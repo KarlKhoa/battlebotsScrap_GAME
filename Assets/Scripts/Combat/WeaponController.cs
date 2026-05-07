@@ -16,7 +16,7 @@ public class WeaponController : MonoBehaviour
     private Weapon attachmentScript4;
     //private Weapon bulletScript; //bullet
 
-    private BotSpawner botSpawner;
+    private Client client;
 
     //variable to hold the cooldown variable from the weapon script
     private float a1Cooldown;
@@ -51,7 +51,7 @@ public class WeaponController : MonoBehaviour
 
     void Awake() 
     {
-        botSpawner = GetComponentInParent<BotSpawner>();
+        client = GetComponentInParent<Client>();
 
     }
     void Start()
@@ -60,10 +60,10 @@ public class WeaponController : MonoBehaviour
         //offsets position from parent 
         Vector3 attachmentPerch = this.transform.position + transform.up * 0.15f;
 
-        attachmentScript1 = BuildAndAttachWeapon(botSpawner.c_attachment1, attachmentPerch + transform.forward * 0.6f, Quaternion.identity);
-        attachmentScript2 = BuildAndAttachWeapon(botSpawner.c_attachment2, attachmentPerch + transform.forward * -0.6f, Quaternion.identity);
-        attachmentScript3 = BuildAndAttachWeapon(botSpawner.c_attachment3, attachmentPerch + transform.right * 0.6f, Quaternion.identity);
-        attachmentScript4 = BuildAndAttachWeapon(botSpawner.c_attachment4, attachmentPerch + transform.right * -0.6f, Quaternion.identity);
+        attachmentScript1 = BuildAndAttachWeapon(client.c_attachment1, attachmentPerch + transform.forward * 0.6f, Quaternion.identity);
+        attachmentScript2 = BuildAndAttachWeapon(client.c_attachment2, attachmentPerch + transform.forward * -0.6f, Quaternion.identity);
+        attachmentScript3 = BuildAndAttachWeapon(client.c_attachment3, attachmentPerch + transform.right * 0.6f, Quaternion.identity);
+        attachmentScript4 = BuildAndAttachWeapon(client.c_attachment4, attachmentPerch + transform.right * -0.6f, Quaternion.identity);
 
 
     }
@@ -73,7 +73,7 @@ public class WeaponController : MonoBehaviour
     {
         if(!attachment) return null;
         var newWeapon = Instantiate(attachment, attachmentOffset, attachmentOrientation, this.transform);
-        newWeapon.Owner = botSpawner; 
+        newWeapon.owner = client; 
         return newWeapon;
     }
 
@@ -132,7 +132,7 @@ public class WeaponController : MonoBehaviour
         //before firing it checks if the weapon is fireable
         if(a1_isFireable == true)
         {
-            //Instantiate(bulletPrefab, m_attachment1Pos, m_attachment1Rot, this.transform); //successfully makes bullet a child of Bot but does not fix the ID thing
+            //if attachmentScript1 exists, Fire using provided position + rotation
             attachmentScript1?.Fire(m_attachment1Pos, m_attachment1Rot);
             //sets the bool to false and the timer to 0 so the cooldown essentailly resets
             a1_isFireable = false;

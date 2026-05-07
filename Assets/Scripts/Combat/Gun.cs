@@ -21,6 +21,6 @@ public class Gun : Weapon
     public override void Fire(Vector3 pos, Quaternion rot)
     {
         var bullet = Instantiate(bulletPrefab.gameObject, pos, rot); //iterates a bullet at position of gun in WeaponController
-        bullet.GetComponent<Projectile>().Owner = Owner; //makes bullet's Owner same as our client
+        bullet.GetComponent<Projectile>().owner = owner; //makes bullet's Owner same as our client
     }
 }

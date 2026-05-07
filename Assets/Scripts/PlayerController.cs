@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
-    private BotSpawner botSpawner;
+    private Client client;
 
-    public BotSpawner Owner => botSpawner;
+    public Client owner => client;
     public bool IsAlive => playerHealth > 0;
     
     
@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        botSpawner = GetComponentInParent<BotSpawner>();
-        mPlayerData = botSpawner.playerData;
+        client = GetComponentInParent<Client>();
+        mPlayerData = client.playerData;
         
 
     }
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die(bool isLastDeath = false)
     {
-        botSpawner.AddPoints(GameManager.Instance.ScorePoints());
+        client.AddPoints(GameManager.Instance.ScorePoints());
         Destroy(gameObject);
         GameManager.Instance.OnPlayerDeath(this);
     }

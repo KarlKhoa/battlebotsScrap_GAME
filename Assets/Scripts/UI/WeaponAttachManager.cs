@@ -7,9 +7,9 @@ public class WeaponAttachManager : MonoBehaviour
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private WeaponSelectManager selectManager;
     private Weapon m_selectedWeapon;
-    private BotSpawner m_client;
+    private Client m_client;
 
-    public void BindWeaponForClient(BotSpawner client, Weapon toAttach)
+    public void BindWeaponForClient(Client client, Weapon toAttach)
     {
         menuManager.ToggleWeaponBindingUI(true);
         m_selectedWeapon = toAttach;

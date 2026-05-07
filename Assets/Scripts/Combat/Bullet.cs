@@ -8,7 +8,7 @@ public class Bullet : Projectile
     private const float DEFAULT_LIFETIME = 0.2f;
     
     private Rigidbody rb;
-    public float bulletSpeed;
+    private float bulletSpeed;
 
     private float baseDamage;
 
@@ -34,27 +34,28 @@ public class Bullet : Projectile
     //destroy self on collision
     private void OnTriggerEnter(Collider other) 
     {
-        Debug.Log("am hitting");
+        //Debug.Log("Bullet detected a collider!");
         
+        //If the gameobject we hit has a PlayerController component
         if(other.TryGetComponent<PlayerController>(out var playerController))
         {
             Debug.Log(playerController);
             //if our client is the same as player we hit
-            if(Owner == playerController.Owner)
+            if(owner == playerController.owner)
             {
-                Debug.Log("You hit yourself idiot");
+                //Debug.Log("Player was hit by their own bullet!");
                 return; //do nothing
             }
             else
             {
-                //hurt player
+                //do damage if we do not own the playercontroller
                 playerController.Hurt(baseDamage);
-                Debug.Log("I hit lmao");
+                //Debug.Log("Opposing player took damage from Bullet!");
             }
         }
         else
         {
-            Debug.Log("u didn't find it lmao");
+            //Debug.Log("Bullet could not find a PlayerController.");
             Debug.Log(other);
         }
 

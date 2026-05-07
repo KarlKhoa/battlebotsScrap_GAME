@@ -6,5 +6,5 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour 
 {
-    public BotSpawner Owner;
+    public Client owner;
 }

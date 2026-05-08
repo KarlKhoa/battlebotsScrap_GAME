@@ -43,10 +43,16 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDeath(PlayerController player)
     {
         if (ActivePlayers.Contains(player))
+            {
+            Debug.Log("player removed");
             ActivePlayers.Remove(player);
+            }
         
         if(ActivePlayers.Count <= 1)
+            {
+            Debug.Log("Round Ended");
             EndRound();
+            }
     }
     
     
@@ -83,6 +89,7 @@ public class GameManager : MonoBehaviour
 
     private void BeginWeaponSelectionSequence()
     {
+        ActivePlayers.Clear();
         weaponSelectManager.WeaponSelectionSequence();
     }
 

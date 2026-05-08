@@ -15,7 +15,7 @@ public class Bullet : Projectile
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        baseDamage = 12;
+        baseDamage = 25;
         bulletSpeed = 800;
         
     }
@@ -43,14 +43,14 @@ public class Bullet : Projectile
             //if our client is the same as player we hit
             if(owner == playerController.owner)
             {
-                //Debug.Log("Player was hit by their own bullet!");
+                //Debug.Log("Player was hit by their own Bullet!");
                 return; //do nothing
             }
             else
             {
                 //do damage if we do not own the playercontroller
                 playerController.Hurt(baseDamage);
-                //Debug.Log("Opposing player took damage from Bullet!");
+                Debug.Log("Opposing player took" + baseDamage + "damage from Bullet!");
             }
         }
         else

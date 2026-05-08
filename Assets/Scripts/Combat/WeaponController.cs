@@ -6,15 +6,12 @@ using UnityEngine.InputSystem;
 public class WeaponController : MonoBehaviour
 {
 
-    //private GameObject bulletPrefab; //bullet (all of these labelled bullet do the same as m_bulletScript = weaponID in Gun but I thought doing it this way would help for whatever reason.)
-
     //holds weapon script of attachment to use the fire function on it
     [SerializeField]
     private Weapon attachmentScript1;
     private Weapon attachmentScript2;
     private Weapon attachmentScript3;
     private Weapon attachmentScript4;
-    //private Weapon bulletScript; //bullet
 
     private Client client;
 

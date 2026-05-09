@@ -22,10 +22,10 @@ public class Saw : Weapon
         }
         else { return; }
 
-        StartCoroutine(ResetTimer());
+        //StartCoroutine(ResetTimer());
     }
 
-    //has trouble making contact because the collider is too low/attachments are built too high
+    //has trouble making contact because the collider is too low/attachments are built too high (added a box collider as a quick fix)
     void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Saw detected a collider!");
@@ -44,7 +44,10 @@ public class Saw : Weapon
             {
                 //do damage if we do not own the playercontroller
                 playerController.Hurt(baseDamage);
-                Debug.Log("Opposing player took " + baseDamage + " damage from Saw!");
+                if (playerController.hurtWasSuccessful)
+                { Debug.Log(playerController.owner + "took " + baseDamage + " damage from Saw!"); }
+                else { return; }
+                
             }
         }
         else
@@ -57,24 +60,26 @@ public class Saw : Weapon
     void ResetSawDamage()
     {
         baseDamage = 1;
-        Debug.Log("Saw Deactivated!");
+        //Debug.Log("Saw Deactivated!");
     }
 
     //saw does more damage for 3 seconds
     private IEnumerator ActivateSaw()
     {
         baseDamage = 5;
-        Debug.Log("Saw is spinning!");
+        Debug.Log(owner + "'s Saw is spinning!");
         yield return new WaitForSeconds(3);
+        Debug.Log(owner + "'s Saw stopped spinning...");
         ResetSawDamage();
+        StartCoroutine(ResetTimer());
     }
 
     private IEnumerator ResetTimer()
     {
-        //Debug.Log("Resetting" + this + " cooldown...");
+        Debug.Log(owner + "'s Saw is cooling down...");
         isCooldownOver = false;
         yield return new WaitForSeconds(cooldownTime);
         isCooldownOver = true;
-        //Debug.Log(this + "is ready!");
+        Debug.Log(owner + "'s Saw is ready!");
     }
 }

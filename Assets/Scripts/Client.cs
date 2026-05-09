@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
 
+//throws null object reference errors
 public class Client : MonoBehaviour
 {
     //Player prefab is the saved prefab between scenes, if this is empty the script constructs a generic/blank bot instead
@@ -56,7 +57,7 @@ public class Client : MonoBehaviour
     {
             if(playerData == null)
             {
-                playerData = new BlankBot(50, 400, 100, 0, 0);
+                playerData = new BlankBot(50, 300, 100, 0, 0); //does not set automatically in game. Values must be edited in inspector for now.
             }
 
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)

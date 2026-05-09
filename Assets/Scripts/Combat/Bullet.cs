@@ -39,7 +39,8 @@ public class Bullet : Projectile
         //If the gameobject we hit has a PlayerController component
         if(other.TryGetComponent<PlayerController>(out var playerController))
         {
-            Debug.Log(playerController);
+            //Debug.Log("Hit " + playerController);
+
             //if our client is the same as player we hit
             if(owner == playerController.owner)
             {
@@ -50,13 +51,19 @@ public class Bullet : Projectile
             {
                 //do damage if we do not own the playercontroller
                 playerController.Hurt(baseDamage);
-                Debug.Log("Opposing player took" + baseDamage + "damage from Bullet!");
+
+                if (playerController.hurtWasSuccessful)
+                {
+                    Debug.Log(playerController.owner + "took" + baseDamage + "damage from" + owner + "'s Bullet!");
+                }
+                else { return; }
             }
         }
         else
         {
+            return;
             //Debug.Log("Bullet could not find a PlayerController.");
-            Debug.Log(other);
+            //Debug.Log(other);
         }
 
         Die();

@@ -7,9 +7,8 @@ public class WeaponController : MonoBehaviour
 {
 
     //holds weapon script of attachment to use the fire function on it
-    [SerializeField]
-    private Weapon attachmentScript1;
-    private Weapon attachmentScript2;
+    [SerializeField] private Weapon attachmentScript1;
+    [SerializeField] private Weapon attachmentScript2;
     private Weapon attachmentScript3;
     private Weapon attachmentScript4;
 
@@ -42,7 +41,7 @@ public class WeaponController : MonoBehaviour
     private Quaternion m_attachment3Rot;
     private Quaternion m_attachment4Rot;
 
-    private static int m_weaponID;
+    public bool isShieldUp;
 
 
 
@@ -80,6 +79,15 @@ public class WeaponController : MonoBehaviour
         //repeat in update to keep track of pos/rotation but slightly different offset because otherwise it doesn't work
         m_attachment1Pos =  this.transform.position + transform.forward * 0.7f + transform.up * 0.15f;
         m_attachment1Rot = this.transform.rotation;
+
+        //if(isShieldUp == true)
+        //{
+        //    Debug.Log("Shield is up! (FROM WEAPONCONTROLLER)");
+        //}
+        //else
+        //{
+        //    Debug.Log("Shield went down! (FROM WEAPONCONTOLLER)");
+        //}
     }
 
     void FixedUpdate()

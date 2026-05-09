@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class Gun : Weapon 
 {
-    public Projectile bulletPrefab;
-    private GameObject m_bulletSpawned;
-    private Weapon m_bulletScript;
+    public Projectile projectile;
 
     private float cooldownTime = 2.0f;
     private bool isCooldownOver = true;
@@ -23,14 +21,13 @@ public class Gun : Weapon
     {
         if (isCooldownOver & bulletsLeft > 0)
         {
-            var bullet = Instantiate(bulletPrefab.gameObject, pos, rot); //iterates a bullet at position of gun in WeaponController
+            var bullet = Instantiate(projectile.gameObject, pos, rot); //iterates a bullet at position of gun in WeaponController
             bullet.GetComponent<Projectile>().owner = owner; //makes bullet's Owner same as our client
             bulletsLeft--;
             //Debug.Log("Bullets left:" + bulletsLeft);
+            StartCoroutine(ResetTimer());
         }
         else { return; }
-
-        StartCoroutine(ResetTimer());
     }
 
     private IEnumerator ResetTimer()

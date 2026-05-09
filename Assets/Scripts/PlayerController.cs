@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     private Client client;
 
     public Client owner => client;
+
     public bool IsAlive => playerHealth > 0;
-    
-    
+    public bool hurtWasSuccessful;
+
     private Vector2 moveInput;
 
     [SerializeField] private float playerHealth;
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool isMovingBackward;
     private bool isTurningRight;
     private bool isTurningLeft;
-
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -110,10 +111,21 @@ public class PlayerController : MonoBehaviour
 
     public void Hurt(float damage)
     {
-        playerHealth = playerHealth - damage;
-        if(playerHealth <= 0)
+        var weaponController = GetComponent<WeaponController>();
+
+        if (weaponController.isShieldUp == false)
         {
-            Die();
+            playerHealth = playerHealth - damage;
+            hurtWasSuccessful = true;
+            if (playerHealth <= 0)
+            {
+                Die();
+            }
+        }
+        else 
+        {
+            hurtWasSuccessful = false;
+            Debug.Log(owner + "'s Shield blocked damage!");  
         }
     }
 

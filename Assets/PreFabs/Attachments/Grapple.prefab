@@ -46,12 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4c7fec152a3004a9ada92cb7c47c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0
-  baseDamage: 0
   selectSprite: {fileID: 21300000, guid: 108381ef3ca67504fac64752a4236456, type: 3}
-  Owner: {fileID: 0}
+  owner: {fileID: 0}
   playerPrefab: {fileID: 0}
-  bulletPrefab: {fileID: 8571058972734593901, guid: e64fac28da8f3ca4c98b74615ae467a2,
+  projectile: {fileID: 8367040215057157189, guid: 2729ebbaf7d08ef40bd31514d7fb8d41,
     type: 3}
 --- !u!95 &1966996047187221332
 Animator:

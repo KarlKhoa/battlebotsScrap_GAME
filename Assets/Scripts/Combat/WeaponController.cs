@@ -77,17 +77,19 @@ public class WeaponController : MonoBehaviour
     void Update()
     {
         //repeat in update to keep track of pos/rotation but slightly different offset because otherwise it doesn't work
-        m_attachment1Pos =  this.transform.position + transform.forward * 0.7f + transform.up * 0.15f;
-        m_attachment1Rot = this.transform.rotation;
+        AttachmentPosTracker();
+    }
 
-        //if(isShieldUp == true)
-        //{
-        //    Debug.Log("Shield is up! (FROM WEAPONCONTROLLER)");
-        //}
-        //else
-        //{
-        //    Debug.Log("Shield went down! (FROM WEAPONCONTOLLER)");
-        //}
+    void AttachmentPosTracker()
+    {
+        m_attachment1Pos = this.transform.position + transform.forward * 0.7f + transform.up * 0.15f;
+        m_attachment1Rot = this.transform.rotation;
+        m_attachment2Pos = this.transform.position + transform.forward * -0.7f + transform.up * 0.15f;
+        m_attachment2Rot = this.transform.rotation;
+        m_attachment3Pos = this.transform.position + transform.right * 0.7f + transform.up * 0.15f;
+        m_attachment3Rot = this.transform.rotation;
+        m_attachment4Pos = this.transform.position + transform.right * -0.7f + transform.up * 0.15f;
+        m_attachment4Rot = this.transform.rotation;
     }
 
     void FixedUpdate()

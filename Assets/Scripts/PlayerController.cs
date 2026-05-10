@@ -129,6 +129,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //used by Grapple
+    public void JumpToPosition(Vector3 targetPos)
+    {
+        rb.velocity = new Vector3(100,0,0);
+    }
+
     public void Die(bool isLastDeath = false)
     {
         client.AddPoints(GameManager.Instance.ScorePoints());

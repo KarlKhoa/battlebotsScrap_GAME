@@ -3,7 +3,15 @@ guid: c18415bbd04750e45a8bee09880c3422
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - menuManager: {instanceID: 0}
+  - attachManager: {instanceID: 0}
+  - weapon1: {instanceID: 0}
+  - weapon2: {instanceID: 0}
+  - weapon3: {instanceID: 0}
+  - weapon4: {instanceID: 0}
+  - weapon5: {instanceID: 0}
+  - noWeapon: {fileID: 21300000, guid: a0d0ae322988a0842a368015cc81beab, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3280789177615536261}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ring
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 965178488411299318}
   - component: {fileID: 5865400695759354456}
   - component: {fileID: 7878224160093521491}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 2161092618078628992}
   - component: {fileID: 2015182224400873564}
   - component: {fileID: 1434270589615742160}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 441038167843075152}
   - component: {fileID: 8279026430620539469}
   - component: {fileID: 6509389395563552324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 7922473590498884131}
   - component: {fileID: 6217147249894565352}
   - component: {fileID: 2157428929292075985}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

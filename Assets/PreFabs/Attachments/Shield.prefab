@@ -142,8 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2017f3f1c454354482d129b6ce6109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0
-  baseDamage: 0
-  selectSprite: {fileID: 21300000, guid: 108381ef3ca67504fac64752a4236456, type: 3}
-  Owner: {fileID: 0}
+  selectSprite: {fileID: 21300000, guid: 14442a7493318ea43b15c5b25b80f199, type: 3}
+  owner: {fileID: 0}
   playerPrefab: {fileID: 0}

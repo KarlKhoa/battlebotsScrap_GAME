@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     private BlankBot mPlayerData;
 
+    private Material playerMaterial;
+
     private Rigidbody rb;
 
     private Client client;
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         client = GetComponentInParent<Client>();
         mPlayerData = client.playerData;
-        
+        playerMaterial = GetComponent<MeshRenderer>().material;
 
     }
     
@@ -105,6 +107,7 @@ public class PlayerController : MonoBehaviour
     {
     
         moveInput = input.Get<Vector2>();
+        Debug.Log(moveInput);
     }
 
     //Checks when a collider come in contact with this objects collider
@@ -116,6 +119,7 @@ public class PlayerController : MonoBehaviour
         if (weaponController.isShieldUp == false)
         {
             playerHealth = playerHealth - damage;
+            DoPlayerFlash(Color.red, 0.5f);
             hurtWasSuccessful = true;
             if (playerHealth <= 0)
             {
@@ -124,9 +128,37 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
+            DoPlayerFlash(Color.blue, 0.5f);
             hurtWasSuccessful = false;
             Debug.Log(owner + "'s Shield blocked damage!");  
         }
+    }
+
+    private void DoPlayerFlash(Color flashColour, float duration)
+    {
+        StopCoroutine("FlashPlayer");
+        var coroutine = FlashPlayer(flashColour, duration);
+        StartCoroutine(coroutine);
+    }
+
+    IEnumerator FlashPlayer (Color flashColour, float duration)
+    {
+        //set material to red
+        playerMaterial.SetColor("_Fresnel_Tint", flashColour);
+
+        var remainingTime = duration;
+
+        //start a timer
+        //each frame, reduce the timer and reduce the redness of the material slightly
+
+        while(remainingTime > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            remainingTime -= Time.deltaTime;
+            playerMaterial.SetColor("_Fresnel_Tint", Color.Lerp(flashColour, Color.black, 1 - (remainingTime / duration)));
+        }
+
+        //end
     }
 
     //used by Grapple

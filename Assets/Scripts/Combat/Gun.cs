@@ -10,20 +10,22 @@ public class Gun : Weapon
 
     private float cooldownTime = 2.0f;
     private bool isCooldownOver = true;
-    private int bulletsLeft;
+    //private int bulletsLeft; //ammo count
 
     void Awake()
     {
-        ReloadBullets();
+        //ReloadBullets();
     }
     
     public override void Fire(Vector3 pos, Quaternion rot)
     {
-        if (isCooldownOver & bulletsLeft > 0)
+        
+        if (isCooldownOver) // & bulletsLeft > 0)
         {
-            var bullet = Instantiate(projectile.gameObject, pos, rot); //iterates a bullet at position of gun in WeaponController
+            rot = transform.localRotation;
+            var bullet = Instantiate(projectile.gameObject, pos, rot); //iterates a bullet at position of gun in WeaponController - make rot forward attachmentOrientation
             bullet.GetComponent<Projectile>().owner = owner; //makes bullet's Owner same as our client
-            bulletsLeft--;
+            //bulletsLeft--;
             //Debug.Log("Bullets left:" + bulletsLeft);
             StartCoroutine(ResetTimer());
         }
@@ -39,10 +41,11 @@ public class Gun : Weapon
         //Debug.Log(this + "is ready!");
     }
 
-    private void ReloadBullets()
+    //reloads ammo
+    /*private void ReloadBullets()
     {
         bulletsLeft = 6;
         //Debug.Log("Gun reloaded!");
-    }
+    }*/
 
 }

@@ -54,12 +54,12 @@ public class WeaponController : MonoBehaviour
     {
 
         //offsets position from parent 
-        Vector3 attachmentPerch = this.transform.position + transform.up * 0.15f;
+        Vector3 attachmentPerch = this.transform.position + transform.up * 0.55f;
 
         attachmentScript1 = BuildAndAttachWeapon(client.c_attachment1, attachmentPerch + transform.forward * 0.6f, Quaternion.identity);
-        attachmentScript2 = BuildAndAttachWeapon(client.c_attachment2, attachmentPerch + transform.forward * -0.6f, Quaternion.identity);
-        attachmentScript3 = BuildAndAttachWeapon(client.c_attachment3, attachmentPerch + transform.right * 0.6f, Quaternion.identity);
-        attachmentScript4 = BuildAndAttachWeapon(client.c_attachment4, attachmentPerch + transform.right * -0.6f, Quaternion.identity);
+        attachmentScript2 = BuildAndAttachWeapon(client.c_attachment2, attachmentPerch + transform.forward * -0.6f, Quaternion.LookRotation(Vector3.back,Vector3.up));
+        attachmentScript3 = BuildAndAttachWeapon(client.c_attachment3, attachmentPerch + transform.right * 0.6f, Quaternion.LookRotation(Vector3.right,Vector3.up));
+        attachmentScript4 = BuildAndAttachWeapon(client.c_attachment4, attachmentPerch + transform.right * -0.6f, Quaternion.LookRotation(Vector3.left,Vector3.up));
 
 
     }

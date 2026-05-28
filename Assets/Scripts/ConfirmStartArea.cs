@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class ConfirmStartArea : MonoBehaviour
 {
-    public int startCountdown;
+    public float timeTilStart;
     private int playersOnMe;
     private void FixedUpdate()
     {
-        if(playersOnMe >= GameManager.Instance.registeredClients.Count && playersOnMe > 2)
+        if(playersOnMe >= GameManager.Instance.registeredClients.Count && playersOnMe >= 2)
         {
-            if(startCountdown <= 0)
+            if(timeTilStart <= 0)
             {
                 GameManager.Instance.StartGame();
                 this.gameObject.SetActive(false);
             }
             else
             {
-                startCountdown--;
+                timeTilStart -= Time.fixedDeltaTime;
             }
         }
     }

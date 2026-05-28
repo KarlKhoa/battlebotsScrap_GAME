@@ -24,8 +24,7 @@ public class Bullet : Projectile
     {
         if (rb != null)
         {
-            //move bullet forward
-            rb.AddForce(transform.forward * bulletSpeed);
+            rb.AddForce(transform.forward * bulletSpeed); //shoots bullet in world forward direction; change to be whatever the attachmentOrientation's forward direction is
 
             Die(DEFAULT_LIFETIME);
         }

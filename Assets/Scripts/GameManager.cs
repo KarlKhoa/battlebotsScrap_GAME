@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public int roundCount;
 
     public List<PlayerController> ActivePlayers = new();
+    
+    public bool hasGameStartedYet = false;
 
     //public int playerIndex { get; } //unique zero-based player index. assign to each player + keep track
 
@@ -129,6 +131,7 @@ public class GameManager : MonoBehaviour
             }
         }
         BeginWeaponSelectionSequence();
+        hasGameStartedYet = true;
     }
     private void EndGame()
     {

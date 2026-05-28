@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
     {
     
         moveInput = input.Get<Vector2>();
-        Debug.Log(moveInput);
+        //Debug.Log(moveInput);
     }
 
     //Checks when a collider come in contact with this objects collider

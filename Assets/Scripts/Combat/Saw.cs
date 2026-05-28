@@ -28,7 +28,7 @@ public class Saw : Weapon
     //has trouble making contact because the collider is too low/attachments are built too high (added a box collider as a quick fix)
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Saw detected a collider!");
+        Debug.Log("Saw detected a collider!");
 
         //If the gameobject we hit has a PlayerController component
         if (other.TryGetComponent<PlayerController>(out var playerController))
@@ -59,14 +59,14 @@ public class Saw : Weapon
 
     void ResetSawDamage()
     {
-        baseDamage = 1;
+        baseDamage = 5;
         //Debug.Log("Saw Deactivated!");
     }
 
     //saw does more damage for 3 seconds
     private IEnumerator ActivateSaw()
     {
-        baseDamage = 5;
+        baseDamage = 10;
         Debug.Log(owner + "'s Saw is spinning!");
         yield return new WaitForSeconds(3);
         Debug.Log(owner + "'s Saw stopped spinning...");

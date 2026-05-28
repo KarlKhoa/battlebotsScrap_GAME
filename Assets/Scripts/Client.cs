@@ -33,7 +33,7 @@ public class Client : MonoBehaviour
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
         GameManager.Instance.RegisterClient(this);
-        c_attachment1 = GameManager.Instance.WeaponsRegistry.AvailableWeapons[1];
+        //c_attachment1 = GameManager.Instance.WeaponsRegistry.AvailableWeapons[1]; //makes attachment1 always the specified weapon in list
         Input = GetComponent<PlayerInput>();
         
         //Locate and bind the per-client event system to the shared UI - MEL

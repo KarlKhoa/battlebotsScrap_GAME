@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2017f3f1c454354482d129b6ce6109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSprite: {fileID: 21300000, guid: 14442a7493318ea43b15c5b25b80f199, type: 3}
+  selectSprite: {fileID: 21300000, guid: 38a7d0993f046c24da30cdfbe1c446ac, type: 3}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}
 --- !u!1001 &4751534948731167338

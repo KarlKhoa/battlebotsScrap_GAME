@@ -59,14 +59,14 @@ public class Saw : Weapon
 
     void ResetSawDamage()
     {
-        baseDamage = 5;
+        baseDamage = 10;
         //Debug.Log("Saw Deactivated!");
     }
 
     //saw does more damage for 3 seconds
     private IEnumerator ActivateSaw()
     {
-        baseDamage = 10;
+        baseDamage = 20;
         Debug.Log(owner + "'s Saw is spinning!");
         yield return new WaitForSeconds(3);
         Debug.Log(owner + "'s Saw stopped spinning...");

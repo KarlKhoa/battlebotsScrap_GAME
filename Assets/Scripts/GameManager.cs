@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public List<PlayerController> ActivePlayers = new();
     
-    public bool hasGameStartedYet = false;
+    public static bool hasGameStartedYet = false;
 
     //public int playerIndex { get; } //unique zero-based player index. assign to each player + keep track
 

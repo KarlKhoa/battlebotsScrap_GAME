@@ -115,22 +115,29 @@ public class PlayerController : MonoBehaviour
     public void Hurt(float damage)
     {
         var weaponController = GetComponent<WeaponController>();
-
-        if (weaponController.isShieldUp == false)
+        if (GameManager.hasGameStartedYet == true)
         {
-            playerHealth = playerHealth - damage;
-            DoPlayerFlash(Color.red, 0.5f);
-            hurtWasSuccessful = true;
-            if (playerHealth <= 0)
+            if (weaponController.isShieldUp == false)
             {
-                Die();
+                playerHealth = playerHealth - damage;
+                DoPlayerFlash(Color.red, 0.5f);
+                hurtWasSuccessful = true;
+                if (playerHealth <= 0)
+                {
+                    Die();
+                }
+            }
+            else 
+            {
+                DoPlayerFlash(Color.blue, 0.5f);
+                hurtWasSuccessful = false;
+                Debug.Log(owner + "'s Shield blocked damage!");  
             }
         }
-        else 
+        else
         {
-            DoPlayerFlash(Color.blue, 0.5f);
-            hurtWasSuccessful = false;
-            Debug.Log(owner + "'s Shield blocked damage!");  
+            Debug.Log("Cannot hurt Players");
+            return;
         }
     }
 

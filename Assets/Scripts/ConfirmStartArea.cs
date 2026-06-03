@@ -23,11 +23,23 @@ public class ConfirmStartArea : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        playersOnMe++;
+        //if the object we collided with has a PlayerController
+        if (other.TryGetComponent<PlayerController>(out var playerController))
+        {
+            playersOnMe++;
+            Debug.Log("A Player entered the start area");
+        }
+        else { return; }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        playersOnMe--;
+        //if the object we collided with has a PlayerController
+        if (other.TryGetComponent<PlayerController>(out var playerController))
+        {
+            playersOnMe--;
+        }
+        else { return; }
     }
 }

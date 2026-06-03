@@ -7,7 +7,7 @@ public class Bullet : Projectile
 
     private const float DEFAULT_LIFETIME = 0.2f;
     
-    private Rigidbody rb;
+    public Rigidbody rb;
     private float bulletSpeed;
 
     private float baseDamage;
@@ -24,7 +24,7 @@ public class Bullet : Projectile
     {
         if (rb != null)
         {
-            rb.AddForce(transform.forward * bulletSpeed); //shoots bullet in world forward direction; change to be whatever the attachmentOrientation's forward direction is
+            rb.AddForce(transform.forward * bulletSpeed); //shoots bullet in world forward direction; change to be whatever the gun's forward direction is
 
             Die(DEFAULT_LIFETIME);
         }

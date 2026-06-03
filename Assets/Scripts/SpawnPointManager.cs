@@ -22,6 +22,7 @@ public class SpawnPointManager : MonoBehaviour
     {
         //position of new client = position of transform at current playerCount number in array
         playerInput.transform.position = spawnPoints[playerCount].transform.position;
+        //playerInput.transform.rotation = spawnPoints[playerCount].transform.rotation; //messes with attachment rotations
         playerCount++;
 
     }

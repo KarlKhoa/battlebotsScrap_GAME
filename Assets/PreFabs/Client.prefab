@@ -60,8 +60,7 @@ MonoBehaviour:
   playerPrefab: {fileID: -9035548095944102316, guid: 18d3500d4f01ee44686b101783fb1929,
     type: 3}
   playerScore: 0
-  c_attachment1: {fileID: 8696595463102178488, guid: 5ff048db738257248a26abb9aa5e5ed1,
-    type: 3}
+  c_attachment1: {fileID: 0}
   c_attachment2: {fileID: 0}
   c_attachment3: {fileID: 0}
   c_attachment4: {fileID: 0}

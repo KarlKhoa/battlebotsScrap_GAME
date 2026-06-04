@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
+
     public static GameManager Instance {get; private set;}
 
     public WeaponRegistry WeaponsRegistry;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     public List<PlayerController> ActivePlayers = new();
     
     public static bool hasGameStartedYet = false;
+
+    private bool hasSelectionStarted;
 
     //public int playerIndex { get; } //unique zero-based player index. assign to each player + keep track
 
@@ -72,6 +75,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if(hasSelectionStarted == false)
+        {
+            hasSelectionStarted = true;
             for(int i = 0; i < registeredClients.Count; i++)
             {
                 if(registeredClients[i].livePlayer)
@@ -83,8 +89,8 @@ public class GameManager : MonoBehaviour
             }
         
             registeredClients.Sort(SortByPlayerScore);
-
             BeginWeaponSelectionSequence();
+        }
         }
         ActivePlayers.Clear();
     }
@@ -97,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     public void StartRound()
     {
+        hasSelectionStarted = false;
         for(int i = 0; i < registeredClients.Count; i++)
         {
             registeredClients[i].SpawnRequest();
@@ -131,7 +138,7 @@ public class GameManager : MonoBehaviour
             }
         }
         BeginWeaponSelectionSequence();
-        hasGameStartedYet = true;
+        hasGameStartedYet = false;
     }
     private void EndGame()
     {

@@ -7,10 +7,20 @@ public class Saw : Weapon
     private float baseDamage;
     private float cooldownTime = 2.0f;
     private bool isCooldownOver = true;
+    private bool isSawSpinning = false;
 
     void Awake()
     {
+        transform.position = transform.position + transform.forward * 0.1f; //bring saw forward a bit so it can more easily strike target
         ResetSawDamage();
+    }
+
+    void Update()
+    {
+        if (isSawSpinning)
+        {
+            transform.Rotate(0f, 300f * Time.deltaTime, 0f, Space.Self); //rotate saw while it's active
+        }
     }
 
     //on pressing, saw temporarily does more damage
@@ -59,16 +69,18 @@ public class Saw : Weapon
 
     void ResetSawDamage()
     {
-        baseDamage = 10;
+        baseDamage = 8;
         //Debug.Log("Saw Deactivated!");
     }
 
     //saw does more damage for 3 seconds
     private IEnumerator ActivateSaw()
     {
-        baseDamage = 20;
+        baseDamage = 15;
+        isSawSpinning = true;
         Debug.Log(owner + "'s Saw is spinning!");
         yield return new WaitForSeconds(3);
+        isSawSpinning = false;
         Debug.Log(owner + "'s Saw stopped spinning...");
         ResetSawDamage();
         StartCoroutine(ResetTimer());

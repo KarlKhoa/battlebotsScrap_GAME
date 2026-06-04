@@ -26,7 +26,7 @@ public class Gun : Weapon
             pos = transform.position + transform.forward * 1.3f;
             var bullet = Instantiate(projectile.gameObject, pos, rot); //iterates a bullet at position of gun in WeaponController
             bullet.GetComponent<Projectile>().owner = owner; //makes bullet's Owner same as our client
-            bullet.transform.forward = transform.forward;
+            bullet.transform.forward = transform.forward; //makes bullet's forward same as gun
             
             //bulletsLeft--;
             //Debug.Log("Bullets left:" + bulletsLeft);

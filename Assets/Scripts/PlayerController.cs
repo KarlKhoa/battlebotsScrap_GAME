@@ -119,24 +119,40 @@ public class PlayerController : MonoBehaviour
         {
             if (weaponController.isShieldUp == false)
             {
-                playerHealth = playerHealth - damage;
-                DoPlayerFlash(Color.red, 0.5f);
-                hurtWasSuccessful = true;
-                if (playerHealth <= 0)
+                //remove didHitShield stuff if this counts as a "new feature", leave only normal damage
+                if (weaponController.didHitShield == false)
                 {
-                    Die();
+                    playerHealth = playerHealth - damage;
+                    DoPlayerFlash(Color.red, 0.2f);
+                    hurtWasSuccessful = true;
+                    if (playerHealth <= 0)
+                    {
+                        Die();
+                    }
+                }
+                else
+                {
+                    damage = damage * 0.5f;
+                    playerHealth = playerHealth - damage;
+                    DoPlayerFlash(Color.yellow, 0.2f);
+                    hurtWasSuccessful = true;
+                    Debug.Log(owner + "'s Shield partially blocked damage!");  
+                    if (playerHealth <= 0)
+                    {
+                        Die();
+                    } 
                 }
             }
             else 
             {
-                DoPlayerFlash(Color.blue, 0.5f);
+                DoPlayerFlash(Color.white, 0.2f);
                 hurtWasSuccessful = false;
-                Debug.Log(owner + "'s Shield blocked damage!");  
+                Debug.Log(owner + "'s Shield fully blocked damage!");  
             }
         }
         else
         {
-            Debug.Log("Cannot hurt Players");
+            Debug.Log("Cannot hurt players before the start of the game!");
             return;
         }
     }

@@ -15,7 +15,7 @@ public class Bullet : Projectile
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        baseDamage = 25;
+        baseDamage = 20;
         bulletSpeed = 800;
         
     }

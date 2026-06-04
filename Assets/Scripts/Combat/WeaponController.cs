@@ -42,6 +42,7 @@ public class WeaponController : MonoBehaviour
     private Quaternion m_attachment4Rot;
 
     public bool isShieldUp;
+    public bool didHitShield;
 
 
 

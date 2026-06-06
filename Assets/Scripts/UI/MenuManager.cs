@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject weaponSelect;
     public GameObject weaponAttach;
+    public GameObject gameEnd;
 
 
     public GameObject weaponSelectFirstButton;
@@ -44,7 +45,13 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void ToggleGameEndUI(bool state)
+    {
+        gameEnd.SetActive(state);
+        if(state)
+        {
 
-
+        }
+    }
 
 }

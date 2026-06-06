@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject firstSelectedWeaponUI; //store this so we can force users to select the correct UI component when reenabling UI controls - MEL
     private MenuManager menuManager;
     [SerializeField] private WeaponSelectManager weaponSelectManager;
+    [SerializeField] private GameEndUIManager gameEndUIManager;
 
     //public Transform[] spawnPoints;
 
@@ -138,13 +139,14 @@ public class GameManager : MonoBehaviour
             }
         }
         BeginWeaponSelectionSequence();
-        hasGameStartedYet = false;
+        hasGameStartedYet = true;
     }
     private void EndGame()
     {
         registeredClients.Sort(SortByPlayerScore);
         registeredClients.Reverse();
-        Debug.Log(registeredClients[0] + "has won");
+        gameEndUIManager.WinningPlayer(registeredClients[0]);
+        menuManager.ToggleGameEndUI(true);
     }
 
 }

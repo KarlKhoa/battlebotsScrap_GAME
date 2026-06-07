@@ -3,17 +3,7 @@ guid: e91ac92d9eddb7c41a9aaab0f0b0aa34
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BackFace_Mat
-    second: {fileID: 2100000, guid: 4a44a187ce8be8a49a577a0977e4eda5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Saw_Mat
-    second: {fileID: 2100000, guid: 916e8a56d19dec746a466ffaaadce6dc, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

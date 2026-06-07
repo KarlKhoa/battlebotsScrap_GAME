@@ -3,7 +3,17 @@ guid: f84784dc56dd089469dc5790ec68c62b
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BackFace_Mat.001
+    second: {fileID: 2100000, guid: 3f406adf774ed78468b97a841baab13d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tyre_Mat
+    second: {fileID: 2100000, guid: 4772056b1bd47a34099090f4cf78b0ed, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

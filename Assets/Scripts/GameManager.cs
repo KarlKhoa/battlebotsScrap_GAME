@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public WeaponRegistry WeaponsRegistry;
 
+    public BotMatRegistry BotMatRegistry;
+
     public List<Client> registeredClients;
 
     public GameObject menus;

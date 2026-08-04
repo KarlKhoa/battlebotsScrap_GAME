@@ -3208,6 +3208,12 @@ PrefabInstance:
       objectReference: {fileID: 1144841125}
     - target: {fileID: 8678898848146641437, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
+      propertyPath: BotMatRegistry
+      value: 
+      objectReference: {fileID: 11400000, guid: 03ae1d271a9bf5740872a326823e6c30,
+        type: 2}
+    - target: {fileID: 8678898848146641437, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
       propertyPath: gameEndUIManager
       value: 
       objectReference: {fileID: 799231429}

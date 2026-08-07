@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7dbc9d97663a743a32b938b16454d1, type: 3}
   m_Name: Bot Mat Registry
   m_EditorClassIdentifier: 
-  BotMats: []
+  BotMats:
+  - {fileID: 2100000, guid: 2316d879ac02afb4b99849358fd9654f, type: 2}
+  - {fileID: 2100000, guid: 015e32a76d493f54388cce8ade0ddfaf, type: 2}
+  - {fileID: 2100000, guid: 49dac6551b8c42b42b05d8870ce9ae0a, type: 2}
+  - {fileID: 2100000, guid: ed6f126b9d7f9f44fbe2469c0b68d40c, type: 2}

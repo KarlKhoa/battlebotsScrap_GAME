@@ -15,7 +15,7 @@ public class botMaterialGet : MonoBehaviour
     }
     void Start()
     {
-        thisMeshRenderer.material = GameManager.Instance.GetMaterialForClient(thisClient);
+        thisMeshRenderer.material = GameManager.Instance.PlayerVisuals.GetMaterialForClient(thisClient);
     }
 
     // Update is called once per frame

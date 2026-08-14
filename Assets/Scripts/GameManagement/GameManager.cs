@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance {get; private set;}
 
+    [SerializeField] private PlayerVisualManager _playerVisualsManager;
+    public PlayerVisualManager PlayerVisuals => _playerVisualsManager; 
+
     public WeaponRegistry WeaponsRegistry;
 
     public List<Client> registeredClients;
@@ -17,10 +20,6 @@ public class GameManager : MonoBehaviour
     private MenuManager menuManager;
     [SerializeField] private WeaponSelectManager weaponSelectManager;
     [SerializeField] private GameEndUIManager gameEndUIManager;
-
-    [SerializeField] private BotMatRegistry BotMatRegistry;
-
-    //public Transform[] spawnPoints;
 
     public int rounds = 3;
 
@@ -48,30 +47,19 @@ public class GameManager : MonoBehaviour
         menuManager = menus.GetComponent<MenuManager>();
     }
 
-    public Material GetMaterialForClient(Client client)
-    {
-        Material result = null;
-
-        Debug.Log(registeredClients.IndexOf(client));
-        Debug.Log(BotMatRegistry.BotMats.Count);
-        result = BotMatRegistry.BotMats[registeredClients.IndexOf(client)];
-
-        return result;
-    }
-
     public void OnPlayerDeath(PlayerController player)
     {
         if (ActivePlayers.Contains(player))
-            {
+        {
             Debug.Log("player removed");
             ActivePlayers.Remove(player);
-            }
+        }
         
         if(ActivePlayers.Count <= 1)
-            {
+        {
             Debug.Log("Round Ended");
             EndRound();
-            }
+        }
     }
     
     

@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 
     public WeaponRegistry WeaponsRegistry;
 
-    public BotMatRegistry BotMatRegistry;
-
     public List<Client> registeredClients;
 
     public GameObject menus;
@@ -19,6 +17,8 @@ public class GameManager : MonoBehaviour
     private MenuManager menuManager;
     [SerializeField] private WeaponSelectManager weaponSelectManager;
     [SerializeField] private GameEndUIManager gameEndUIManager;
+
+    [SerializeField] private BotMatRegistry BotMatRegistry;
 
     //public Transform[] spawnPoints;
 
@@ -46,6 +46,17 @@ public class GameManager : MonoBehaviour
     {
         //on start this will set the live player count to the saved playercount, this should be changed later to do this at the start of every round so we can get a freshed reset clock every round
         menuManager = menus.GetComponent<MenuManager>();
+    }
+
+    public Material GetMaterialForClient(Client client)
+    {
+        Material result = null;
+
+        Debug.Log(registeredClients.IndexOf(client));
+        Debug.Log(BotMatRegistry.BotMats.Count);
+        result = BotMatRegistry.BotMats[registeredClients.IndexOf(client)];
+
+        return result;
     }
 
     public void OnPlayerDeath(PlayerController player)

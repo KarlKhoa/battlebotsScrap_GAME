@@ -20,7 +20,9 @@ public class WeaponSelectManager : MonoBehaviour
 
     public Sprite noWeapon;
 
-    public List<Image> weaponSelectButtonList;
+    public List<Image> weaponSelectButtonImageList;
+
+    public List<Button> weaponSelectButtonList;
     
     // Update is called once per frame
     void Update()
@@ -46,8 +48,8 @@ public class WeaponSelectManager : MonoBehaviour
         foreach(var player in GameManager.Instance.registeredClients)
         {
             UIIsBusy = true;
-            UpdateButtonDisplay();
             var playerClient = player.GetComponent<Client>();
+            UpdateButtonDisplay(playerClient);
             playerClient.ToggleUIAccess(true);
             SelectWeaponForClient(playerClient);
             yield return new WaitUntil(() => !UIIsBusy);
@@ -93,6 +95,7 @@ public class WeaponSelectManager : MonoBehaviour
     {
         menuManager.ToggleWeaponSelectionUI(true);
         m_client = client;
+        
     }
     
     private void SelectWeapon(Weapon weapon)
@@ -135,31 +138,38 @@ public class WeaponSelectManager : MonoBehaviour
         weapon5 = null;
     }
 
-    public void UpdateButtonDisplay()
+    public void UpdateButtonDisplay(Client client)
     {
+        for(int i = 0; i < weaponSelectButtonList.Count; i++)
+        {
+            ColorBlock colorVar = weaponSelectButtonList[i].colors;
+            colorVar.selectedColor = GameManager.Instance.PlayerVisuals.GetColourForClient(client);
+            weaponSelectButtonList[i].colors = colorVar;
+        }
+
         for(int i = 0; i < weaponPool.Count; i++)
         {
-            weaponSelectButtonList[i].sprite = weaponPool[i].selectSprite;
+            weaponSelectButtonImageList[i].sprite = weaponPool[i].selectSprite;
         }
         if(weapon1 == null)
         {
-            weaponSelectButtonList[0].sprite = noWeapon;
+            weaponSelectButtonImageList[0].sprite = noWeapon;
         }
         if(weapon2 == null)
         {
-            weaponSelectButtonList[1].sprite = noWeapon;
+            weaponSelectButtonImageList[1].sprite = noWeapon;
         }
         if(weapon3 == null)
         {
-            weaponSelectButtonList[2].sprite = noWeapon;
+            weaponSelectButtonImageList[2].sprite = noWeapon;
         }
         if(weapon4 == null)
         {
-            weaponSelectButtonList[3].sprite = noWeapon;
+            weaponSelectButtonImageList[3].sprite = noWeapon;
         }
         if(weapon5 == null)
         {
-            weaponSelectButtonList[4].sprite = noWeapon;
+            weaponSelectButtonImageList[4].sprite = noWeapon;
         }
     }
 }

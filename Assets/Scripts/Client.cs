@@ -28,6 +28,8 @@ public class Client : MonoBehaviour
     public PlayerInput Input;
     private MultiplayerEventSystem _multiplayerEventSystem;
     private InputSystemUIInputModule _uiInputModule;
+
+    private bool isNamed;
     
     void Start()
     {
@@ -42,7 +44,28 @@ public class Client : MonoBehaviour
         _multiplayerEventSystem.firstSelectedGameObject = GameManager.Instance.firstSelectedWeaponUI;
         _uiInputModule = GetComponent<InputSystemUIInputModule>();
         _uiInputModule.actionsAsset = Input.actions;
-        
+
+        //put if loop here for the client to go through the registered clinet list and give itself a name depending on their position
+
+        int clientIndex = GameManager.Instance.registeredClients.IndexOf(this);
+            
+        if(clientIndex == 0)
+        {
+            this.name = "Red Player";
+        }
+        if(clientIndex == 1)
+        {
+            this.name = "Blue Player";
+        }
+        if(clientIndex == 2)
+        {
+            this.name = "Green Player";
+        }
+        if(clientIndex == 3)
+        {
+            this.name = "Yellow Player";
+        }
+
         SpawnRequest();
 
     }

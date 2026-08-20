@@ -67,6 +67,11 @@ MonoBehaviour:
   livePlayer: {fileID: 0}
   weapons: []
   Input: {fileID: 3688418723683610991}
+  playerNames:
+  - Red Player
+  - Blue Player
+  - Green Player
+  - Yellow Player
 --- !u!114 &3688418723683610991
 MonoBehaviour:
   m_ObjectHideFlags: 0

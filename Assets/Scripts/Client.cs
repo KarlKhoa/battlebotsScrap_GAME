@@ -29,8 +29,6 @@ public class Client : MonoBehaviour
     private MultiplayerEventSystem _multiplayerEventSystem;
     private InputSystemUIInputModule _uiInputModule;
 
-    private bool isNamed;
-    
     void Start()
     {
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
@@ -47,24 +45,7 @@ public class Client : MonoBehaviour
 
         //put if loop here for the client to go through the registered clinet list and give itself a name depending on their position
 
-        int clientIndex = GameManager.Instance.registeredClients.IndexOf(this);
-            
-        if(clientIndex == 0)
-        {
-            this.name = "Red Player";
-        }
-        if(clientIndex == 1)
-        {
-            this.name = "Blue Player";
-        }
-        if(clientIndex == 2)
-        {
-            this.name = "Green Player";
-        }
-        if(clientIndex == 3)
-        {
-            this.name = "Yellow Player";
-        }
+        this.name = GameManager.Instance.PlayerVisuals.GetNameForClient(this);
 
         SpawnRequest();
 

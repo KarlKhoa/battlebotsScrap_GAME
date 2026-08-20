@@ -15,9 +15,13 @@ MonoBehaviour:
   BotMats:
   - playerMaterial: {fileID: 2100000, guid: 2316d879ac02afb4b99849358fd9654f, type: 2}
     playerColour: {r: 1, g: 0, b: 0, a: 1}
+    playerName: Red Player
   - playerMaterial: {fileID: 2100000, guid: 015e32a76d493f54388cce8ade0ddfaf, type: 2}
     playerColour: {r: 0, g: 0.04705883, b: 0.9333334, a: 1}
+    playerName: Blue Player
   - playerMaterial: {fileID: 2100000, guid: 49dac6551b8c42b42b05d8870ce9ae0a, type: 2}
     playerColour: {r: 0, g: 1, b: 0.13725491, a: 1}
+    playerName: Green Player
   - playerMaterial: {fileID: 2100000, guid: ed6f126b9d7f9f44fbe2469c0b68d40c, type: 2}
     playerColour: {r: 1, g: 0.9294118, b: 0, a: 1}
+    playerName: Yellow Player

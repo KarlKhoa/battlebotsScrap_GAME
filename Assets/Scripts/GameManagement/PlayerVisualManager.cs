@@ -24,4 +24,13 @@ public class PlayerVisualManager : MonoBehaviour
 
         return result;
     }
+
+    public string GetNameForClient(Client client)
+    {
+        string result = null;
+        var index = GameManager.Instance.registeredClients.IndexOf(client);
+        result = VisualsRegistry.BotMats[index].playerName;
+
+        return result;
+    }
 }

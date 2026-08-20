@@ -13,4 +13,5 @@ public struct PlayerStyleData
 {
     public Material playerMaterial;
     public Color playerColour;
+    public string playerName;
 }

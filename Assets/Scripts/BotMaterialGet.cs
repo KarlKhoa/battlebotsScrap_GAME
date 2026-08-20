@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class botMaterialGet : MonoBehaviour
+public class BotMaterialGet : MonoBehaviour
 {
     private Client _thisClient;
     private MeshRenderer _thisMeshRenderer;
@@ -24,7 +24,8 @@ public class botMaterialGet : MonoBehaviour
 
     void Update()
     {
-        if (_thisPlayerHealth <= 37f)
+        //currently just makes bots immediately appear wrecked, no correlation to health when it's updated in playercontroller
+        /*if (_thisPlayerHealth <= 37f)
         {
             _thisMeshRenderer.material = GameManager.Instance.PlayerVisuals.GetLightDmgMaterialForClient(_thisClient);
         }
@@ -35,6 +36,6 @@ public class botMaterialGet : MonoBehaviour
         if (_thisPlayerHealth <= 13f)
         {
             _thisMeshRenderer.material = GameManager.Instance.PlayerVisuals.GetHeavyDmgMaterialForClient(_thisClient);
-        }
+        }*/
     }
 }

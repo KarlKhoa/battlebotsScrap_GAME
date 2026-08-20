@@ -45,7 +45,7 @@ public class Saw : Weapon
         {
             Debug.Log(playerController);
             //if our client is the same as player we hit
-            if (owner == playerController.owner)
+            if (owner == playerController.Owner)
             {
                 //Debug.Log("Player was hit by their own Saw!");
                 return; //do nothing
@@ -55,7 +55,7 @@ public class Saw : Weapon
                 //do damage if we do not own the playercontroller
                 playerController.Hurt(baseDamage);
                 if (playerController.hurtWasSuccessful)
-                { Debug.Log(playerController.owner + "took " + baseDamage + " damage from Saw!"); }
+                { Debug.Log(playerController.Owner + "took " + baseDamage + " damage from Saw!"); }
                 else { return; }
                 
             }

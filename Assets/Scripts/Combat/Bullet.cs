@@ -8,15 +8,15 @@ public class Bullet : Projectile
     private const float DEFAULT_LIFETIME = 0.2f;
     
     public Rigidbody rb;
-    private float bulletSpeed;
+    private float _bulletSpeed;
 
-    private float baseDamage;
+    private float _baseDamage;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        baseDamage = 20;
-        bulletSpeed = 800;
+        _baseDamage = 20;
+        _bulletSpeed = 800;
         
     }
 
@@ -24,7 +24,7 @@ public class Bullet : Projectile
     {
         if (rb != null)
         {
-            rb.AddForce(transform.forward * bulletSpeed); //shoots bullet in world forward direction; change to be whatever the gun's forward direction is
+            rb.AddForce(transform.forward * _bulletSpeed); //shoots bullet in world forward direction; change to be whatever the gun's forward direction is
 
             Die(DEFAULT_LIFETIME);
         }
@@ -41,7 +41,7 @@ public class Bullet : Projectile
             //Debug.Log("Hit " + playerController);
 
             //if our client is the same as player we hit
-            if(owner == playerController.owner)
+            if(owner == playerController.Owner)
             {
                 //Debug.Log("Player was hit by their own Bullet!");
                 return; //do nothing
@@ -49,11 +49,11 @@ public class Bullet : Projectile
             else
             {
                 //do damage if we do not own the playercontroller
-                playerController.Hurt(baseDamage);
+                playerController.Hurt(_baseDamage);
 
                 if (playerController.hurtWasSuccessful)
                 {
-                    Debug.Log(playerController.owner + "took" + baseDamage + "damage from" + owner + "'s Bullet!");
+                    Debug.Log(playerController.Owner + "took" + _baseDamage + "damage from" + owner + "'s Bullet!");
                 }
                 else { return; }
             }

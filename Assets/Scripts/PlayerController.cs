@@ -5,72 +5,73 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private BlankBot mPlayerData;
+    private BlankBot _mPlayerData;
 
-    private Material playerMaterial;
+    private Material _playerMaterial;
 
-    private Rigidbody rb;
+    private Rigidbody _rb;
 
-    private Client client;
+    private Client _client;
+    private MeshRenderer _thisMeshRenderer;
 
-    public Client owner => client;
+    public Client Owner => _client;
 
     public bool IsAlive => playerHealth > 0;
     public bool hurtWasSuccessful;
 
-    private Vector2 moveInput;
+    private Vector2 _moveInput;
 
     [SerializeField] private float playerHealth;
     [SerializeField] private float botGenSpd;
     [SerializeField] private float botRotSpd;
 
-    private bool isMovingForward;
-    private bool isMovingBackward;
-    private bool isTurningRight;
-    private bool isTurningLeft;
+    private bool _isMovingForward;
+    private bool _isMovingBackward;
+    private bool _isTurningRight;
+    private bool _isTurningLeft;
     
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        client = GetComponentInParent<Client>();
-        mPlayerData = client.playerData;
-        playerMaterial = GetComponent<MeshRenderer>().material;
+        _rb = GetComponent<Rigidbody>();
+        _client = GetComponentInParent<Client>();
+        _mPlayerData = _client.playerData;
+        _playerMaterial = GetComponent<MeshRenderer>().material;
 
     }
     
     void Start()
     {
 
-        playerHealth = mPlayerData.health;
-        botGenSpd = mPlayerData.generalSpeed;
-        botRotSpd = mPlayerData.rotationSpeed;
+        playerHealth = _mPlayerData.health;
+        botGenSpd = _mPlayerData.generalSpeed;
+        botRotSpd = _mPlayerData.rotationSpeed;
     }
 
     void Update()
     {
         //checking inputs
-        if(moveInput == new Vector2(0,1))
+        if(_moveInput == new Vector2(0,1))
         {
-            isMovingForward = true;
-            isMovingBackward = false;
+            _isMovingForward = true;
+            _isMovingBackward = false;
         }
 
-        if(moveInput == new Vector2(0,-1))
+        if(_moveInput == new Vector2(0,-1))
         {
-            isMovingBackward = true;
-            isMovingForward = false;
+            _isMovingBackward = true;
+            _isMovingForward = false;
         }
 
-        if(moveInput == new Vector2(1,0))
+        if(_moveInput == new Vector2(1,0))
         {
-            isTurningRight = true;
-            isTurningLeft = false;
+            _isTurningRight = true;
+            _isTurningLeft = false;
         }
 
-        if(moveInput == new Vector2(-1,0))
+        if(_moveInput == new Vector2(-1,0))
         {
-            isTurningLeft = true;
-            isTurningRight = false;
+            _isTurningLeft = true;
+            _isTurningRight = false;
         }
     }
 
@@ -80,33 +81,33 @@ public class PlayerController : MonoBehaviour
         //Debug.Log($"fwd{isMovingForward} bck{isMovingBackward} tl{isTurningLeft} tr{isTurningRight}");
 
         //moving player
-        if(isMovingForward == true)
+        if(_isMovingForward == true)
         {
-            rb.AddForce(transform.forward * botGenSpd);
-            isMovingForward = false;
+            _rb.AddForce(transform.forward * botGenSpd);
+            _isMovingForward = false;
         }
-        else if(isMovingBackward == true)
+        else if(_isMovingBackward == true)
         {
-            rb.AddForce(transform.forward * botGenSpd * -1);
-            isMovingBackward = false;
+            _rb.AddForce(transform.forward * botGenSpd * -1);
+            _isMovingBackward = false;
         }
 
-        if(isTurningRight == true)
+        if(_isTurningRight == true)
         {
-            rb.AddTorque(transform.up * botRotSpd);
-            isTurningRight = false;
+            _rb.AddTorque(transform.up * botRotSpd);
+            _isTurningRight = false;
         }
-        else if (isTurningLeft == true)
+        else if (_isTurningLeft == true)
         {
-            rb.AddTorque(transform.up * botRotSpd * -1);
-            isTurningLeft = false;
+            _rb.AddTorque(transform.up * botRotSpd * -1);
+            _isTurningLeft = false;
         }
     }
 
     private void OnMove(InputValue input) 
     {
     
-        moveInput = input.Get<Vector2>();
+        _moveInput = input.Get<Vector2>();
         //Debug.Log(moveInput);
     }
 
@@ -119,7 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             if (weaponController.isShieldUp == false)
             {
-                //remove didHitShield stuff if this counts as a "new feature", leave only normal damage
+                
                 if (weaponController.didHitShield == false)
                 {
                     playerHealth = playerHealth - damage;
@@ -136,18 +137,18 @@ public class PlayerController : MonoBehaviour
                     playerHealth = playerHealth - damage;
                     DoPlayerFlash(Color.yellow, 0.2f);
                     hurtWasSuccessful = true;
-                    Debug.Log(owner + "'s Shield partially blocked damage!");  
+                    Debug.Log(Owner + "'s Shield partially blocked damage!");  
                     if (playerHealth <= 0)
                     {
                         Die();
                     } 
                 }
             }
-            else 
+            else
             {
                 DoPlayerFlash(Color.white, 0.2f);
                 hurtWasSuccessful = false;
-                Debug.Log(owner + "'s Shield fully blocked damage!");  
+                Debug.Log(Owner + "'s Shield fully blocked damage!");
             }
         }
         else
@@ -167,7 +168,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator FlashPlayer (Color flashColour, float duration)
     {
         //set material to red
-        playerMaterial.SetColor("_Fresnel_Tint", flashColour);
+        _playerMaterial.SetColor("_Fresnel_Tint", flashColour);
 
         var remainingTime = duration;
 
@@ -178,7 +179,7 @@ public class PlayerController : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             remainingTime -= Time.deltaTime;
-            playerMaterial.SetColor("_Fresnel_Tint", Color.Lerp(flashColour, Color.black, 1 - (remainingTime / duration)));
+            _playerMaterial.SetColor("_Fresnel_Tint", Color.Lerp(flashColour, Color.black, 1 - (remainingTime / duration)));
         }
 
         //end
@@ -187,12 +188,12 @@ public class PlayerController : MonoBehaviour
     //used by Grapple
     public void JumpToPosition(Vector3 targetPos)
     {
-        rb.velocity = new Vector3(100,0,0);
+        _rb.velocity = new Vector3(100,0,0);
     }
 
     public void Die(bool isLastDeath = false)
     {
-        client.AddPoints(GameManager.Instance.ScorePoints());
+        _client.AddPoints(GameManager.Instance.ScorePoints());
         Destroy(gameObject);
         GameManager.Instance.OnPlayerDeath(this);
     }

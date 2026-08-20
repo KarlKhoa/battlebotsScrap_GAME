@@ -7,7 +7,7 @@ public class PlayerVisualManager : MonoBehaviour
 
     [SerializeField] PlayerVisualsRegistry VisualsRegistry;
 
-    public Material GetMaterialForClient(Client client)
+    public Material GetCleanMaterialForClient(Client client)
     {
         Material result = null;
         var index = GameManager.Instance.registeredClients.IndexOf(client);
@@ -15,7 +15,35 @@ public class PlayerVisualManager : MonoBehaviour
 
         return result;
     }
+    
+    
+    public Material GetLightDmgMaterialForClient(Client client)
+    {
+        Material result = null;
+        var index = GameManager.Instance.registeredClients.IndexOf(client);
+        result = VisualsRegistry.BotMats[index].lightDamageMat;
 
+        return result;
+    }
+    public Material GetMedDmgMaterialForClient(Client client)
+    {
+        Material result = null;
+        var index = GameManager.Instance.registeredClients.IndexOf(client);
+        result = VisualsRegistry.BotMats[index].medDamageMat;
+
+        return result;
+    }
+
+    public Material GetHeavyDmgMaterialForClient(Client client)
+    {
+        Material result = null;
+        var index = GameManager.Instance.registeredClients.IndexOf(client);
+        result = VisualsRegistry.BotMats[index].heavyDamageMat;
+        return result;
+    }
+
+    
+    
     public Color GetColourForClient(Client client)
     {
         Color result = Color.black;

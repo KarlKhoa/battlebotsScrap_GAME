@@ -25,7 +25,7 @@ public class Client : MonoBehaviour
     //Create a List of weapons in inspector; currently not doing anything but could be used to keep track of players' current weapons
     public List<Weapon> weapons;
 
-    public PlayerInput Input;
+    public PlayerInput input;
     private MultiplayerEventSystem _multiplayerEventSystem;
     private InputSystemUIInputModule _uiInputModule;
 
@@ -34,14 +34,14 @@ public class Client : MonoBehaviour
         //when this script starts it will call the addplayercount function on the GameManager script (this should probably be done in the OnPlayerJoined function in this script)
         GameManager.Instance.RegisterClient(this);
         //c_attachment1 = GameManager.Instance.WeaponsRegistry.AvailableWeapons[1]; //makes attachment1 always the specified weapon in list
-        Input = GetComponent<PlayerInput>();
+        input = GetComponent<PlayerInput>();
         
         //Locate and bind the per-client event system to the shared UI - MEL
         _multiplayerEventSystem = GetComponent<MultiplayerEventSystem>();
         _multiplayerEventSystem.playerRoot = GameManager.Instance.menus;
         _multiplayerEventSystem.firstSelectedGameObject = GameManager.Instance.firstSelectedWeaponUI;
         _uiInputModule = GetComponent<InputSystemUIInputModule>();
-        _uiInputModule.actionsAsset = Input.actions;
+        _uiInputModule.actionsAsset = input.actions;
 
         //put if loop here for the client to go through the registered clinet list and give itself a name depending on their position
 

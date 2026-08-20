@@ -14,14 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BotMats:
   - playerMaterial: {fileID: 2100000, guid: 2316d879ac02afb4b99849358fd9654f, type: 2}
+    lightDamageMat: {fileID: 2100000, guid: 61e6a2cdb2777ef409525ccad9edfdf5, type: 2}
+    medDamageMat: {fileID: 2100000, guid: 5cc04269c7223ca48bc0509add11c6b0, type: 2}
+    heavyDamageMat: {fileID: 2100000, guid: cf711deadd9c564438312741ca10e4d0, type: 2}
     playerColour: {r: 1, g: 0, b: 0, a: 1}
     playerName: Red Player
   - playerMaterial: {fileID: 2100000, guid: 015e32a76d493f54388cce8ade0ddfaf, type: 2}
+    lightDamageMat: {fileID: 2100000, guid: 9467ba917017b7a4999670396a4fbe5a, type: 2}
+    medDamageMat: {fileID: 2100000, guid: f298f04ea5607394d8d6b1ee88d5495d, type: 2}
+    heavyDamageMat: {fileID: 2100000, guid: a2029fa6b0549924b8cb6c4f9d2b6d09, type: 2}
     playerColour: {r: 0, g: 0.04705883, b: 0.9333334, a: 1}
     playerName: Blue Player
   - playerMaterial: {fileID: 2100000, guid: 49dac6551b8c42b42b05d8870ce9ae0a, type: 2}
+    lightDamageMat: {fileID: 2100000, guid: 5d8961545aa899a479e85583a1149b20, type: 2}
+    medDamageMat: {fileID: 2100000, guid: f298f04ea5607394d8d6b1ee88d5495d, type: 2}
+    heavyDamageMat: {fileID: 2100000, guid: 23de7fa0ccedad94895cdb4115963389, type: 2}
     playerColour: {r: 0, g: 1, b: 0.13725491, a: 1}
     playerName: Green Player
   - playerMaterial: {fileID: 2100000, guid: ed6f126b9d7f9f44fbe2469c0b68d40c, type: 2}
+    lightDamageMat: {fileID: 2100000, guid: eb7021168c19e4b4b96ae1b80a9906d9, type: 2}
+    medDamageMat: {fileID: 2100000, guid: 0ef42dcd1ef9c9043aa6913d531dc636, type: 2}
+    heavyDamageMat: {fileID: 2100000, guid: cd53f429784f79f4398937b36b6e626f, type: 2}
     playerColour: {r: 1, g: 0.9294118, b: 0, a: 1}
     playerName: Yellow Player

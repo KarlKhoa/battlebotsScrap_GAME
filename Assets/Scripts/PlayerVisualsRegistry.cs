@@ -12,6 +12,9 @@ public class PlayerVisualsRegistry : ScriptableObject
 public struct PlayerStyleData
 {
     public Material playerMaterial;
+    public Material lightDamageMat;
+    public Material medDamageMat;
+    public Material heavyDamageMat;
     public Color playerColour;
     public string playerName;
 }

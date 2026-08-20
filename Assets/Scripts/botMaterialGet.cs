@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class botMaterialGet : MonoBehaviour
 {
-    private Client thisClient;
-    private MeshRenderer thisMeshRenderer;
+    private Client _thisClient;
+    private MeshRenderer _thisMeshRenderer;
 
-    // Start is called before the first frame update
+    private PlayerController _thisPlayerController;
+
+    private float _thisPlayerHealth;
+    
     void Awake()
     {
-        thisClient = GetComponentInParent<Client>();
-        thisMeshRenderer = GetComponent<MeshRenderer>();
+        _thisClient = GetComponentInParent<Client>();
+        _thisMeshRenderer = GetComponent<MeshRenderer>();
+        _thisPlayerController = GetComponentInParent <PlayerController>();
     }
     void Start()
     {
-        thisMeshRenderer.material = GameManager.Instance.PlayerVisuals.GetMaterialForClient(thisClient);
+        _thisMeshRenderer.material = GameManager.Instance.PlayerVisuals.GetCleanMaterialForClient(_thisClient);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (_thisPlayerHealth <= 37f)
+        {
+            _thisMeshRenderer.material = GameManager.Instance.PlayerVisuals.GetLightDmgMaterialForClient(_thisClient);
+        }
+        if (_thisPlayerHealth <= 25f)
+        {
+            _thisMeshRenderer.material = GameManager.Instance.PlayerVisuals.GetMedDmgMaterialForClient(_thisClient);
+        }
+        if (_thisPlayerHealth <= 13f)
+        {
+            _thisMeshRenderer.material = GameManager.Instance.PlayerVisuals.GetHeavyDmgMaterialForClient(_thisClient);
+        }
     }
 }

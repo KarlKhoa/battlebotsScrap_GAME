@@ -74,7 +74,7 @@ public class Shield : Weapon
         {
             Debug.Log(playerController);
             //if our client is the same as player we hit
-            if (owner == playerController.owner)
+            if (owner == playerController.Owner)
             {
                 //Debug.Log("Player was hit by their own Shield");
                 return; //do nothing

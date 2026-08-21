@@ -39,13 +39,15 @@ public class WeaponSelectManager : MonoBehaviour
     {
         CreateWeaponPool();
         
-        foreach(var player in GameManager.Instance.registeredClients)
+        var orderedClients = GameManager.Instance.ClientsByScoreAscending;
+
+        foreach(var player in orderedClients)
         {
             var playerClient = player.GetComponent<Client>();
             playerClient.ToggleUIAccess(false);
         }
 
-        foreach(var player in GameManager.Instance.registeredClients)
+        foreach(var player in orderedClients)
         {
             UIIsBusy = true;
             var playerClient = player.GetComponent<Client>();
@@ -140,10 +142,13 @@ public class WeaponSelectManager : MonoBehaviour
 
     public void UpdateButtonDisplay(Client client)
     {
+        
+        var uiColour = GameManager.Instance.PlayerVisuals.GetColourForClient(client);
+
         for(int i = 0; i < weaponSelectButtonList.Count; i++)
         {
             ColorBlock colorVar = weaponSelectButtonList[i].colors;
-            colorVar.selectedColor = GameManager.Instance.PlayerVisuals.GetColourForClient(client);
+            colorVar.selectedColor = uiColour;
             weaponSelectButtonList[i].colors = colorVar;
         }
 

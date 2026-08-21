@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     public WeaponRegistry WeaponsRegistry;
 
     public List<Client> registeredClients;
+
+    public List<Client> ClientsByScoreAscending => registeredClients.OrderBy(_ => _.playerScore).ToList();
 
     public GameObject menus;
     public GameObject firstSelectedWeaponUI; //store this so we can force users to select the correct UI component when reenabling UI controls - MEL
@@ -89,8 +92,7 @@ public class GameManager : MonoBehaviour
                     Destroy(registeredClients[i].livePlayer.gameObject);
                 }
             }
-        
-            registeredClients.Sort(SortByPlayerScore);
+
             BeginWeaponSelectionSequence();
         }
         }
@@ -144,9 +146,8 @@ public class GameManager : MonoBehaviour
     }
     private void EndGame()
     {
-        registeredClients.Sort(SortByPlayerScore);
-        registeredClients.Reverse();
-        gameEndUIManager.WinningPlayer(registeredClients[0]);
+        var orderedClients = ClientsByScoreAscending;
+        gameEndUIManager.WinningPlayer(registeredClients[orderedClients.Count - 1]);
         menuManager.ToggleGameEndUI(true);
     }
 

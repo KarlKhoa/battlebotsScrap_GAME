@@ -872,6 +872,22 @@ PrefabInstance:
       propertyPath: transitionUI
       value: 
       objectReference: {fileID: 1252473183}
+    - target: {fileID: 1156478569, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348859163, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348859163, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348859163, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1647326289, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
       propertyPath: m_IsActive
       value: 0

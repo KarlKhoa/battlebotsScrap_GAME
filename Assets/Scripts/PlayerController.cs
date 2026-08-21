@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -21,10 +22,14 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _moveInput;
 
+    ///When the player takes damage - returns current and max health;
+    public Action<float, float> OnPlayerHurt;
+
     [SerializeField] private float playerHealth;
     [SerializeField] private float botGenSpd;
     [SerializeField] private float botRotSpd;
 
+    private float _startingHealth;
     private bool _isMovingForward;
     private bool _isMovingBackward;
     private bool _isTurningRight;
@@ -36,7 +41,7 @@ public class PlayerController : MonoBehaviour
         _client = GetComponentInParent<Client>();
         _mPlayerData = _client.playerData;
         _playerMaterial = GetComponent<MeshRenderer>().material;
-
+        _startingHealth = playerHealth;
     }
     
     void Start()
@@ -120,8 +125,7 @@ public class PlayerController : MonoBehaviour
         {
             if (weaponController.isShieldUp == false)
             {
-                
-                if (weaponController.didHitShield == false)
+                if (!weaponController.didHitShield)
                 {
                     playerHealth = playerHealth - damage;
                     DoPlayerFlash(Color.red, 0.2f);
@@ -143,6 +147,7 @@ public class PlayerController : MonoBehaviour
                         Die();
                     } 
                 }
+                OnPlayerHurt?.Invoke(playerHealth, _startingHealth);
             }
             else
             {

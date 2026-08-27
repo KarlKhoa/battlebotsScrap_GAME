@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -820,6 +820,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 486295632, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: noWeapon
+      value: 
+      objectReference: {fileID: 21300000, guid: fe8262c1a06165044bac17fc4c4a4c8a,
+        type: 3}
     - target: {fileID: 486295632, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
       propertyPath: weaponSelectButtonList.Array.data[0]
       value: 

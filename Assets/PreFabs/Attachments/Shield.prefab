@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2017f3f1c454354482d129b6ce6109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSprite: {fileID: 21300000, guid: 756d5ed11f94b2146b7e47a26c61a261, type: 3}
+  selectSprite: {fileID: 21300000, guid: eb30b80cab908e442bdc6fb58df4b74e, type: 3}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}
 --- !u!65 &2010324817800729564

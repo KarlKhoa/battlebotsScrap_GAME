@@ -71,6 +71,11 @@ public class WeaponSelectManager : MonoBehaviour
                 weaponPool.Add(GameManager.Instance.WeaponsRegistry.AvailableWeapons[Random.Range(0, GameManager.Instance.WeaponsRegistry.AvailableWeapons.Count)]);
             }
 
+            foreach(var weapon in weaponPool)
+            {
+                
+            }
+
             if(weaponPool.Count >= 1)
             {               
                  weapon1 = weaponPool[0];
@@ -156,6 +161,16 @@ public class WeaponSelectManager : MonoBehaviour
         {
             weaponSelectButtonImageList[i].sprite = weaponPool[i].selectSprite;
         }
+
+        /*
+        for(int i = 0; i < weaponPool.Count; i++)
+        {
+            if(weaponPool == null)
+            {
+                
+            }
+        }
+        */
         if(weapon1 == null)
         {
             weaponSelectButtonImageList[0].sprite = noWeapon;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class WeaponSelectManager : MonoBehaviour
@@ -57,6 +58,15 @@ public class WeaponSelectManager : MonoBehaviour
         }
 
         weaponPool.Clear();
+
+        foreach(Button b in weaponSelectButtons)
+        {
+            Destroy(b.gameObject);
+        }
+
+        weaponSelectButtons.Clear();
+        weaponSelectButtonImages.Clear();
+
         GameManager.Instance.StartRound();
     }
 
@@ -72,12 +82,13 @@ public class WeaponSelectManager : MonoBehaviour
             foreach(var weapon in weaponPool)
             {
                 var button = Instantiate(selectionButtonPrefab, Vector3.zero, Quaternion.identity, selectionButtonContainer);
+                button.onClick.AddListener(delegate { SelectWeapon(weapon); });
                 weaponSelectButtons.Add(button);
                 weaponSelectButtonImages.Add(button.GetComponent<Image>());
             }
             
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(weaponSelectButtons[0].gameObject);
+            GameManager.Instance.firstSelectedWeaponUI = weaponSelectButtons[0].gameObject;
+        
 
             if(weaponPool.Count >= 1)
             {               
@@ -150,7 +161,6 @@ public class WeaponSelectManager : MonoBehaviour
 
     public void UpdateButtonDisplay(Client client)
     {
-        
         var uiColour = GameManager.Instance.PlayerVisuals.GetColourForClient(client);
 
         for(int i = 0; i < weaponSelectButtons.Count; i++)

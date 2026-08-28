@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class WeaponSelectManager : MonoBehaviour
 {
@@ -15,20 +16,17 @@ public class WeaponSelectManager : MonoBehaviour
     [SerializeField] private Weapon weapon3;
     [SerializeField] private Weapon weapon4;
     [SerializeField] private Weapon weapon5;
+    [SerializeField] private Button selectionButtonPrefab;
+    [SerializeField] private Transform selectionButtonContainer;
 
     private Client m_client;
 
     public Sprite noWeapon;
 
-    public List<Image> weaponSelectButtonImageList;
+    private List<Image> weaponSelectButtonImages = new();
 
-    public List<Button> weaponSelectButtonList;
-    
-    // Update is called once per frame
-    void Update()
-    {
+    private List<Button> weaponSelectButtons = new();
 
-    }
 
     public void WeaponSelectionSequence()
     {
@@ -73,8 +71,13 @@ public class WeaponSelectManager : MonoBehaviour
 
             foreach(var weapon in weaponPool)
             {
-                
+                var button = Instantiate(selectionButtonPrefab, Vector3.zero, Quaternion.identity, selectionButtonContainer);
+                weaponSelectButtons.Add(button);
+                weaponSelectButtonImages.Add(button.GetComponent<Image>());
             }
+            
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(weaponSelectButtons[0].gameObject);
 
             if(weaponPool.Count >= 1)
             {               
@@ -150,16 +153,16 @@ public class WeaponSelectManager : MonoBehaviour
         
         var uiColour = GameManager.Instance.PlayerVisuals.GetColourForClient(client);
 
-        for(int i = 0; i < weaponSelectButtonList.Count; i++)
+        for(int i = 0; i < weaponSelectButtons.Count; i++)
         {
-            ColorBlock colorVar = weaponSelectButtonList[i].colors;
+            ColorBlock colorVar = weaponSelectButtons[i].colors;
             colorVar.selectedColor = uiColour;
-            weaponSelectButtonList[i].colors = colorVar;
+            weaponSelectButtons[i].colors = colorVar;
         }
 
         for(int i = 0; i < weaponPool.Count; i++)
         {
-            weaponSelectButtonImageList[i].sprite = weaponPool[i].selectSprite;
+            weaponSelectButtonImages[i].sprite = weaponPool[i].selectSprite;
         }
 
         /*
@@ -171,25 +174,5 @@ public class WeaponSelectManager : MonoBehaviour
             }
         }
         */
-        if(weapon1 == null)
-        {
-            weaponSelectButtonImageList[0].sprite = noWeapon;
-        }
-        if(weapon2 == null)
-        {
-            weaponSelectButtonImageList[1].sprite = noWeapon;
-        }
-        if(weapon3 == null)
-        {
-            weaponSelectButtonImageList[2].sprite = noWeapon;
-        }
-        if(weapon4 == null)
-        {
-            weaponSelectButtonImageList[3].sprite = noWeapon;
-        }
-        if(weapon5 == null)
-        {
-            weaponSelectButtonImageList[4].sprite = noWeapon;
-        }
     }
 }

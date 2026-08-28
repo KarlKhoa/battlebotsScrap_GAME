@@ -29,11 +29,11 @@ public class MenuManager : MonoBehaviour
     public void ToggleWeaponSelectionUI(bool state)
     {
         weaponSelect.SetActive(state);
-        if(state)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(weaponSelectFirstButton);
-        }
+        //if(state)
+        //{
+        //    EventSystem.current.SetSelectedGameObject(null);
+        //    EventSystem.current.SetSelectedGameObject(weaponSelectFirstButton);
+        //}
         
     }
 

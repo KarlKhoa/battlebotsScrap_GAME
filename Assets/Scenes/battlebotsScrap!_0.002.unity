@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -676,6 +676,47 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 756691031, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Name
+      value: AttachRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 756691033, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttachSlotRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1144841128, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 15557006}
+    - target: {fileID: 1144841128, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564169389, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Name
+      value: AttachLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564169391, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttachSlotLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588695303, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Name
+      value: AttachBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588695305, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttachSlotBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098916717, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Name
+      value: AttachFront
+      objectReference: {fileID: 0}
+    - target: {fileID: 140042307968145981, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
+      propertyPath: m_text
+      value: Select Your Weapon!
+      objectReference: {fileID: 0}
     - target: {fileID: 2710888079969662496, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
       propertyPath: m_Name
@@ -736,6 +777,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4010562923567788328, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725802629121439186, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Text: Select Your Weapon!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323852691952790734, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
+      propertyPath: noWeapon
+      value: 
+      objectReference: {fileID: 21300000, guid: fe8262c1a06165044bac17fc4c4a4c8a,
+        type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}

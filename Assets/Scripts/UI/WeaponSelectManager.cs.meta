@@ -11,7 +11,9 @@ MonoImporter:
   - weapon3: {instanceID: 0}
   - weapon4: {instanceID: 0}
   - weapon5: {instanceID: 0}
-  - noWeapon: {fileID: 21300000, guid: a0d0ae322988a0842a368015cc81beab, type: 3}
+  - selectionButtonPrefab: {instanceID: 0}
+  - selectionButtonContainer: {instanceID: 0}
+  - noWeapon: {fileID: 21300000, guid: fe8262c1a06165044bac17fc4c4a4c8a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

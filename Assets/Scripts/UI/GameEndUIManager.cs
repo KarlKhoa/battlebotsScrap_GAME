@@ -7,7 +7,7 @@ using TMPro;
 public class GameEndUIManager : MonoBehaviour
 {
     public TMP_Text GameEndWinner;
-    public void WinningPlayer(Client client)
+    public void WinningPlayer(Client client) //will this always be the last player joined?
     {
         GameEndWinner.text = client + "is the winner";
     }

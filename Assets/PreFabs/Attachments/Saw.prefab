@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectSprite: {fileID: 21300000, guid: 2f7b8e5c166d7a248a8b0e9576907c5e, type: 3}
+  selectIcon: {fileID: 21300000, guid: be340a165cb9c8d4cb50f1deeb51d4ea, type: 3}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}
 --- !u!64 &894996938249348213

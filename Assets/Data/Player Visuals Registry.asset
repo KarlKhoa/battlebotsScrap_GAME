@@ -21,7 +21,7 @@ MonoBehaviour:
     playerName: Red Player
   - playerMaterial: {fileID: 2100000, guid: 015e32a76d493f54388cce8ade0ddfaf, type: 2}
     lightDamageMat: {fileID: 2100000, guid: 9467ba917017b7a4999670396a4fbe5a, type: 2}
-    medDamageMat: {fileID: 2100000, guid: f298f04ea5607394d8d6b1ee88d5495d, type: 2}
+    medDamageMat: {fileID: 2100000, guid: f11281292dfb5114d9c108cf6df02740, type: 2}
     heavyDamageMat: {fileID: 2100000, guid: a2029fa6b0549924b8cb6c4f9d2b6d09, type: 2}
     playerColour: {r: 0, g: 0.04705883, b: 0.9333334, a: 1}
     playerName: Blue Player

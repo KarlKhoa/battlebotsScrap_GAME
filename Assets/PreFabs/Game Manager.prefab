@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 756691034}
   - component: {fileID: 756691033}
   m_Layer: 5
-  m_Name: Attach4
+  m_Name: AttachRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -684,7 +684,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1382683541}
         m_TargetAssemblyTypeName: WeaponAttachManager, Assembly-CSharp
-        m_MethodName: AttachSlot4
+        m_MethodName: AttachSlotRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1264,9 +1264,9 @@ MonoBehaviour:
   selectManager: {fileID: 8323852691952790734}
   weaponBiindButtonList:
   - {fileID: 2098916720}
-  - {fileID: 1564169392}
   - {fileID: 1588695306}
   - {fileID: 756691034}
+  - {fileID: 1564169392}
   noBind: {fileID: 0}
 --- !u!1 &1548083112
 GameObject:
@@ -1416,7 +1416,7 @@ GameObject:
   - component: {fileID: 1564169392}
   - component: {fileID: 1564169391}
   m_Layer: 5
-  m_Name: Attach2
+  m_Name: AttachLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1527,7 +1527,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1382683541}
         m_TargetAssemblyTypeName: WeaponAttachManager, Assembly-CSharp
-        m_MethodName: AttachSlot2
+        m_MethodName: AttachSlotLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1662,7 +1662,7 @@ GameObject:
   - component: {fileID: 1588695306}
   - component: {fileID: 1588695305}
   m_Layer: 5
-  m_Name: Attach3
+  m_Name: AttachBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1773,7 +1773,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1382683541}
         m_TargetAssemblyTypeName: WeaponAttachManager, Assembly-CSharp
-        m_MethodName: AttachSlot3
+        m_MethodName: AttachSlotBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1834,7 +1834,7 @@ GameObject:
   - component: {fileID: 2098916720}
   - component: {fileID: 2098916719}
   m_Layer: 5
-  m_Name: Attach1
+  m_Name: AttachFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1945,7 +1945,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1382683541}
         m_TargetAssemblyTypeName: WeaponAttachManager, Assembly-CSharp
-        m_MethodName: AttachSlot1
+        m_MethodName: AttachSlotFront
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2127,7 +2127,7 @@ Transform:
   - {fileID: 799231430}
   - {fileID: 1576256130}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8678898848146641437
 MonoBehaviour:

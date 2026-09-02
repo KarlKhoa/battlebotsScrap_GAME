@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.Serialization;
 
 
 //throws null object reference errors
@@ -15,10 +16,10 @@ public class Client : MonoBehaviour
     public int playerScore = 0;
 
     //temprorary code to test bot attachments
-    public Weapon c_attachment1;
-    public Weapon c_attachment2;
-    public Weapon c_attachment3;
-    public Weapon c_attachment4;
+    [FormerlySerializedAs("c_attachment1")] public Weapon c_attachmentFront;
+    [FormerlySerializedAs("c_attachment2")] public Weapon c_attachmentBack;
+    [FormerlySerializedAs("c_attachment3")] public Weapon c_attachmentRight;
+    [FormerlySerializedAs("c_attachment4")] public Weapon c_attachmentLeft;
 
     //liveplayer is the bot being used in the scene, this can be deleted and reconstructed, and uses the player prefab as a base
     public PlayerController livePlayer;
@@ -71,8 +72,8 @@ public class Client : MonoBehaviour
 
     public void AddPoints(int points)
     {
-        Debug.Log($"Scored {points}");
         playerScore += points;
+        Debug.Log($"Scored {points}");
     }
 
     public void ToggleUIAccess(bool enabled, GameObject selectedUIElement = null)

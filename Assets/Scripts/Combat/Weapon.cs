@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     public Sprite selectSprite;
+    public Sprite selectIcon;
     public Client owner;
     [SerializeField] private GameObject playerPrefab;
 

@@ -22,63 +22,63 @@ public class WeaponAttachManager : MonoBehaviour
         WeaponBindButtonDisplayUpdate();
     }
 
-    public void AttachSlot1()
+    public void AttachSlotFront()
     {
-        m_client.c_attachment1 = m_selectedWeapon;
+        m_client.c_attachmentFront = m_selectedWeapon;
         selectManager.UIIsBusy = false;
         menuManager.ToggleWeaponBindingUI(false);
     }
-    public void AttachSlot2()
+    public void AttachSlotBack()
     {
-        m_client.c_attachment2 = m_selectedWeapon;
+        m_client.c_attachmentBack = m_selectedWeapon;
         selectManager.UIIsBusy = false;
         menuManager.ToggleWeaponBindingUI(false);
     }
-    public void AttachSlot3()
+    public void AttachSlotRight()
     {
-        m_client.c_attachment3 = m_selectedWeapon;
+        m_client.c_attachmentRight = m_selectedWeapon;
         selectManager.UIIsBusy = false;
         menuManager.ToggleWeaponBindingUI(false);
     }
-    public void AttachSlot4()
+    public void AttachSlotLeft()
     {
-        m_client.c_attachment4 = m_selectedWeapon;
+        m_client.c_attachmentLeft = m_selectedWeapon;
         selectManager.UIIsBusy = false;
         menuManager.ToggleWeaponBindingUI(false);
     }
 
     public void WeaponBindButtonDisplayUpdate()
     {
-        if(m_client.c_attachment1 != null)
+        if(m_client.c_attachmentFront != null)
         {
-            weaponBiindButtonList[0].sprite = m_client.c_attachment1.selectSprite;
+            weaponBiindButtonList[0].sprite = m_client.c_attachmentFront.selectSprite;
         }
         else
         {
             weaponBiindButtonList[0].sprite = noBind;
         }
 
-        if(m_client.c_attachment2 != null)
+        if(m_client.c_attachmentBack != null)
         {
-            weaponBiindButtonList[1].sprite = m_client.c_attachment2.selectSprite;
+            weaponBiindButtonList[1].sprite = m_client.c_attachmentBack.selectSprite;
         }
         else
         {
             weaponBiindButtonList[1].sprite = noBind;
         }
 
-        if(m_client.c_attachment3 != null)
+        if(m_client.c_attachmentRight != null)
         {
-            weaponBiindButtonList[2].sprite = m_client.c_attachment3.selectSprite;
+            weaponBiindButtonList[2].sprite = m_client.c_attachmentRight.selectSprite;
         }
         else
         {
             weaponBiindButtonList[2].sprite = noBind;
         }
 
-        if(m_client.c_attachment4 != null)
+        if(m_client.c_attachmentLeft != null)
         {
-            weaponBiindButtonList[3].sprite = m_client.c_attachment4.selectSprite;
+            weaponBiindButtonList[3].sprite = m_client.c_attachmentLeft.selectSprite;
         }
         else
         {

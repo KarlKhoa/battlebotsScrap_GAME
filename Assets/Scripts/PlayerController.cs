@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die(bool isLastDeath = false)
     {
-        _client.AddPoints(GameManager.Instance.ScorePoints());
+        //_client.AddPoints(GameManager.Instance.ScorePoints()); //why? Gives points to player upon death, meaning a player who loses will win at end game as this is called before then
         Destroy(gameObject);
         GameManager.Instance.OnPlayerDeath(this);
     }

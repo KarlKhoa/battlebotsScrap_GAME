@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
                     playerHealth = playerHealth - damage;
                     DoPlayerFlash(Color.red, 0.2f);
                     hurtWasSuccessful = true;
+                    Debug.Log(Owner + "took " + damage + "DMG");
                     if (playerHealth <= 0)
                     {
                         Die();
@@ -141,7 +142,8 @@ public class PlayerController : MonoBehaviour
                     playerHealth = playerHealth - damage;
                     DoPlayerFlash(Color.yellow, 0.2f);
                     hurtWasSuccessful = true;
-                    Debug.Log(Owner + "'s Shield partially blocked damage!");  
+                    Debug.Log(Owner + "'s Shield partially blocked damage!" + "Took " + damage + "DMG");
+                    damage = damage * 2f;
                     if (playerHealth <= 0)
                     {
                         Die();
@@ -198,7 +200,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die(bool isLastDeath = false)
     {
-        //_client.AddPoints(GameManager.Instance.ScorePoints()); //why? Gives points to player upon death, meaning a player who loses will win at end game as this is called before then
+        //_client.AddPoints(GameManager.Instance.ScorePoints()); //Gives points to player upon death, meaning a player who loses will win at end game as this is called before then
         Destroy(gameObject);
         GameManager.Instance.OnPlayerDeath(this);
     }

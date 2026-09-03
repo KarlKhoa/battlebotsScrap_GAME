@@ -55,7 +55,8 @@ public class Saw : Weapon
                 //do damage if we do not own the playercontroller
                 playerController.Hurt(baseDamage);
                 if (playerController.hurtWasSuccessful)
-                { Debug.Log(playerController.Owner + "took " + baseDamage + " damage from Saw!"); }
+                { //Debug.Log(playerController.Owner + "took damage from Saw!");
+                }
                 else { return; }
                 
             }

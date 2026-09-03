@@ -53,7 +53,7 @@ public class Bullet : Projectile
 
                 if (playerController.hurtWasSuccessful)
                 {
-                    Debug.Log(playerController.Owner + "took" + _baseDamage + "damage from" + owner + "'s Bullet!");
+                    //Debug.Log(playerController.Owner + "took damage from" + owner + "'s Bullet!");
                 }
                 else { return; }
             }

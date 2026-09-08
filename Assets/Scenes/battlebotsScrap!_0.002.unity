@@ -476,50 +476,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3326990477326710627}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2076158475 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9213832350957130567, guid: d1255ab0d7647804eafa8698baa3d652,
-    type: 3}
-  m_PrefabInstance: {fileID: 4341347246900041493}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2076158478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076158475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2076158479
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076158475}
-  m_CullTransparentMesh: 1
 --- !u!4 &2116037930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8168033761242929632, guid: 167e51c30a3fc0d49867a9be005c8bc0,
@@ -676,47 +632,18 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 756691031, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
-      propertyPath: m_Name
-      value: AttachRight
+    - target: {fileID: 154033556, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 756691033, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AttachSlotRight
+    - target: {fileID: 1144841125, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1144841128, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 15557006}
-    - target: {fileID: 1144841128, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1564169389, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
-      propertyPath: m_Name
-      value: AttachLeft
-      objectReference: {fileID: 0}
-    - target: {fileID: 1564169391, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AttachSlotLeft
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588695303, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
-      propertyPath: m_Name
-      value: AttachBack
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588695305, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AttachSlotBack
-      objectReference: {fileID: 0}
-    - target: {fileID: 2098916717, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
-      propertyPath: m_Name
-      value: AttachFront
-      objectReference: {fileID: 0}
-    - target: {fileID: 140042307968145981, guid: d1255ab0d7647804eafa8698baa3d652,
-        type: 3}
-      propertyPath: m_text
-      value: Select Your Weapon!
-      objectReference: {fileID: 0}
     - target: {fileID: 2710888079969662496, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
       propertyPath: m_Name
@@ -777,22 +704,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4010562923567788328, guid: d1255ab0d7647804eafa8698baa3d652,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725802629121439186, guid: d1255ab0d7647804eafa8698baa3d652,
-        type: 3}
-      propertyPath: m_Name
-      value: 'Text: Select Your Weapon!'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8323852691952790734, guid: d1255ab0d7647804eafa8698baa3d652,
-        type: 3}
-      propertyPath: noWeapon
-      value: 
-      objectReference: {fileID: 21300000, guid: fe8262c1a06165044bac17fc4c4a4c8a,
-        type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}

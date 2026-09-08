@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class WeaponController : MonoBehaviour
 {
 
     //holds weapon script of attachment to use the fire function on it
-    [SerializeField] private Weapon attachmentScript1;
-    [SerializeField] private Weapon attachmentScript2;
-    private Weapon attachmentScript3;
-    private Weapon attachmentScript4;
+    private Weapon attachmentScriptFront;
+    private Weapon attachmentScriptBack;
+    private Weapon attachmentScriptRight;
+    private Weapon attachmentScriptLeft;
 
     private Client client;
 
     //variable to hold the cooldown variable from the weapon script
-    private float a1Cooldown;
-    private float a2Cooldown;
-    private float a3Cooldown;
-    private float a4Cooldown;
+    private float aFrontCooldown;
+    private float aBackCooldown;
+    private float aRightCooldown;
+    private float aLeftCooldown;
 
     //this is the variable that the timer uses
     private float m_cooldownTime1 = 0;
@@ -26,20 +27,20 @@ public class WeaponController : MonoBehaviour
     private float m_cooldownTime3 = 0;
     private float m_cooldownTime4 = 0;
 
-    private bool a1_isFireable;
-    private bool a2_isFireable;
-    private bool a3_isFireable;
-    private bool a4_isFireable;
+    private bool front_isFireable;
+    private bool back_isFireable;
+    private bool right_isFireable;
+    private bool left_isFireable;
 
-    private Vector3 m_attachment1Pos;
-    private Vector3 m_attachment2Pos;
-    private Vector3 m_attachment3Pos;
-    private Vector3 m_attachment4Pos;
+    private Vector3 m_attachmentFrontPos;
+    private Vector3 m_attachmentBackPos;
+    private Vector3 m_attachmentRightPos;
+    private Vector3 m_attachmentLeftPos;
 
-    private Quaternion m_attachment1Rot;
-    private Quaternion m_attachment2Rot;
-    private Quaternion m_attachment3Rot;
-    private Quaternion m_attachment4Rot;
+    private Quaternion m_attachmentFrontRot;
+    private Quaternion m_attachmentBackRot;
+    private Quaternion m_attachmentRightRot;
+    private Quaternion m_attachmentLeftRot;
 
     public bool isShieldUp;
     public bool didHitShield;
@@ -57,10 +58,10 @@ public class WeaponController : MonoBehaviour
         //offsets position from parent 
         Vector3 attachmentPerch = this.transform.position + transform.up * 0.3f;
 
-        attachmentScript1 = BuildAndAttachWeapon(client.c_attachmentFront, attachmentPerch + transform.forward * 0.6f, Quaternion.identity);
-        attachmentScript2 = BuildAndAttachWeapon(client.c_attachmentBack, attachmentPerch + transform.forward * -0.6f, Quaternion.LookRotation(Vector3.back,Vector3.up));
-        attachmentScript3 = BuildAndAttachWeapon(client.c_attachmentRight, attachmentPerch + transform.right * 0.6f, Quaternion.LookRotation(Vector3.right,Vector3.up));
-        attachmentScript4 = BuildAndAttachWeapon(client.c_attachmentLeft, attachmentPerch + transform.right * -0.6f, Quaternion.LookRotation(Vector3.left,Vector3.up));
+        attachmentScriptFront = BuildAndAttachWeapon(client.c_attachmentFront, attachmentPerch + transform.forward * 0.6f, Quaternion.identity);
+        attachmentScriptBack = BuildAndAttachWeapon(client.c_attachmentBack, attachmentPerch + transform.forward * -0.6f, Quaternion.LookRotation(Vector3.back,Vector3.up));
+        attachmentScriptRight = BuildAndAttachWeapon(client.c_attachmentRight, attachmentPerch + transform.right * 0.6f, Quaternion.LookRotation(Vector3.right,Vector3.up));
+        attachmentScriptLeft = BuildAndAttachWeapon(client.c_attachmentLeft, attachmentPerch + transform.right * -0.6f, Quaternion.LookRotation(Vector3.left,Vector3.up));
 
 
     }
@@ -83,49 +84,49 @@ public class WeaponController : MonoBehaviour
 
     void AttachmentPosTracker()
     {
-        m_attachment1Pos = this.transform.position + transform.forward * 0.7f + transform.up * 0.15f;
-        m_attachment1Rot = this.transform.rotation;
-        m_attachment2Pos = this.transform.position + transform.forward * -0.7f + transform.up * 0.15f;
-        m_attachment2Rot = this.transform.rotation;
-        m_attachment3Pos = this.transform.position + transform.right * 0.7f + transform.up * 0.15f;
-        m_attachment3Rot = this.transform.rotation;
-        m_attachment4Pos = this.transform.position + transform.right * -0.7f + transform.up * 0.15f;
-        m_attachment4Rot = this.transform.rotation;
+        m_attachmentFrontPos = this.transform.position + transform.forward * 0.7f + transform.up * 0.15f;
+        m_attachmentFrontRot = this.transform.rotation;
+        m_attachmentBackPos = this.transform.position + transform.forward * -0.7f + transform.up * 0.15f;
+        m_attachmentBackRot = this.transform.rotation;
+        m_attachmentRightPos = this.transform.position + transform.right * 0.7f + transform.up * 0.15f;
+        m_attachmentRightRot = this.transform.rotation;
+        m_attachmentLeftPos = this.transform.position + transform.right * -0.7f + transform.up * 0.15f;
+        m_attachmentLeftRot = this.transform.rotation;
     }
 
     void FixedUpdate()
     {
         //timer to check if the weapon is fireable
-        if(a1Cooldown <= m_cooldownTime1)
+        if(aFrontCooldown <= m_cooldownTime1)
         {
-            a1_isFireable = true;
+            front_isFireable = true;
         }
         else
         {
             m_cooldownTime1 ++;
         }
 
-        if (a2Cooldown <= m_cooldownTime2)
+        if (aBackCooldown <= m_cooldownTime2)
         {
-            a2_isFireable = true;
+            back_isFireable = true;
         }
         else
         {
             m_cooldownTime2++;
         }
 
-        if (a3Cooldown <= m_cooldownTime3)
+        if (aRightCooldown <= m_cooldownTime3)
         {
-            a3_isFireable = true;
+            right_isFireable = true;
         }
         else
         {
             m_cooldownTime3++;
         }
 
-        if (a4Cooldown <= m_cooldownTime4)
+        if (aLeftCooldown <= m_cooldownTime4)
         {
-            a4_isFireable = true;
+            left_isFireable = true;
         }
         else
         {
@@ -138,22 +139,22 @@ public class WeaponController : MonoBehaviour
     private void OnFire1(InputValue input)
     {
         //before firing it checks if the weapon is fireable
-        if(a1_isFireable == true)
+        if(front_isFireable == true)
         {
             //if attachmentScript1 exists, Fire using provided position + rotation
-            attachmentScript1?.Fire(m_attachment1Pos, m_attachment1Rot);
+            attachmentScriptFront?.Fire(m_attachmentFrontPos, m_attachmentFrontRot);
             //sets the bool to false and the timer to 0 so the cooldown essentailly resets
-            a1_isFireable = false;
+            front_isFireable = false;
             m_cooldownTime1 = 0;
         }
     }
 
     private void OnFire2(InputValue input)
     {
-        if(a2_isFireable == true)
+        if(right_isFireable == true)
         {
-            attachmentScript2?.Fire(m_attachment2Pos, m_attachment2Rot);
-            a2_isFireable = false;
+            attachmentScriptRight?.Fire(m_attachmentRightPos, m_attachmentRightRot);
+            right_isFireable = false;
             m_cooldownTime2 = 0;
         }
         
@@ -161,10 +162,10 @@ public class WeaponController : MonoBehaviour
 
     private void OnFire3(InputValue input)
     {
-        if(a3_isFireable == true)
+        if(back_isFireable == true)
         {
-            attachmentScript3?.Fire(m_attachment3Pos, m_attachment3Rot);
-            a3_isFireable = false;
+            attachmentScriptBack?.Fire(m_attachmentBackPos, m_attachmentBackRot);
+            back_isFireable = false;
             m_cooldownTime3 = 0;
         }
         
@@ -172,10 +173,10 @@ public class WeaponController : MonoBehaviour
 
     private void OnFire4(InputValue input)
     {
-        if(a4_isFireable == true)
+        if(left_isFireable == true)
         {
-            attachmentScript4?.Fire(m_attachment4Pos, m_attachment4Rot);
-            a4_isFireable = false;
+            attachmentScriptLeft?.Fire(m_attachmentLeftPos, m_attachmentLeftRot);
+            left_isFireable = false;
             m_cooldownTime4 = 0;
         }
         

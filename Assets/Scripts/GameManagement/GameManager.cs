@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WeaponSelectManager weaponSelectManager;
     [SerializeField] private GameEndUIManager gameEndUIManager;
 
+
+    public bool CanStartGameWithOnePlayer = true;
     public int rounds = 3;
 
     public int roundCount;
@@ -48,6 +50,9 @@ public class GameManager : MonoBehaviour
     {
         //on start this will set the live player count to the saved playercount, this should be changed later to do this at the start of every round so we can get a freshed reset clock every round
         menuManager = menus.GetComponent<MenuManager>();
+    #if !UNITY_EDITOR
+        CanStartGameWithOnePlayer = false;
+    #endif
     }
 
     public void OnPlayerDeath(PlayerController player)

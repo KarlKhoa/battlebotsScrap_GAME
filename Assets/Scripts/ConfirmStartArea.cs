@@ -8,7 +8,7 @@ public class ConfirmStartArea : MonoBehaviour
     private int playersOnMe;
     private void FixedUpdate()
     {
-        if(playersOnMe >= GameManager.Instance.registeredClients.Count && playersOnMe >= 2)
+        if(playersOnMe >= GameManager.Instance.registeredClients.Count && (playersOnMe >= 2 || GameManager.Instance.CanStartGameWithOnePlayer))
         {
             if(timeTilStart <= 0)
             {

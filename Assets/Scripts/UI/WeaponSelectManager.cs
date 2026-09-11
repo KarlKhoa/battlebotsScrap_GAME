@@ -25,6 +25,7 @@ public class WeaponSelectManager : MonoBehaviour
     public Sprite noWeapon;
 
     private List<Image> weaponSelectButtonImages = new();
+    private List<Image> weaponSelectButtonIcons = new();
 
     private List<Button> weaponSelectButtons = new();
 
@@ -66,6 +67,7 @@ public class WeaponSelectManager : MonoBehaviour
 
         weaponSelectButtons.Clear();
         weaponSelectButtonImages.Clear();
+        weaponSelectButtonIcons.Clear();
 
         GameManager.Instance.StartRound();
     }
@@ -85,6 +87,7 @@ public class WeaponSelectManager : MonoBehaviour
                 button.onClick.AddListener(delegate { SelectWeapon(weapon); });
                 weaponSelectButtons.Add(button);
                 weaponSelectButtonImages.Add(button.GetComponent<Image>());
+                weaponSelectButtonIcons.Add(button.transform.GetChild(0).GetComponent<Image>());
             }
             
             GameManager.Instance.firstSelectedWeaponUI = weaponSelectButtons[0].gameObject;
@@ -173,6 +176,7 @@ public class WeaponSelectManager : MonoBehaviour
         for(int i = 0; i < weaponPool.Count; i++)
         {
             weaponSelectButtonImages[i].sprite = weaponPool[i].selectSprite;
+            weaponSelectButtonIcons[i].sprite = weaponPool[i].selectIcon;
         }
 
         /*

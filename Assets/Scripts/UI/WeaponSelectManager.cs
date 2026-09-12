@@ -22,13 +22,24 @@ public class WeaponSelectManager : MonoBehaviour
 
     private Client m_client;
 
+
     public Sprite noWeapon;
+
+    private bool playerSelectUIOn;
+    public GameObject selectUI;
 
     private List<Image> weaponSelectButtonImages = new();
     private List<Image> weaponSelectButtonIcons = new();
 
     private List<Button> weaponSelectButtons = new();
 
+    void Update()
+    {
+        if( playerSelectUIOn == true)
+        {
+
+        }
+    }
 
     public void WeaponSelectionSequence()
     {

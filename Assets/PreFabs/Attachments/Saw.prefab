@@ -47,8 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07673cfaf6d22fd4889e5bfba375d993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSprite: {fileID: 21300000, guid: 2f7b8e5c166d7a248a8b0e9576907c5e, type: 3}
-  selectIcon: {fileID: 21300000, guid: be340a165cb9c8d4cb50f1deeb51d4ea, type: 3}
+  iconPosMinOffset: {x: 1, y: -11}
+  iconPosMaxOffset: {x: -1, y: -17.5}
+  iconRotation: {x: 0, y: 0, z: 0, w: 0}
+  iconScale: {x: 1.2, y: 1.2, z: 1.2}
+  selectBackdrop: {fileID: 21300000, guid: d566e2554a8c61e498728cd2431a4e87, type: 3}
+  selectIcon: {fileID: 21300000, guid: 5acc3d5b31bf40a4d8806033fd3a1e87, type: 3}
+  selectLabel: {fileID: 21300000, guid: 653d79ef8c4609148aae7bfc13385deb, type: 3}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}
 --- !u!64 &894996938249348213

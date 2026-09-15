@@ -28,8 +28,11 @@ public class WeaponSelectManager : MonoBehaviour
     private bool playerSelectUIOn;
     public GameObject selectUI;
 
-    private List<Image> weaponSelectButtonImages = new();
+    private List<Image> weaponSelectButtonBackdrops = new();
+    private List<Image> weaponSelectButtonLabels = new();
     private List<Image> weaponSelectButtonIcons = new();
+    
+    private List<RectTransform> weaponSelectIconTransforms = new();
 
     private List<Button> weaponSelectButtons = new();
 
@@ -77,8 +80,11 @@ public class WeaponSelectManager : MonoBehaviour
         }
 
         weaponSelectButtons.Clear();
-        weaponSelectButtonImages.Clear();
+        weaponSelectIconTransforms.Clear();
+        weaponSelectButtonBackdrops.Clear();
+        weaponSelectButtonLabels.Clear();
         weaponSelectButtonIcons.Clear();
+
 
         GameManager.Instance.StartRound();
     }
@@ -97,12 +103,13 @@ public class WeaponSelectManager : MonoBehaviour
                 var button = Instantiate(selectionButtonPrefab, Vector3.zero, Quaternion.identity, selectionButtonContainer);
                 button.onClick.AddListener(delegate { SelectWeapon(weapon); });
                 weaponSelectButtons.Add(button);
-                weaponSelectButtonImages.Add(button.GetComponent<Image>());
-                weaponSelectButtonIcons.Add(button.transform.GetChild(0).GetComponent<Image>());
+                weaponSelectButtonBackdrops.Add(button.GetComponent<Image>());
+                weaponSelectButtonLabels.Add(button.transform.GetChild(0).GetComponent<Image>());
+                weaponSelectButtonIcons.Add(button.transform.GetChild(1).GetComponent<Image>());
+                weaponSelectIconTransforms.Add(button.transform.GetChild(1).GetComponent<RectTransform>());
             }
             
             GameManager.Instance.firstSelectedWeaponUI = weaponSelectButtons[0].gameObject;
-        
 
             if(weaponPool.Count >= 1)
             {               
@@ -186,8 +193,15 @@ public class WeaponSelectManager : MonoBehaviour
 
         for(int i = 0; i < weaponPool.Count; i++)
         {
-            weaponSelectButtonImages[i].sprite = weaponPool[i].selectSprite;
+            weaponSelectButtonBackdrops[i].sprite = weaponPool[i].selectBackdrop;
+            weaponSelectButtonLabels[i].sprite = weaponPool[i].selectLabel;
             weaponSelectButtonIcons[i].sprite = weaponPool[i].selectIcon;
+            
+            weaponSelectIconTransforms[i].offsetMin = weaponPool[i].iconPosMinOffset; //left + bottom values for rect transform
+            weaponSelectIconTransforms[i].offsetMax = weaponPool[i].iconPosMaxOffset; //right + top values for rect transform
+            weaponSelectIconTransforms[i].localScale = weaponPool[i].iconScale;
+            weaponSelectIconTransforms[i].rotation = weaponPool[i].iconRotation;
+            
         }
 
         /*

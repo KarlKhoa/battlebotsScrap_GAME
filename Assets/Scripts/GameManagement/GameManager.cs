@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     {
         ActivePlayers.Add(player);
     }
-
+    
     private int SortByPlayerScore(Client client1, Client client2)
     {
         return client1.playerScore.CompareTo(client2.playerScore);

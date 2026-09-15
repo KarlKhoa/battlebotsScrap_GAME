@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1337,7 +1337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1465674077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2296,6 +2296,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 756691033, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 756691033, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 756691034, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1144841125, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2304,6 +2316,38 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 15557006}
+    - target: {fileID: 1564169391, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564169392, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588695305, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588695305, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588695306, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098916719, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098916719, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098916720, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2710888079969662496, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
       propertyPath: m_Name
@@ -2367,13 +2411,18 @@ PrefabInstance:
     - target: {fileID: 4010562923567788328, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8323852691952790734, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
       propertyPath: selectUI
       value: 
       objectReference: {fileID: 1465674076}
+    - target: {fileID: 8678898848146641437, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
+      propertyPath: CanStartGameWithOnePlayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1227610372326868913, guid: d1255ab0d7647804eafa8698baa3d652,

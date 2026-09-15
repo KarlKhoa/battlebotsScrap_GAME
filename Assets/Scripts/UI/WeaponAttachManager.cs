@@ -51,7 +51,7 @@ public class WeaponAttachManager : MonoBehaviour
     {
         if(m_client.c_attachmentFront != null)
         {
-            weaponBiindButtonList[0].sprite = m_client.c_attachmentFront.selectSprite;
+            weaponBiindButtonList[0].sprite = m_client.c_attachmentFront.selectIcon;
         }
         else
         {
@@ -60,7 +60,7 @@ public class WeaponAttachManager : MonoBehaviour
 
         if(m_client.c_attachmentBack != null)
         {
-            weaponBiindButtonList[1].sprite = m_client.c_attachmentBack.selectSprite;
+            weaponBiindButtonList[1].sprite = m_client.c_attachmentBack.selectIcon;
         }
         else
         {
@@ -69,7 +69,7 @@ public class WeaponAttachManager : MonoBehaviour
 
         if(m_client.c_attachmentRight != null)
         {
-            weaponBiindButtonList[2].sprite = m_client.c_attachmentRight.selectSprite;
+            weaponBiindButtonList[2].sprite = m_client.c_attachmentRight.selectIcon;
         }
         else
         {
@@ -78,7 +78,7 @@ public class WeaponAttachManager : MonoBehaviour
 
         if(m_client.c_attachmentLeft != null)
         {
-            weaponBiindButtonList[3].sprite = m_client.c_attachmentLeft.selectSprite;
+            weaponBiindButtonList[3].sprite = m_client.c_attachmentLeft.selectIcon;
         }
         else
         {

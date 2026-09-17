@@ -36,11 +36,13 @@ public class WeaponSelectManager : MonoBehaviour
 
     private List<Button> weaponSelectButtons = new();
 
+    private Client currentPlayerInControl;
+
     void Update()
     {
         if( playerSelectUIOn == true)
         {
-
+            selectUI.transform.position = currentPlayerInControl.EventSystem.currentSelectedGameObject.transform.position;
         }
     }
 
@@ -57,7 +59,7 @@ public class WeaponSelectManager : MonoBehaviour
 
         foreach(var player in orderedClients)
         {
-            var playerClient = player.GetComponent<Client>();
+            playerClient = player.GetComponent<Client>();
             playerClient.ToggleUIAccess(false);
         }
 
@@ -67,6 +69,7 @@ public class WeaponSelectManager : MonoBehaviour
             var playerClient = player.GetComponent<Client>();
             UpdateButtonDisplay(playerClient);
             playerClient.ToggleUIAccess(true);
+            currentPlayerInControl = playerClient;
             SelectWeaponForClient(playerClient);
             yield return new WaitUntil(() => !UIIsBusy);
             playerClient.ToggleUIAccess(false);

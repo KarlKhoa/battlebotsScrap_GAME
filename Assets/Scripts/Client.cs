@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.Serialization;
+using UnityEngine.EventSystems;
 
 
 //throws null object reference errors
@@ -28,6 +29,9 @@ public class Client : MonoBehaviour
 
     public PlayerInput input;
     private MultiplayerEventSystem _multiplayerEventSystem;
+
+    public EventSystem EventSystem => _multiplayerEventSystem;
+
     private InputSystemUIInputModule _uiInputModule;
 
     void Start()

@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     public GameObject weaponAttach;
     public GameObject gameEnd;
 
+    public ButtonTargeter ButtonTargeter;
 
     public GameObject weaponSelectFirstButton;
     public GameObject weaponAttachFirstButton;

@@ -26,7 +26,8 @@ public class WeaponSelectManager : MonoBehaviour
     public Sprite noWeapon;
 
     private bool playerSelectUIOn;
-    public GameObject selectUI;
+ 
+    [SerializeField] private GameObject activeSelectUI;
 
     private List<Image> weaponSelectButtonBackdrops = new();
     private List<Image> weaponSelectButtonLabels = new();
@@ -40,9 +41,10 @@ public class WeaponSelectManager : MonoBehaviour
 
     void Update()
     {
-        if( playerSelectUIOn == true)
+
+        if( playerSelectUIOn && currentPlayerInControl && currentPlayerInControl.EventSystem.currentSelectedGameObject)
         {
-            selectUI.transform.position = currentPlayerInControl.EventSystem.currentSelectedGameObject.transform.position;
+            menuManager.ButtonTargeter.SetTargetPosition(currentPlayerInControl.EventSystem.currentSelectedGameObject.transform.position);
         }
     }
 
@@ -54,12 +56,15 @@ public class WeaponSelectManager : MonoBehaviour
     IEnumerator WeaponSelectionSequence_Internal()
     {
         CreateWeaponPool();
+
+        playerSelectUIOn = true;
+        menuManager.ButtonTargeter.ShowTarget(true);
         
         var orderedClients = GameManager.Instance.ClientsByScoreAscending;
 
         foreach(var player in orderedClients)
         {
-            playerClient = player.GetComponent<Client>();
+            var playerClient = player.GetComponent<Client>();
             playerClient.ToggleUIAccess(false);
         }
 
@@ -70,6 +75,9 @@ public class WeaponSelectManager : MonoBehaviour
             UpdateButtonDisplay(playerClient);
             playerClient.ToggleUIAccess(true);
             currentPlayerInControl = playerClient;
+            var uiColour = GameManager.Instance.PlayerVisuals.GetColourForClient(playerClient);
+            activeSelectUI.GetComponent<Image>().color = uiColour;
+            menuManager.ButtonTargeter.SetTargetColour(uiColour);
             SelectWeaponForClient(playerClient);
             yield return new WaitUntil(() => !UIIsBusy);
             playerClient.ToggleUIAccess(false);
@@ -87,8 +95,8 @@ public class WeaponSelectManager : MonoBehaviour
         weaponSelectButtonBackdrops.Clear();
         weaponSelectButtonLabels.Clear();
         weaponSelectButtonIcons.Clear();
-
-
+        menuManager.ButtonTargeter.ShowTarget(false);
+        playerSelectUIOn = false;
         GameManager.Instance.StartRound();
     }
 

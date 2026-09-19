@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
     public GameObject weaponSelectFirstButton;
     public GameObject weaponAttachFirstButton;
 
-    public GameObject transition;
+    public TransitionUI transition;
 
     private bool isNotFirstSelectionOfRound;
     private bool currentRoundClock;
@@ -59,7 +59,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleTransitionUI(bool state)
     {
-        transition.SetActive(state);
+        transition.gameObject.SetActive(state);
         
     }
 }

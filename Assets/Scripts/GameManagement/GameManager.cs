@@ -79,6 +79,8 @@ public class GameManager : MonoBehaviour
 
     public void EndRound()
     {
+        menuManager.ToggleTransitionUI(true);
+        StartCoroutine(menuManager.transition.EndOfRoundTransitionSequence(ActivePlayers[0].GetComponent<Client>(), roundCount, rounds));
         if(roundCount >= rounds)
         {
             EndGame();
@@ -113,6 +115,8 @@ public class GameManager : MonoBehaviour
     public void StartRound()
     {
         hasSelectionStarted = false;
+        menuManager.ToggleTransitionUI(true);
+        StartCoroutine(menuManager.transition.StartOfRoundTransitionSequence(roundCount, rounds));
         for(int i = 0; i < registeredClients.Count; i++)
         {
             registeredClients[i].SpawnRequest();

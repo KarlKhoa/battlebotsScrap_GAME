@@ -8,29 +8,32 @@ using TMPro;
 public class TransitionUI : MonoBehaviour
 {
     public TextMeshProUGUI transitionText;
-    private float targetTime;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        targetTime -= Time.deltaTime;
-    }
-
-    public void TransitionSequence(int currentRound, int totalRounds)
+    public IEnumerator EndOfRoundTransitionSequence(Client client,int currentRound, int totalRounds)
     {
         transitionText.text = $"Round {currentRound}/{totalRounds} has Ended";
-        Timer(10);
-        transitionText.text = $"Round{currentRound}/{totalRounds} has Started"; 
+        yield return new WaitForSeconds(3f);
+        transitionText.text = $"{client} has Won!";
+        yield return new WaitForSeconds(3f);
+        this.gameObject.SetActive(false);
     }
 
-    public void Timer(float time)
+    public IEnumerator StartOfRoundTransitionSequence(int currentRound, int totalRounds)
     {
-        targetTime = time;
+        Debug.Log("transition sequence started");
+        transitionText.text = $"Round {currentRound}/{totalRounds}";
+        yield return new WaitForSeconds(3f);
+        transitionText.text = "Round Starts in";
+        yield return new WaitForSeconds(3f);
+        transitionText.text = "3";
+        yield return new WaitForSeconds(1f);
+        transitionText.text = "2";
+        yield return new WaitForSeconds(1f);
+        transitionText.text = "1";
+        yield return new WaitForSeconds(1f);
+        transitionText.text = "SCRAP!";
+        yield return new WaitForSeconds(1f);
+        this.gameObject.SetActive(false);
     }
 
 }

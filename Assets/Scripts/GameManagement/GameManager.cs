@@ -18,9 +18,11 @@ public class GameManager : MonoBehaviour
 
     public List<Client> ClientsByScoreAscending => registeredClients.OrderBy(_ => _.playerScore).ToList();
 
+    //public GameObject welcomeMat;
     public GameObject menus;
     public GameObject firstSelectedWeaponUI; //store this so we can force users to select the correct UI component when reenabling UI controls - MEL
-    private MenuManager menuManager;
+    public MenuManager menuManager;
+    //public ConfirmStartArea confirmStartArea;
     [SerializeField] private WeaponSelectManager weaponSelectManager;
     [SerializeField] private GameEndUIManager gameEndUIManager;
 
@@ -50,10 +52,16 @@ public class GameManager : MonoBehaviour
     {
         //on start this will set the live player count to the saved playercount, this should be changed later to do this at the start of every round so we can get a freshed reset clock every round
         menuManager = menus.GetComponent<MenuManager>();
+        //confirmStartArea = welcomeMat.GetComponent<ConfirmStartArea>();
     #if !UNITY_EDITOR
         CanStartGameWithOnePlayer = false;
     #endif
+        //EnterLobby();
     }
+    
+    
+    
+    
 
     public void OnPlayerDeath(PlayerController player)
     {
@@ -125,6 +133,15 @@ public class GameManager : MonoBehaviour
         
         roundCount++;
     }
+    
+    
+    /*public void EnterLobby()
+    {
+        menuManager.ToggleTransitionUI(true);
+        StartCoroutine(menuManager.transition.LobbyTransitionSequence(confirmStartArea.playersOnMe, confirmStartArea.timeTilStart));
+    }*/
+    
+
 
     public void RegisterClient(Client client)
     {

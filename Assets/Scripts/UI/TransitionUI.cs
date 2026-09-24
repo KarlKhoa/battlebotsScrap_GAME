@@ -7,33 +7,52 @@ using TMPro;
 
 public class TransitionUI : MonoBehaviour
 {
-    public TextMeshProUGUI transitionText;
+    public TextMeshProUGUI transitionHeader;
+    public TextMeshProUGUI transitionBody;
 
     public IEnumerator EndOfRoundTransitionSequence(Client client,int currentRound, int totalRounds)
     {
-        transitionText.text = $"Round {currentRound}/{totalRounds} has Ended";
-        yield return new WaitForSeconds(3f);
-        transitionText.text = $"{client} has Won!";
+        transitionHeader.text = $"Round {currentRound}/{totalRounds} over!";
+        transitionBody.text = $"{client} won!";
         yield return new WaitForSeconds(3f);
         this.gameObject.SetActive(false);
     }
 
     public IEnumerator StartOfRoundTransitionSequence(int currentRound, int totalRounds)
     {
-        Debug.Log("transition sequence started");
-        transitionText.text = $"Round {currentRound}/{totalRounds}";
-        yield return new WaitForSeconds(3f);
-        transitionText.text = "Round Starts in";
-        yield return new WaitForSeconds(3f);
-        transitionText.text = "3";
+        Debug.Log("Round transition sequence started");
+        transitionHeader.text = $"Round {currentRound}/{totalRounds} starts in...";
+        transitionBody.text = "3";
         yield return new WaitForSeconds(1f);
-        transitionText.text = "2";
+        transitionBody.text = "2";
         yield return new WaitForSeconds(1f);
-        transitionText.text = "1";
+        transitionBody.text = "1";
         yield return new WaitForSeconds(1f);
-        transitionText.text = "SCRAP!";
+        transitionBody.text = "SCRAP!";
         yield return new WaitForSeconds(1f);
         this.gameObject.SetActive(false);
+    }
+
+    public IEnumerator LobbyTransitionSequence(int playersJoined, int timeTilStart)
+    {
+        //Debug.Log("Lobby transition sequence started");
+        transitionHeader.text = $"{playersJoined}/4 players ready";
+        transitionBody.text = " ";
+        if (playersJoined >= 1)
+        {
+            transitionBody.text = $"{timeTilStart}";
+        }
+        /*transitionBody.text = $"3";
+        yield return new WaitForSeconds(1f);
+        transitionBody.text = $"2";
+        yield return new WaitForSeconds(1f);
+        transitionBody.text = $"1";*/
+        yield return new WaitForSeconds(10f);
+        if (timeTilStart >= 0f)
+        {
+            this.gameObject.SetActive(false);
+        }
+
     }
 
 }

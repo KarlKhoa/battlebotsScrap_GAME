@@ -16,7 +16,7 @@ public class Client : MonoBehaviour
     
     public int playerScore = 0;
 
-    //temprorary code to test bot attachments
+    //bot attachments
     [FormerlySerializedAs("c_attachment1")] public Weapon c_attachmentFront;
     [FormerlySerializedAs("c_attachment2")] public Weapon c_attachmentBack;
     [FormerlySerializedAs("c_attachment3")] public Weapon c_attachmentRight;

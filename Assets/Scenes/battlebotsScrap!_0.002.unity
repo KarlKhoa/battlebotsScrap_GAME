@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17281847, g: 0.21596122, b: 0.2979071, a: 1}
+  m_IndirectSpecularColor: {r: 0.17281821, g: 0.21596095, b: 0.29790625, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1479,8 +1479,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 202a02f4bc3aabb4eb45c0a167491974, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 0e51bfb31cc9bcb4191d6049285efe92, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2274,6 +2274,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plane
       objectReference: {fileID: 0}
+    - target: {fileID: 3329080214317504911, guid: f52168af565694b4bb0179f97a5b5bfa,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329080214317504911, guid: f52168af565694b4bb0179f97a5b5bfa,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 44c49a270dbdee243a4239ce4db2c597, type: 2}
+    - target: {fileID: 3329080214317504911, guid: f52168af565694b4bb0179f97a5b5bfa,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 93b39e134b9954149814d778d392b995, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f52168af565694b4bb0179f97a5b5bfa, type: 3}
@@ -2389,15 +2404,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2076158478, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
       propertyPath: m_Color.b
-      value: 0.46226418
+      value: 0.6981132
       objectReference: {fileID: 0}
     - target: {fileID: 2076158478, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
       propertyPath: m_Color.g
-      value: 0.46226418
+      value: 0.47623554
       objectReference: {fileID: 0}
     - target: {fileID: 2076158478, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
       propertyPath: m_Color.r
-      value: 0.46226418
+      value: 0.4313813
       objectReference: {fileID: 0}
     - target: {fileID: 2098916719, guid: d1255ab0d7647804eafa8698baa3d652, type: 3}
       propertyPath: m_Colors.m_NormalColor.a
@@ -2445,9 +2460,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 249425398713577860, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 249425398713577860, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 202a02f4bc3aabb4eb45c0a167491974,
+      objectReference: {fileID: 21300000, guid: 0e51bfb31cc9bcb4191d6049285efe92,
         type: 3}
     - target: {fileID: 249425398713577860, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
@@ -2524,6 +2544,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4725802629121439186, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8323852691952790734, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
       propertyPath: selectUI
@@ -2544,6 +2569,11 @@ PrefabInstance:
       propertyPath: activeSelectUI
       value: 
       objectReference: {fileID: 4341347246900041494}
+    - target: {fileID: 8651880566472719710, guid: d1255ab0d7647804eafa8698baa3d652,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8678898848146641437, guid: d1255ab0d7647804eafa8698baa3d652,
         type: 3}
       propertyPath: CanStartGameWithOnePlayer

@@ -13,15 +13,18 @@ public class TransitionUI : MonoBehaviour
     public IEnumerator EndOfRoundTransitionSequence(Client client,int currentRound, int totalRounds)
     {
         transitionHeader.text = $"Round {currentRound}/{totalRounds} over!";
-        transitionBody.text = $"{client} won!";
+        transitionBody.text = $"{client} wins!";
         yield return new WaitForSeconds(3f);
         this.gameObject.SetActive(false);
     }
 
     public IEnumerator StartOfRoundTransitionSequence(int currentRound, int totalRounds)
     {
+        
         Debug.Log("Round transition sequence started");
         transitionHeader.text = $"Round {currentRound}/{totalRounds} starts in...";
+        //transitionBody.text = $"{timeTilStart}";
+        //move this countdown to gamemanager, don't use waitforseconds just use deltatime like in lobby. make it so this sequence happens during bind screen instead of after round start so we aren't playing while it happens
         transitionBody.text = "3";
         yield return new WaitForSeconds(1f);
         transitionBody.text = "2";
@@ -52,11 +55,6 @@ public class TransitionUI : MonoBehaviour
         {
             transitionBody.text = $"{timeTilStart}";
         }
-        /*transitionBody.text = $"3";
-        yield return new WaitForSeconds(1f);
-        transitionBody.text = $"2";
-        yield return new WaitForSeconds(1f);
-        transitionBody.text = $"1";*/
         if (timeTilStart >= 0f)
         {
             yield return new WaitForSeconds(0.1f);

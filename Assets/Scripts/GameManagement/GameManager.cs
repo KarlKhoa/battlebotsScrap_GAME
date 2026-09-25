@@ -8,44 +8,32 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance {get; private set;}
-
-[SerializeField] private ConfirmStartArea _welcomeMat;
-    [SerializeField] private PlayerVisualManager _playerVisualsManager;
     public PlayerVisualManager PlayerVisuals => _playerVisualsManager; 
-
     public WeaponRegistry WeaponsRegistry;
-
     public List<Client> registeredClients;
-
     public List<Client> ClientsByScoreAscending => registeredClients.OrderBy(_ => _.playerScore).ToList();
-
-    //public GameObject welcomeMat;
+    public List<PlayerController> ActivePlayers = new();
     public GameObject menus;
     public GameObject firstSelectedWeaponUI; //store this so we can force users to select the correct UI component when reenabling UI controls - MEL
     public MenuManager menuManager;
-    //public ConfirmStartArea confirmStartArea;
     [SerializeField] private WeaponSelectManager weaponSelectManager;
     [SerializeField] private GameEndUIManager gameEndUIManager;
+    [SerializeField] private ConfirmStartArea _welcomeMat;
+    [SerializeField] private PlayerVisualManager _playerVisualsManager;
 
     public float StartGameCountdownDurationSeconds = 5;
+    public int rounds = 3;
+    public int roundCount;
 
     public bool CanStartGameWithOnePlayer = true;
-    public int rounds = 3;
-
-    public int roundCount;
     public bool isLobbyOver = false;
-
-
-    public List<PlayerController> ActivePlayers = new();
-    
     public static bool hasGameStartedYet = false;
-
-    private bool hasSelectionStarted;
+    
+    
     private Coroutine _startLobbyCountdown;
+    private bool hasSelectionStarted;
     private bool _isDoingStartCountdown;
     private float _startLobbyCountdownCurrentDuration;
-
-    //public int playerIndex { get; } //unique zero-based player index. assign to each player + keep track
 
     private void Awake() 
     {
@@ -57,13 +45,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //on start this will set the live player count to the saved playercount, this should be changed later to do this at the start of every round so we can get a freshed reset clock every round
         menuManager = menus.GetComponent<MenuManager>();
-        //confirmStartArea = welcomeMat.GetComponent<ConfirmStartArea>();
     #if !UNITY_EDITOR
         CanStartGameWithOnePlayer = false;
     #endif
-        //EnterLobby();
     }
     
   
@@ -166,25 +151,16 @@ public class GameManager : MonoBehaviour
     public void StartRound()
     {
         hasSelectionStarted = false;
+        //put timer for transition screen here/if not relocating to after bind
         menuManager.ToggleTransitionUI(true);
         StartCoroutine(menuManager.transition.StartOfRoundTransitionSequence(roundCount, rounds));
         for(int i = 0; i < registeredClients.Count; i++)
         {
             registeredClients[i].SpawnRequest();
-            
         }
         
         roundCount++;
     }
-    
-    
-    /*public void EnterLobby()
-    {
-        menuManager.ToggleTransitionUI(true);
-        StartCoroutine(menuManager.transition.LobbyTransitionSequence(confirmStartArea.playersOnMe, confirmStartArea.timeTilStart));
-    }*/
-    
-
 
     public void RegisterClient(Client client)
     {

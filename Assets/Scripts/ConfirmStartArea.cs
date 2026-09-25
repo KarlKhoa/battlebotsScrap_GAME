@@ -7,29 +7,17 @@ using UnityEngine.Serialization;
 
 public class ConfirmStartArea : MonoBehaviour
 {
-    public float timeTilStart;
-    private int _timeTilStartInt;
     public int playersOnMe;
-    [SerializeField] private GameObject menus;
-
-    private void Update()
+ 
+    private bool HasSufficientPlayersToStart()
     {
-        _timeTilStartInt = (int)timeTilStart;
-        GameManager.Instance.menuManager.ToggleTransitionUI(true);
-        StartCoroutine(GameManager.Instance.menuManager.transition.LobbyTransitionSequence(playersOnMe, _timeTilStartInt));
-        
-        if(playersOnMe >= GameManager.Instance.registeredClients.Count && (playersOnMe >= 2 || GameManager.Instance.CanStartGameWithOnePlayer))
-        {
-            timeTilStart -= Time.fixedDeltaTime * 0.3f;
-            if(timeTilStart <= 0)
-            {
-                GameManager.Instance.menuManager.ToggleTransitionUI(false);
-                GameManager.Instance.StartGame();
-                this.gameObject.SetActive(false);
-            }
-            
-        }
+        var minimumPlayers = GameManager.Instance.CanStartGameWithOnePlayer ? 1 : 2;
+        if(playersOnMe < minimumPlayers) return false;
+        if(playersOnMe < GameManager.Instance.registeredClients.Count) return false;
+        //if(isLobbyOver) { this.gameObject.SetActive(false);};
+        return true;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         //if the object we collided with has a PlayerController
@@ -37,9 +25,11 @@ public class ConfirmStartArea : MonoBehaviour
         {
             playersOnMe++;
             Debug.Log("A Player entered the start area");
+            if(HasSufficientPlayersToStart())
+            {
+                GameManager.Instance.StartGameCountdown();
+            }
         }
-        else { return; }
-        
     }
 
     private void OnTriggerExit(Collider other)
@@ -48,7 +38,15 @@ public class ConfirmStartArea : MonoBehaviour
         if (other.TryGetComponent<PlayerController>(out var playerController))
         {
             playersOnMe--;
+            if(!HasSufficientPlayersToStart())
+            {
+                GameManager.Instance.StopGameCountdown();
+            }
         }
-        else { return; }
+    }
+
+    public void DisableSelf()
+    {
+        this.gameObject.SetActive(false);
     }
 }

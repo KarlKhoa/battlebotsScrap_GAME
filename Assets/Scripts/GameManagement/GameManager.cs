@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance {get; private set;}
 
+[SerializeField] private ConfirmStartArea _welcomeMat;
     [SerializeField] private PlayerVisualManager _playerVisualsManager;
     public PlayerVisualManager PlayerVisuals => _playerVisualsManager; 
 
@@ -26,17 +27,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WeaponSelectManager weaponSelectManager;
     [SerializeField] private GameEndUIManager gameEndUIManager;
 
+    public float StartGameCountdownDurationSeconds = 5;
 
     public bool CanStartGameWithOnePlayer = true;
     public int rounds = 3;
 
     public int roundCount;
+    public bool isLobbyOver = false;
+
 
     public List<PlayerController> ActivePlayers = new();
     
     public static bool hasGameStartedYet = false;
 
     private bool hasSelectionStarted;
+    private Coroutine _startLobbyCountdown;
+    private bool _isDoingStartCountdown;
+    private float _startLobbyCountdownCurrentDuration;
 
     //public int playerIndex { get; } //unique zero-based player index. assign to each player + keep track
 
@@ -59,7 +66,43 @@ public class GameManager : MonoBehaviour
         //EnterLobby();
     }
     
-    
+  
+    public void StartGameCountdown()
+    {
+        if(!_isDoingStartCountdown)
+        {
+            _isDoingStartCountdown = true;
+            _startLobbyCountdown = StartCoroutine(LobbyCountdown());
+        }
+    }
+
+    public IEnumerator LobbyCountdown()
+    {
+        _startLobbyCountdownCurrentDuration = StartGameCountdownDurationSeconds;
+        menuManager.ToggleTransitionUI(true);
+        menuManager.transition.SetTransitionTitle("Game Starts In...");
+        while(_startLobbyCountdownCurrentDuration > 0)
+        {
+            menuManager.transition.UpdateCountdownTimer(_startLobbyCountdownCurrentDuration);
+            yield return new WaitForEndOfFrame();
+            _startLobbyCountdownCurrentDuration -= Time.deltaTime;
+        }
+        StartGame();
+        menuManager.ToggleTransitionUI(false);
+        _welcomeMat.gameObject.SetActive(false);
+        _welcomeMat.playersOnMe = 0;
+    }
+
+    public void StopGameCountdown()
+    {
+        if(_isDoingStartCountdown)
+        {
+            _isDoingStartCountdown = false;
+            if(_startLobbyCountdown != null)
+                StopCoroutine(_startLobbyCountdown);
+            menuManager.ToggleTransitionUI(false);
+        }
+    }
     
     
 

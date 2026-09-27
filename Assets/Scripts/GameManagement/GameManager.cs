@@ -21,19 +21,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ConfirmStartArea _welcomeMat;
     [SerializeField] private PlayerVisualManager _playerVisualsManager;
 
-    public float StartGameCountdownDurationSeconds = 5;
+    public float lobbyCountdownDuration = 5;
+    public float roundCountdownDuration = 3;
+    private float _currentLobbyCountdownDuration;
+    private float _currentRoundCountdownDuration;
     public int rounds = 3;
     public int roundCount;
 
     public bool CanStartGameWithOnePlayer = true;
     public bool isLobbyOver = false;
-    public static bool hasGameStartedYet = false;
-    
-    
-    private Coroutine _startLobbyCountdown;
     private bool hasSelectionStarted;
     private bool _isDoingStartCountdown;
-    private float _startLobbyCountdownCurrentDuration;
+    //private bool _isDoingRoundCountdown = false;
+    public static bool hasGameStartedYet = false;
+    
+    private Coroutine _startLobbyCountdown;
+    private Coroutine _startBeginRoundCountdown;
 
     private void Awake() 
     {
@@ -63,19 +66,39 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator LobbyCountdown()
     {
-        _startLobbyCountdownCurrentDuration = StartGameCountdownDurationSeconds;
+        _currentLobbyCountdownDuration = lobbyCountdownDuration;
         menuManager.ToggleTransitionUI(true);
         menuManager.transition.SetTransitionTitle("Game Starts In...");
-        while(_startLobbyCountdownCurrentDuration > 0)
+        while(_currentLobbyCountdownDuration > 0)
         {
-            menuManager.transition.UpdateCountdownTimer(_startLobbyCountdownCurrentDuration);
+            menuManager.transition.UpdateCountdownTimer(_currentLobbyCountdownDuration);
             yield return new WaitForEndOfFrame();
-            _startLobbyCountdownCurrentDuration -= Time.deltaTime;
+            _currentLobbyCountdownDuration -= Time.deltaTime;
         }
         StartGame();
         menuManager.ToggleTransitionUI(false);
         _welcomeMat.gameObject.SetActive(false);
         _welcomeMat.playersOnMe = 0;
+    }
+
+    public IEnumerator RoundStartCountdown()
+    {
+        //_isDoingRoundCountdown = true;
+        _currentRoundCountdownDuration = roundCountdownDuration;
+        menuManager.ToggleTransitionUI(true);
+        menuManager.transition.SetTransitionTitle($"Round {roundCount}/{rounds} starts in...");
+        while (_currentRoundCountdownDuration > 0)
+        {
+            menuManager.transition.UpdateCountdownTimer(_currentRoundCountdownDuration);
+            yield return new WaitForEndOfFrame();
+            _currentRoundCountdownDuration -= Time.deltaTime;
+            menuManager.transition.SetTransitionBody("SCRAP!"); //doesn't do the thing
+        }
+
+        //_isDoingRoundCountdown = false;
+        //menuManager.transition.SetTransitionBody("SCRAP!");
+        menuManager.ToggleTransitionUI(false);
+        StartRound();
     }
 
     public void StopGameCountdown()
@@ -123,7 +146,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if(hasSelectionStarted == false)
+            if(!hasSelectionStarted)
         {
             hasSelectionStarted = true;
             for(int i = 0; i < registeredClients.Count; i++)
@@ -150,16 +173,20 @@ public class GameManager : MonoBehaviour
 
     public void StartRound()
     {
+        /*//put timer for transition screen here/if not relocating to after bind
+        StartCoroutine(RoundStartCountdown());*/
+        SpawnPlayersInRound();
+        roundCount++;
+    }
+
+
+    private void SpawnPlayersInRound()
+    {
         hasSelectionStarted = false;
-        //put timer for transition screen here/if not relocating to after bind
-        menuManager.ToggleTransitionUI(true);
-        StartCoroutine(menuManager.transition.StartOfRoundTransitionSequence(roundCount, rounds));
         for(int i = 0; i < registeredClients.Count; i++)
         {
             registeredClients[i].SpawnRequest();
         }
-        
-        roundCount++;
     }
 
     public void RegisterClient(Client client)

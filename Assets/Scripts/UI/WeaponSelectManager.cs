@@ -97,7 +97,8 @@ public class WeaponSelectManager : MonoBehaviour
         weaponSelectButtonIcons.Clear();
         menuManager.ButtonTargeter.ShowTarget(false);
         playerSelectUIOn = false;
-        GameManager.Instance.StartRound();
+        //GameManager.Instance.StartRound();
+        StartCoroutine(GameManager.Instance.RoundStartCountdown());
     }
 
 
@@ -112,7 +113,7 @@ public class WeaponSelectManager : MonoBehaviour
             foreach(var weapon in weaponPool)
             {
                 var button = Instantiate(selectionButtonPrefab, Vector3.zero, Quaternion.identity, selectionButtonContainer);
-                button.onClick.AddListener(delegate { SelectWeapon(weapon); });
+                button.onClick.AddListener(delegate { BindWeapon(weapon); });
                 weaponSelectButtons.Add(button);
                 weaponSelectButtonBackdrops.Add(button.GetComponent<Image>());
                 weaponSelectButtonLabels.Add(button.transform.GetChild(0).GetComponent<Image>());
@@ -151,7 +152,7 @@ public class WeaponSelectManager : MonoBehaviour
         
     }
     
-    private void SelectWeapon(Weapon weapon)
+    private void BindWeapon(Weapon weapon)
     {
         if(weapon != null)
         {
@@ -167,27 +168,27 @@ public class WeaponSelectManager : MonoBehaviour
 
     public void Weapon1Selected()
     {
-        SelectWeapon(weapon1);
+        BindWeapon(weapon1);
         weapon1 = null;
     }
     public void Weapon2Selected()
     {
-        SelectWeapon(weapon2);
+        BindWeapon(weapon2);
         weapon2 = null;
     }
     public void Weapon3Selected()
     {
-        SelectWeapon(weapon3);
+        BindWeapon(weapon3);
         weapon3 = null;
     }
     public void Weapon4Selected()
     {
-        SelectWeapon(weapon4);
+        BindWeapon(weapon4);
         weapon4 = null;
     }
     public void Weapon5Selected()
     {
-        SelectWeapon(weapon5);
+        BindWeapon(weapon5);
         weapon5 = null;
     }
 

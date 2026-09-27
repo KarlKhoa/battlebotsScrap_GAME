@@ -18,36 +18,27 @@ public class TransitionUI : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public IEnumerator StartOfRoundTransitionSequence(int currentRound, int totalRounds, int timeTilStart)
+    public IEnumerator StartOfRoundTransitionSequence(int currentRound, int totalRounds)
     {
         
         Debug.Log("Round transition sequence started");
-        //transitionHeader.text = $"Round {currentRound}/{totalRounds} starts in...";
-        //move this countdown to gamemanager, don't use waitforseconds just use deltatime like in lobby. make it so this sequence happens during bind screen instead of after round start so we aren't playing while it happens
+        transitionHeader.text = $"Round {currentRound}/{totalRounds} starts in...";
         //transitionBody.text = $"{timeTilStart}";
-        /*if (GameManager.)
-        {
-            transitionBody.text = "SCRAP!";
-        }*/
-        /*yield return new WaitForSeconds(1f);
+        //move this countdown to gamemanager, don't use waitforseconds just use deltatime like in lobby. make it so this sequence happens during bind screen instead of after round start so we aren't playing while it happens
+        transitionBody.text = "3";
+        yield return new WaitForSeconds(1f);
         transitionBody.text = "2";
         yield return new WaitForSeconds(1f);
         transitionBody.text = "1";
         yield return new WaitForSeconds(1f);
         transitionBody.text = "SCRAP!";
-        yield return new WaitForSeconds(1f);*/
-
-        return null;
+        yield return new WaitForSeconds(1f);
+        this.gameObject.SetActive(false);
     }
 
     public void SetTransitionTitle(string title)
     {
          transitionHeader.text = title;
-    }
-
-    public void SetTransitionBody(string body)
-    {
-        transitionBody.text = body;
     }
 
     public void UpdateCountdownTimer(float timeRemaining)

@@ -21,22 +21,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ConfirmStartArea _welcomeMat;
     [SerializeField] private PlayerVisualManager _playerVisualsManager;
 
-    public float lobbyCountdownDuration = 5;
-    public float roundCountdownDuration = 3;
-    private float _currentLobbyCountdownDuration;
-    private float _currentRoundCountdownDuration;
+    public float StartGameCountdownDurationSeconds = 5;
     public int rounds = 3;
     public int roundCount;
 
     public bool CanStartGameWithOnePlayer = true;
     public bool isLobbyOver = false;
-    private bool hasSelectionStarted;
-    private bool _isDoingStartCountdown;
-    //private bool _isDoingRoundCountdown = false;
     public static bool hasGameStartedYet = false;
     
+    
     private Coroutine _startLobbyCountdown;
-    private Coroutine _startBeginRoundCountdown;
+    private bool hasSelectionStarted;
+    private bool _isDoingStartCountdown;
+    private float _startLobbyCountdownCurrentDuration;
 
     private void Awake() 
     {
@@ -66,39 +63,19 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator LobbyCountdown()
     {
-        _currentLobbyCountdownDuration = lobbyCountdownDuration;
+        _startLobbyCountdownCurrentDuration = StartGameCountdownDurationSeconds;
         menuManager.ToggleTransitionUI(true);
         menuManager.transition.SetTransitionTitle("Game Starts In...");
-        while(_currentLobbyCountdownDuration > 0)
+        while(_startLobbyCountdownCurrentDuration > 0)
         {
-            menuManager.transition.UpdateCountdownTimer(_currentLobbyCountdownDuration);
+            menuManager.transition.UpdateCountdownTimer(_startLobbyCountdownCurrentDuration);
             yield return new WaitForEndOfFrame();
-            _currentLobbyCountdownDuration -= Time.deltaTime;
+            _startLobbyCountdownCurrentDuration -= Time.deltaTime;
         }
         StartGame();
         menuManager.ToggleTransitionUI(false);
         _welcomeMat.gameObject.SetActive(false);
         _welcomeMat.playersOnMe = 0;
-    }
-
-    public IEnumerator RoundStartCountdown()
-    {
-        //_isDoingRoundCountdown = true;
-        _currentRoundCountdownDuration = roundCountdownDuration;
-        menuManager.ToggleTransitionUI(true);
-        menuManager.transition.SetTransitionTitle($"Round {roundCount}/{rounds} starts in...");
-        while (_currentRoundCountdownDuration > 0)
-        {
-            menuManager.transition.UpdateCountdownTimer(_currentRoundCountdownDuration);
-            yield return new WaitForEndOfFrame();
-            _currentRoundCountdownDuration -= Time.deltaTime;
-            menuManager.transition.SetTransitionBody("SCRAP!"); //doesn't do the thing
-        }
-
-        //_isDoingRoundCountdown = false;
-        //menuManager.transition.SetTransitionBody("SCRAP!");
-        menuManager.ToggleTransitionUI(false);
-        StartRound();
     }
 
     public void StopGameCountdown()
@@ -146,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if(!hasSelectionStarted)
+            if(hasSelectionStarted == false)
         {
             hasSelectionStarted = true;
             for(int i = 0; i < registeredClients.Count; i++)
@@ -173,20 +150,16 @@ public class GameManager : MonoBehaviour
 
     public void StartRound()
     {
-        /*//put timer for transition screen here/if not relocating to after bind
-        StartCoroutine(RoundStartCountdown());*/
-        SpawnPlayersInRound();
-        roundCount++;
-    }
-
-
-    private void SpawnPlayersInRound()
-    {
         hasSelectionStarted = false;
+        //put timer for transition screen here/if not relocating to after bind
+        menuManager.ToggleTransitionUI(true);
+        StartCoroutine(menuManager.transition.StartOfRoundTransitionSequence(roundCount, rounds));
         for(int i = 0; i < registeredClients.Count; i++)
         {
             registeredClients[i].SpawnRequest();
         }
+        
+        roundCount++;
     }
 
     public void RegisterClient(Client client)

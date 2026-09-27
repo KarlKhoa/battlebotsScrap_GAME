@@ -222,5 +222,10 @@ public class GameManager : MonoBehaviour
         gameEndUIManager.WinningPlayer(registeredClients[orderedClients.Count - 1]);
         menuManager.ToggleGameEndUI(true);
     }
+    
+    public void RestartGame()
+    {
+        registeredClients.Clear();
+    }
 
 }

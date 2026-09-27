@@ -196,4 +196,9 @@ public class GameManager : MonoBehaviour
         menuManager.ToggleGameEndUI(true);
     }
 
+    public void RestartGame()
+    {
+        registeredClients.Clear();
+    }
+
 }

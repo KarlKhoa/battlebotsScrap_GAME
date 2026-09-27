@@ -2920,6 +2920,11 @@ PrefabInstance:
       propertyPath: CanStartGameWithOnePlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5616734228998996390, guid: f98ef90c9ed0cd04493f1acefb886ece,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5616734229359250625, guid: f98ef90c9ed0cd04493f1acefb886ece,
         type: 3}
       propertyPath: m_AnchoredPosition.y

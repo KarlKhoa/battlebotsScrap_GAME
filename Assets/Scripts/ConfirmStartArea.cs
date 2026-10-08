@@ -49,4 +49,9 @@ public class ConfirmStartArea : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    public void EnableSelf()
+    {
+        this.gameObject.SetActive(true);
+    }
 }

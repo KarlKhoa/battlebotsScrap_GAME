@@ -11,4 +11,7 @@ public class GameEndUIManager : MonoBehaviour
     {
         GameEndWinner.text = client + "is the winner";
     }
+
+    //restart button function here
+    //game manager.instance. restartgame
 }

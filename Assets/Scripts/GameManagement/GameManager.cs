@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public List<PlayerController> ActivePlayers = new();
     public GameObject menus;
     public GameObject firstSelectedWeaponUI; //store this so we can force users to select the correct UI component when reenabling UI controls - MEL
+    public GameObject firstSelectRestartUI;
     public MenuManager menuManager;
     [SerializeField] private WeaponSelectManager weaponSelectManager;
     [SerializeField] private GameEndUIManager gameEndUIManager;
@@ -219,13 +221,20 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         var orderedClients = ClientsByScoreAscending;
-        gameEndUIManager.WinningPlayer(registeredClients[orderedClients.Count - 1]);
         menuManager.ToggleGameEndUI(true);
+        gameEndUIManager.WinningPlayer(registeredClients[orderedClients.Count - 1]);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(firstSelectRestartUI);
+        //set the first selected game object to the first button
     }
     
     public void RestartGame()
     {
         registeredClients.Clear();
+        menuManager.ToggleGameEndUI(false);
+        //turn off game end ui
+        _welcomeMat.EnableSelf();
+        //re enable the start area
     }
 
 }

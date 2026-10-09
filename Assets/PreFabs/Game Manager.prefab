@@ -3105,17 +3105,19 @@ MonoBehaviour:
   ActivePlayers: []
   menus: {fileID: 5616734229503120978}
   firstSelectedWeaponUI: {fileID: 0}
+  firstSelectRestartUI: {fileID: 0}
   menuManager: {fileID: 0}
   weaponSelectManager: {fileID: 4501037689410492729}
   gameEndUIManager: {fileID: 0}
   _welcomeMat: {fileID: 0}
   _playerVisualsManager: {fileID: 1716988109609337874}
   lobbyCountdownDuration: 5
-  roundCountdownDuration: 3
+  roundCountdownDuration: 4
   rounds: 3
   roundCount: 0
   CanStartGameWithOnePlayer: 1
   isLobbyOver: 0
+  playerInputManager: {fileID: 0}
 --- !u!114 &1716988109609337874
 MonoBehaviour:
   m_ObjectHideFlags: 0

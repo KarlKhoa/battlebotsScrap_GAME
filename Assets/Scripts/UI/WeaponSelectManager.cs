@@ -73,7 +73,7 @@ public class WeaponSelectManager : MonoBehaviour
             UIIsBusy = true;
             var playerClient = player.GetComponent<Client>();
             UpdateButtonDisplay(playerClient);
-            playerClient.ToggleUIAccess(true);
+            playerClient.ToggleUIAccess(true, weaponSelectButtons[0].gameObject);
             currentPlayerInControl = playerClient;
             var uiColour = GameManager.Instance.PlayerVisuals.GetColourForClient(playerClient);
             activeSelectUI.GetComponent<Image>().color = uiColour;
@@ -98,7 +98,7 @@ public class WeaponSelectManager : MonoBehaviour
         menuManager.ButtonTargeter.ShowTarget(false);
         playerSelectUIOn = false;
         //GameManager.Instance.StartRound();
-        StartCoroutine(GameManager.Instance.RoundStartCountdown());
+        GameManager.Instance.StartRoundCountdown();
     }
 
 
@@ -154,11 +154,19 @@ public class WeaponSelectManager : MonoBehaviour
     
     private void BindWeapon(Weapon weapon)
     {
-        if(weapon != null)
+        if (weapon != null)
         {
             //Debug.Log("BINDING");
             menuManager.ToggleWeaponSelectionUI(false);
             attachManager.BindWeaponForClient(m_client, weapon);
+            var weaponIndex = weaponPool.IndexOf(weapon);
+            Destroy(weaponSelectButtons[weaponIndex].gameObject);
+            weaponSelectButtons.RemoveAt(weaponIndex);
+            weaponSelectButtonBackdrops.RemoveAt(weaponIndex);
+            weaponSelectButtonLabels.RemoveAt(weaponIndex);
+            weaponSelectButtonIcons.RemoveAt(weaponIndex);
+            weaponSelectIconTransforms.RemoveAt(weaponIndex);
+            weaponPool.Remove(weapon);
         }
         else
         {
@@ -216,14 +224,7 @@ public class WeaponSelectManager : MonoBehaviour
             
         }
 
-        /*
-        for(int i = 0; i < weaponPool.Count; i++)
-        {
-            if(weaponPool == null)
-            {
-                
-            }
-        }
-        */
+
+        
     }
 }

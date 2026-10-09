@@ -82,8 +82,11 @@ public class Client : MonoBehaviour
 
     public void ToggleUIAccess(bool enabled, GameObject selectedUIElement = null)
     {
+        if (selectedUIElement == null)
+            selectedUIElement = GameManager.Instance.firstSelectedWeaponUI;
+
         _uiInputModule.enabled = enabled; //turn off mouse events
         _multiplayerEventSystem.sendNavigationEvents = enabled; //disable normal navigation
-        _multiplayerEventSystem.SetSelectedGameObject(GameManager.Instance.firstSelectedWeaponUI); //reset selected element to ensure player uses UI properly
+        _multiplayerEventSystem.SetSelectedGameObject(selectedUIElement); //reset selected element to ensure player uses UI properly
     }
 }

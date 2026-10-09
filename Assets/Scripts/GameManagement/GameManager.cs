@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using System.Linq;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,7 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerVisualManager _playerVisualsManager;
 
     public float lobbyCountdownDuration = 5;
-    public float roundCountdownDuration = 3;
+    public float roundCountdownDuration = 4;
     private float _currentLobbyCountdownDuration;
     private float _currentRoundCountdownDuration;
     public int rounds = 3;
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
     private bool _isDoingStartCountdown;
     //private bool _isDoingRoundCountdown = false;
     public static bool hasGameStartedYet = false;
+
+    [SerializeField] private PlayerInputManager playerInputManager;
     
     private Coroutine _startLobbyCountdown;
     private Coroutine _startBeginRoundCountdown;
@@ -66,16 +70,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LobbyCountdown()
+    private IEnumerator LobbyCountdown()
     {
         _currentLobbyCountdownDuration = lobbyCountdownDuration;
         menuManager.ToggleTransitionUI(true);
         menuManager.transition.SetTransitionTitle("Game Starts In...");
-        while(_currentLobbyCountdownDuration > 0)
+        menuManager.transition.UpdateCountdownTimer(_currentLobbyCountdownDuration);
+        while (_currentLobbyCountdownDuration > 0)
         {
-            menuManager.transition.UpdateCountdownTimer(_currentLobbyCountdownDuration);
-            yield return new WaitForEndOfFrame();
             _currentLobbyCountdownDuration -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            menuManager.transition.UpdateCountdownTimer(_currentLobbyCountdownDuration + 1);
         }
         StartGame();
         menuManager.ToggleTransitionUI(false);
@@ -83,39 +88,71 @@ public class GameManager : MonoBehaviour
         _welcomeMat.playersOnMe = 0;
     }
 
-    public IEnumerator RoundStartCountdown()
+    public void StartRoundCountdown()
+    {
+        StartCoroutine(RoundStartCountdown());
+    }
+
+    private IEnumerator RoundStartCountdown()
     {
         //_isDoingRoundCountdown = true;
         _currentRoundCountdownDuration = roundCountdownDuration;
         menuManager.ToggleTransitionUI(true);
         menuManager.transition.SetTransitionTitle($"Round {roundCount}/{rounds} starts in...");
+        menuManager.transition.UpdateCountdownTimer(_currentRoundCountdownDuration);
         while (_currentRoundCountdownDuration > 0)
         {
-            menuManager.transition.UpdateCountdownTimer(_currentRoundCountdownDuration);
-            yield return new WaitForEndOfFrame();
             _currentRoundCountdownDuration -= Time.deltaTime;
-            menuManager.transition.SetTransitionBody("SCRAP!"); //doesn't do the thing
+            yield return new WaitForEndOfFrame();
+            if (_currentRoundCountdownDuration <= 1)
+                menuManager.transition.SetTransitionBody("SCRAP!");
+            else
+                menuManager.transition.UpdateCountdownTimer(_currentRoundCountdownDuration);
         }
 
         //_isDoingRoundCountdown = false;
-        //menuManager.transition.SetTransitionBody("SCRAP!");
         menuManager.ToggleTransitionUI(false);
         StartRound();
     }
 
+    private IEnumerator RoundEndSequence(Client client, int currentRound, int totalRounds)
+    {
+        menuManager.ToggleTransitionUI(true);
+        menuManager.transition.SetTransitionTitle($"Round {currentRound}/{totalRounds} over!");
+        menuManager.transition.SetTransitionBody($"{client.gameObject.name} wins!");
+        yield return new WaitForSeconds(3f);
+        menuManager.ToggleTransitionUI(false);
+        ScorePointsForLivingPlayers();
+        DestroyAllPlayers();
+        if (roundCount >= rounds)
+        {
+            EndGame();
+        }
+        else
+        {
+            if (!hasSelectionStarted)
+            {
+                hasSelectionStarted = true;
+            }
+
+            BeginWeaponSelectionSequence();
+        }
+        
+        ActivePlayers.Clear();
+    }
+
     public void StopGameCountdown()
     {
-        if(_isDoingStartCountdown)
+        if (_isDoingStartCountdown)
         {
             _isDoingStartCountdown = false;
-            if(_startLobbyCountdown != null)
+            if (_startLobbyCountdown != null)
                 StopCoroutine(_startLobbyCountdown);
             menuManager.ToggleTransitionUI(false);
         }
     }
     
     
-
     public void OnPlayerDeath(PlayerController player)
     {
         if (ActivePlayers.Contains(player))
@@ -141,30 +178,7 @@ public class GameManager : MonoBehaviour
     public void EndRound()
     {
         menuManager.ToggleTransitionUI(true);
-        StartCoroutine(menuManager.transition.EndOfRoundTransitionSequence(ActivePlayers[0].GetComponent<Client>(), roundCount, rounds));
-        if(roundCount >= rounds)
-        {
-            EndGame();
-        }
-        else
-        {
-            if(!hasSelectionStarted)
-        {
-            hasSelectionStarted = true;
-            for(int i = 0; i < registeredClients.Count; i++)
-            {
-                if(registeredClients[i].livePlayer)
-                {
-                    if(registeredClients[i].livePlayer.IsAlive)
-                        registeredClients[i].AddPoints(ScorePoints()); //hack to add points to last remaining player
-                    Destroy(registeredClients[i].livePlayer.gameObject);
-                }
-            }
-
-            BeginWeaponSelectionSequence();
-        }
-        }
-        ActivePlayers.Clear();
+        StartCoroutine(RoundEndSequence(ActivePlayers[0].Owner, roundCount, rounds));
     }
 
     private void BeginWeaponSelectionSequence()
@@ -181,15 +195,33 @@ public class GameManager : MonoBehaviour
         roundCount++;
     }
 
+    private void ScorePointsForLivingPlayers()
+    {
+        foreach (var client in registeredClients)
+        {
+            if (!client.livePlayer || !client.livePlayer.IsAlive) continue;
+            client.AddPoints(ScorePoints());
+        }
+    }
+
+    private void DestroyAllPlayers()
+    {
+        foreach (var client in registeredClients)
+        {
+            if (!client.livePlayer) continue;
+            Destroy(client.livePlayer.gameObject);
+        }
+    }
 
     private void SpawnPlayersInRound()
     {
         hasSelectionStarted = false;
-        for(int i = 0; i < registeredClients.Count; i++)
+        for (int i = 0; i < registeredClients.Count; i++)
         {
             registeredClients[i].SpawnRequest();
         }
     }
+
 
     public void RegisterClient(Client client)
     {
@@ -201,10 +233,6 @@ public class GameManager : MonoBehaviour
         ActivePlayers.Add(player);
     }
     
-    private int SortByPlayerScore(Client client1, Client client2)
-    {
-        return client1.playerScore.CompareTo(client2.playerScore);
-    }
 
     public void StartGame()
     {
@@ -215,26 +243,26 @@ public class GameManager : MonoBehaviour
                 player.GetComponentInChildren<PlayerController>().FirstDieToStart();
             }
         }
+        playerInputManager.DisableJoining();
         BeginWeaponSelectionSequence();
         hasGameStartedYet = true;
     }
     private void EndGame()
     {
-        var orderedClients = ClientsByScoreAscending;
         menuManager.ToggleGameEndUI(true);
-        gameEndUIManager.WinningPlayer(registeredClients[orderedClients.Count - 1]);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(firstSelectRestartUI);
+        gameEndUIManager.WinningPlayer(ClientsByScoreAscending[registeredClients.Count - 1]);
+        foreach (var Client in registeredClients)
+        {
+            Debug.Log(Client.playerScore);
+            Client.ToggleUIAccess(true, firstSelectRestartUI);
+        }
         //set the first selected game object to the first button
     }
-    
+
     public void RestartGame()
     {
-        registeredClients.Clear();
-        menuManager.ToggleGameEndUI(false);
-        //turn off game end ui
-        _welcomeMat.EnableSelf();
-        //re enable the start area
+        SceneManager.LoadScene(0);
     }
 
 }
+

@@ -115,17 +115,21 @@ public class GameManager : MonoBehaviour
         StartRound();
     }
 
-    private IEnumerator RoundEndSequence(Client client, int currentRound, int totalRounds)
+    private IEnumerator RoundEndSequence(Client client, int roundsleft, int totalRounds)
     {
-        menuManager.ToggleTransitionUI(true);
-        menuManager.transition.SetTransitionTitle($"Round {currentRound}/{totalRounds} over!");
-        menuManager.transition.SetTransitionBody($"{client.gameObject.name} wins!");
-        yield return new WaitForSeconds(3f);
-        menuManager.ToggleTransitionUI(false);
+        if (roundCount < rounds)
+        {
+            menuManager.ToggleTransitionUI(true);
+            menuManager.transition.SetTransitionTitle($"{client.gameObject.name} won this round!");
+            menuManager.transition.SetTransitionBody($"{roundsleft}/{totalRounds} left!");
+            yield return new WaitForSeconds(3f);
+            menuManager.ToggleTransitionUI(false);
+        }
         ScorePointsForLivingPlayers();
         DestroyAllPlayers();
         if (roundCount >= rounds)
         {
+            menuManager.ToggleTransitionUI(false);
             EndGame();
         }
         else
@@ -178,7 +182,7 @@ public class GameManager : MonoBehaviour
     public void EndRound()
     {
         menuManager.ToggleTransitionUI(true);
-        StartCoroutine(RoundEndSequence(ActivePlayers[0].Owner, roundCount, rounds));
+        StartCoroutine(RoundEndSequence(ActivePlayers[0].Owner,rounds-roundCount, rounds));
     }
 
     private void BeginWeaponSelectionSequence()
@@ -250,7 +254,8 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         menuManager.ToggleGameEndUI(true);
-        gameEndUIManager.WinningPlayer(ClientsByScoreAscending[registeredClients.Count - 1]);
+        //gameEndUIManager.WinningPlayer(ClientsByScoreAscending[registeredClients.Count - 1]);
+        gameEndUIManager.SetGameEndText($"{ClientsByScoreAscending[registeredClients.Count - 1].gameObject.name} wins!"); //get the client with the highest score and print their name into winner text
         foreach (var Client in registeredClients)
         {
             Debug.Log(Client.playerScore);

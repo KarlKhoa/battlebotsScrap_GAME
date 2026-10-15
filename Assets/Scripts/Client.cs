@@ -72,6 +72,10 @@ public class Client : MonoBehaviour
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
             livePlayer = Instantiate(playerPrefab, this.transform);
             GameManager.Instance.RegisterPlayer(livePlayer);
+
+            //during spawn request, check all empty slots of the bots weapons and they get the "none" weapon allowing players to do damage by ramming
+
+            
     }
 
     public void AddPoints(int points)

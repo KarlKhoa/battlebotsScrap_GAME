@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17627315, g: 0.220617, b: 0.30294108, a: 1}
+  m_IndirectSpecularColor: {r: 0.17627342, g: 0.22061726, b: 0.30294174, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2267,6 +2267,77 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1282583469}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1307105660
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6247447583593819600, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_Name
+      value: MediumDrawer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0111262845
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771360873354835818, guid: 1ac9a203d567e6247999339474c8d39b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ac9a203d567e6247999339474c8d39b, type: 3}
 --- !u!1 &1335807084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2533,77 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1551158763}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1597509178
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.5345492
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.053502485
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865271356370507100, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246476042686205926, guid: eb294fd0c496c3f4396a697d6a803b4b,
+        type: 3}
+      propertyPath: m_Name
+      value: Footrest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb294fd0c496c3f4396a697d6a803b4b, type: 3}
 --- !u!1 &1599863022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5596268615465941168, guid: cbd019537c334914493fbf2e673dc643,

@@ -81,17 +81,7 @@ public class Shield : Weapon
             }
             else
             {
-                //do damage if we do not own the playercontroller
                 playerController.Hurt(_baseDamage);
-                if (playerController.hurtWasSuccessful)
-                {
-                    //Debug.Log(playerController.owner + "took damage from Shield!");
-                }
-                else
-                {
-                    return;
-                }
-
             }
         }
         else

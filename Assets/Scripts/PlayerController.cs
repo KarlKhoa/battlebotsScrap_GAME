@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Material _playerMaterial;
 
     private Rigidbody _rb;
+    public Rigidbody Rigidbody => _rb;
 
     private Client _client;
     private MeshRenderer _thisMeshRenderer;
@@ -18,8 +19,6 @@ public class PlayerController : MonoBehaviour
     public Client Owner => _client;
 
     public bool IsAlive => playerHealth > 0;
-    public bool hurtWasSuccessful;
-
     private Vector2 _moveInput;
 
     ///When the player takes damage - returns current and max health;
@@ -118,8 +117,10 @@ public class PlayerController : MonoBehaviour
 
     //Checks when a collider come in contact with this objects collider
 
-    public void Hurt(float damage)
+    public bool Hurt(float damage)
     {
+        var hurtWasSuccessful = false;
+
         var weaponController = GetComponent<WeaponController>();
         if (GameManager.hasGameStartedYet == true)
         {
@@ -147,7 +148,7 @@ public class PlayerController : MonoBehaviour
                     if (playerHealth <= 0)
                     {
                         Die();
-                    } 
+                    }
                 }
                 OnPlayerHurt?.Invoke(playerHealth, _startingHealth);
             }
@@ -161,8 +162,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("Cannot hurt players before the start of the game!");
-            return;
         }
+        return hurtWasSuccessful;
     }
 
     private void DoPlayerFlash(Color flashColour, float duration)

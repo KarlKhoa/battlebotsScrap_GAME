@@ -6,11 +6,6 @@ public class None : Weapon
 {
     private float baseDamage = 2;
 
-    void Update()
-    {
-        baseDamage = baseDamage*owner.livePlayer.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-    }
-
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("None detected a collider!");
@@ -20,21 +15,11 @@ public class None : Weapon
         {
             Debug.Log(playerController);
             //if our client is the same as player we hit
-            if (owner == playerController.Owner)
-            {
-                
-                return; //do nothing
-            }
-            else
+            if (owner != playerController.Owner)
             {
                 //do damage if we do not own the playercontroller
-                playerController.Hurt(baseDamage);
-                Debug.Log(baseDamage);
-                if (playerController.hurtWasSuccessful)
-                {
-                }
-                else { return; }
-                
+                var playerSpeed = owner.livePlayer.Rigidbody.velocity.magnitude;
+                playerController.Hurt(baseDamage * playerSpeed);
             }
         }
         else

@@ -49,9 +49,9 @@ public class Bullet : Projectile
             else
             {
                 //do damage if we do not own the playercontroller
-                playerController.Hurt(_baseDamage);
+                
 
-                if (playerController.hurtWasSuccessful)
+                if (playerController.Hurt(_baseDamage))
                 {
                     //Debug.Log(playerController.Owner + "took damage from" + owner + "'s Bullet!");
                 }

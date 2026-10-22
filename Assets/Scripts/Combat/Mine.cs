@@ -22,7 +22,7 @@ public class Mine : Projectile
         {
             rb.AddForce(transform.forward * launchSpeed);
         }
-        StartCoroutine(Timer(2, isLive));
+        StartCoroutine(Timer(5, isLive));
 
     }
 
@@ -34,8 +34,9 @@ public class Mine : Projectile
 
     IEnumerator Timer(float time, bool trigger)
     {
-        yield return new WaitForSeconds(time);
+        new WaitForSeconds(time);
         trigger = true;
+        yield return true;
     }
 
     public override void Detonate()

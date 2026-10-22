@@ -8,8 +8,8 @@ public class Gun : Weapon
 {
     public Projectile projectile;
 
-    private Projectile myProjectile;
-    private float cooldownTime = 0.7f;
+    [SerializeField] private Projectile myProjectile;
+    [SerializeField] float cooldownTime = 0.7f;
     private bool isCooldownOver = true;
     //private int bulletsLeft; //ammo count
 
@@ -20,9 +20,10 @@ public class Gun : Weapon
     
     public override void Fire(Vector3 pos, Quaternion rot)
     {   
-        if(projectile.IsDetonatable() == true || myProjectile != null)
+        if(projectile.IsDetonatable() == true && myProjectile != null)
         {
             myProjectile.Detonate();
+            Debug.Log("I've been detonated lmao");
         }
         
         else if (isCooldownOver) // & bulletsLeft > 0)

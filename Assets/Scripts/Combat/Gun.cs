@@ -8,6 +8,7 @@ public class Gun : Weapon
 {
     public Projectile projectile;
 
+    private Projectile myProjectile;
     private float cooldownTime = 0.7f;
     private bool isCooldownOver = true;
     //private int bulletsLeft; //ammo count
@@ -18,13 +19,18 @@ public class Gun : Weapon
     }
     
     public override void Fire(Vector3 pos, Quaternion rot)
-    {
+    {   
+        if(projectile.IsDetonatable() == true || myProjectile != null)
+        {
+            myProjectile.Detonate();
+        }
         
-        if (isCooldownOver) // & bulletsLeft > 0)
+        else if (isCooldownOver) // & bulletsLeft > 0)
         {
             rot = transform.localRotation;
             pos = transform.position + transform.forward * 1.3f;
             var bullet = Instantiate(projectile.gameObject, pos, rot); //iterates a bullet at position of gun in WeaponController
+            myProjectile = bullet.GetComponent<Projectile>(); // stores the script of the shot object into my projectile (to be used if the projectile can 'Detonate')
             bullet.GetComponent<Projectile>().owner = owner; //makes bullet's Owner same as our client
             bullet.transform.forward = transform.forward; //makes bullet's forward same as gun
             

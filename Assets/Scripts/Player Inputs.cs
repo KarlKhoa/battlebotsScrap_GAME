@@ -73,6 +73,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""70a0ab53-506b-426f-aec5-5edaf425e9fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -370,6 +379,28 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Fire 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3476798b-c72b-430f-b0e2-abdf617646b0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30f0d16b-f6ef-4d27-a3e2-db61bd46083c"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -962,6 +993,7 @@ namespace UnityEngine.InputSystem
             m_Player_Fire2 = m_Player.FindAction("Fire 2", throwIfNotFound: true);
             m_Player_Fire3 = m_Player.FindAction("Fire 3", throwIfNotFound: true);
             m_Player_Fire4 = m_Player.FindAction("Fire 4", throwIfNotFound: true);
+            m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1038,6 +1070,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Player_Fire2;
         private readonly InputAction m_Player_Fire3;
         private readonly InputAction m_Player_Fire4;
+        private readonly InputAction m_Player_Pause;
         public struct PlayerActions
         {
             private @PlayerInputs m_Wrapper;
@@ -1047,6 +1080,7 @@ namespace UnityEngine.InputSystem
             public InputAction @Fire2 => m_Wrapper.m_Player_Fire2;
             public InputAction @Fire3 => m_Wrapper.m_Player_Fire3;
             public InputAction @Fire4 => m_Wrapper.m_Player_Fire4;
+            public InputAction @Pause => m_Wrapper.m_Player_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1071,6 +1105,9 @@ namespace UnityEngine.InputSystem
                     @Fire4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire4;
                     @Fire4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire4;
                     @Fire4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire4;
+                    @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1090,6 +1127,9 @@ namespace UnityEngine.InputSystem
                     @Fire4.started += instance.OnFire4;
                     @Fire4.performed += instance.OnFire4;
                     @Fire4.canceled += instance.OnFire4;
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
                 }
             }
         }
@@ -1251,6 +1291,7 @@ namespace UnityEngine.InputSystem
             void OnFire2(InputAction.CallbackContext context);
             void OnFire3(InputAction.CallbackContext context);
             void OnFire4(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

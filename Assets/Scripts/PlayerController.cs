@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsAlive => playerHealth > 0;
     private Vector2 _moveInput;
+    //private Vector2 _pauseInput;
 
     ///When the player takes damage - returns current and max health;
     public Action<float, float> OnPlayerHurt;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         playerHealth = _mPlayerData.health;
         botGenSpd = _mPlayerData.generalSpeed;
         botRotSpd = _mPlayerData.rotationSpeed;
+
     }
 
     void Update()
@@ -113,6 +115,12 @@ public class PlayerController : MonoBehaviour
     
         _moveInput = input.Get<Vector2>();
         //Debug.Log(moveInput);
+    }
+
+    private void OnPause(InputValue input)
+    {
+        GameManager.Instance.menuManager.TogglePauseUI(true);
+        Debug.Log("Pause");
     }
 
     //Checks when a collider come in contact with this objects collider

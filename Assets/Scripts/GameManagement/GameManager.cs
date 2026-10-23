@@ -120,8 +120,8 @@ public class GameManager : MonoBehaviour
         if (roundCount < rounds)
         {
             menuManager.ToggleTransitionUI(true);
-            menuManager.transition.SetTransitionTitle($"{client.gameObject.name} won this round!");
-            menuManager.transition.SetTransitionBody($"{roundsleft}/{totalRounds} left!");
+            menuManager.transition.SetTransitionTitle($"{client.gameObject.name} wins!");
+            menuManager.transition.SetTransitionBody($"{roundsleft} of {totalRounds} rounds left!");
             yield return new WaitForSeconds(3f);
             menuManager.ToggleTransitionUI(false);
         }
@@ -268,6 +268,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
 
 }
 

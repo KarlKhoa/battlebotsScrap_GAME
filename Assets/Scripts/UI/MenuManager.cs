@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public GameObject weaponSelect;
     public GameObject weaponAttach;
     public GameObject gameEnd;
+    public GameObject pause;
 
     public ButtonTargeter ButtonTargeter;
 
@@ -18,7 +19,6 @@ public class MenuManager : MonoBehaviour
 
     private bool isNotFirstSelectionOfRound;
     private bool currentRoundClock;
-
     private int playerCount;
 
 
@@ -61,5 +61,18 @@ public class MenuManager : MonoBehaviour
     {
         transition.gameObject.SetActive(state);
         
+    }
+
+    public void TogglePauseUI(bool state)
+    {
+        pause.SetActive(state);
+        if (state)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 }

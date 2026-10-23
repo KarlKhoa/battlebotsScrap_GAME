@@ -41,12 +41,12 @@ public class Mine : Projectile
 
     public override void Detonate()
     {
-        if(isLive != false)
-        {
+        //if(isLive != false)
+        //{
             Instantiate(explosion);
             Debug.Log("I sploded");
             Destroy(this.gameObject);
 
-        }
+        //}
     }
 }

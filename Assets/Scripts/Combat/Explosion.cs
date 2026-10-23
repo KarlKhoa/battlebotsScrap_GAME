@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class Explosion : Projectile
 {
     [SerializeField] private float _baseDamage;
     [SerializeField] private float knockback;
     [SerializeField] private float liveTime;
-    public Client owner;
     // Start is called before the first frame update
 
 

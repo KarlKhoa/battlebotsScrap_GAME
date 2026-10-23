@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 533232611824319342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.1065, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5915989426283277044}
@@ -146,8 +146,8 @@ MonoBehaviour:
   owner: {fileID: 0}
   isDetonatable: 1
   _baseDamage: 0
-  launchSpeed: 10
-  timeUntilLive: 0
+  launchSpeed: 200
+  timeUntilLive: 2
   explosion: {fileID: 8967817604281235085, guid: 3b035230685f63c44a2713e248e9e6f8,
     type: 3}
 --- !u!54 &-8638778691866030084

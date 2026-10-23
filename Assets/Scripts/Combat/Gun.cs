@@ -23,7 +23,7 @@ public class Gun : Weapon
         if(projectile.IsDetonatable() == true && myProjectile != null)
         {
             myProjectile.Detonate();
-            Debug.Log("I've been detonated lmao");
+            //Debug.Log("I've been detonated lmao");
         }
         
         else if (isCooldownOver) // & bulletsLeft > 0)
@@ -32,7 +32,7 @@ public class Gun : Weapon
             pos = transform.position + transform.forward * 1.3f;
             var bullet = Instantiate(projectile.gameObject, pos, rot); //iterates a bullet at position of gun in WeaponController
             myProjectile = bullet.GetComponent<Projectile>(); // stores the script of the shot object into my projectile (to be used if the projectile can 'Detonate')
-            bullet.GetComponent<Projectile>().owner = owner; //makes bullet's Owner same as our client
+            myProjectile.AssignOwner(this.owner); //makes bullet's Owner same as our client
             bullet.transform.forward = transform.forward; //makes bullet's forward same as gun
             
             //bulletsLeft--;

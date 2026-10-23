@@ -21,8 +21,9 @@ public class Mine : Projectile
         if (rb != null)
         {
             rb.AddForce(transform.forward * launchSpeed);
+            //Debug.Log("Force added lmao");
         }
-        StartCoroutine(Timer(5, isLive));
+        StartCoroutine(Timer(timeUntilLive));
 
     }
 
@@ -32,19 +33,32 @@ public class Mine : Projectile
         
     }
 
-    IEnumerator Timer(float time, bool trigger)
+    private IEnumerator Timer(float time)
     {
-        new WaitForSeconds(time);
-        trigger = true;
-        yield return true;
+        yield return new WaitForSeconds(time);
+        IsLive();
+    }
+
+    private void IsLive()
+    {
+        isLive = true;
     }
 
     public override void Detonate()
     {
+<<<<<<< Updated upstream
         //if(isLive != false)
         //{
             Instantiate(explosion);
             Debug.Log("I sploded");
+=======
+        if (isLive != false)
+        {
+            GameObject proj = Instantiate(explosion);
+            Explosion exp = proj.GetComponent<Explosion>();
+            exp.AssignOwner(owner);
+            //Debug.Log("I sploded");
+>>>>>>> Stashed changes
             Destroy(this.gameObject);
 
         //}

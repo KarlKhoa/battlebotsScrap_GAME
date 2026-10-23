@@ -70,7 +70,7 @@ public class MenuManager : MonoBehaviour
         {
             Time.timeScale = 0;
         }
-        else
+        else if (!state)
         {
             Time.timeScale = 1;
         }

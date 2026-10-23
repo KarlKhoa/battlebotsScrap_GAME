@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public Client Owner => _client;
 
     public bool IsAlive => playerHealth > 0;
+    private bool isPaused = false;
     private Vector2 _moveInput;
     //private Vector2 _pauseInput;
 
@@ -119,8 +120,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnPause(InputValue input)
     {
-        GameManager.Instance.menuManager.TogglePauseUI(true);
-        Debug.Log("Pause");
+        if (!isPaused)
+        {
+            GameManager.Instance.menuManager.TogglePauseUI(true);
+            //GameManager.Instance.menuManager.pause.SetPauseTitle($"{GameManager.Instance.client.gameObject.name} paused the game.");
+            isPaused = true;
+        }
+        else
+        {
+            GameManager.Instance.menuManager.TogglePauseUI(false);
+            isPaused = false;
+        }
+        
+        //Debug.Log("Pause");
     }
 
     //Checks when a collider come in contact with this objects collider

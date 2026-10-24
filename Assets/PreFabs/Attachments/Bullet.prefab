@@ -143,7 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403a123d94c295844b7c904092f0f51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
+  _baseDamage: 20
+  _projectileSpeed: 800
+  isDetonatable: 0
   rb: {fileID: 0}
 --- !u!54 &-1953114993646886909
 Rigidbody:

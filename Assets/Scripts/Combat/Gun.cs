@@ -7,8 +7,7 @@ using UnityEngine;
 public class Gun : Weapon 
 {
     public Projectile projectile;
-
-    [SerializeField] private Projectile myProjectile;
+    private Projectile myProjectile;
     [SerializeField] float cooldownTime = 0.7f;
     private bool isCooldownOver = true;
     //private int bulletsLeft; //ammo count

@@ -143,10 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267272228c22be44a8dc75a92993d087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
-  isDetonatable: 1
   _baseDamage: 0
-  launchSpeed: 200
+  _projectileSpeed: 500
+  isDetonatable: 1
   timeUntilLive: 2
   explosion: {fileID: 8967817604281235085, guid: 3b035230685f63c44a2713e248e9e6f8,
     type: 3}

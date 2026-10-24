@@ -4,41 +4,44 @@ using UnityEngine;
 
 public class Explosion : Projectile
 {
-    [SerializeField] private float _baseDamage;
     [SerializeField] private float knockback;
+    [SerializeField] private float radius;
     [SerializeField] private float liveTime;
     // Start is called before the first frame update
 
 
     void Start()
     {
-        
+        Explode();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Explode()
     {
-        
-    }
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
- void OnTriggerEnter(Collider other)
-    {
-        //If the gameobject we hit has a PlayerController component
-        if (other.TryGetComponent<PlayerController>(out var playerController))
+        foreach(Collider collider in colliders)
         {
-            Debug.Log(playerController);
-            //if our client is the same as player we hit
-            if (owner != playerController.Owner)
+            Rigidbody rb = collider.GetComponent<Rigidbody>();
+
+            if(rb != null)
             {
-                //do damage if we do not own the playercontroller
-                var playerSpeed = owner.livePlayer.Rigidbody.velocity.magnitude;
-                playerController.Hurt(_baseDamage);
+                rb.AddExplosionForce(knockback, transform.position, radius);
+                PlayerController playerController = rb.gameObject.GetComponent<PlayerController>();
+                if(playerController != null)
+                {
+                    if(playerController.Owner != owner)
+                    {
+                        playerController.Hurt(_baseDamage);
+                    }
+                    else
+                    {
+                        playerController.Hurt(_baseDamage*0.5f);
+                    }
+                }
             }
         }
-        else
-        {
-            Debug.Log("None could not find a PlayerController.");
-            Debug.Log(other);
-        }
+
+        Destroy(this.gameObject);
     }
+
 }

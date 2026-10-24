@@ -8,23 +8,17 @@ public class Bullet : Projectile
     private const float DEFAULT_LIFETIME = 0.2f;
     
     public Rigidbody rb;
-    private float _bulletSpeed;
-
-    private float _baseDamage;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        _baseDamage = 20;
-        _bulletSpeed = 800;
-        
     }
 
     void Start()
     {
         if (rb != null)
         {
-            rb.AddForce(transform.forward * _bulletSpeed); //shoots bullet in world forward direction; change to be whatever the gun's forward direction is
+            rb.AddForce(transform.forward * _projectileSpeed); //shoots bullet in world forward direction; change to be whatever the gun's forward direction is
 
             Die(DEFAULT_LIFETIME);
         }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Mine : Projectile
 {
-    [SerializeField] private float _baseDamage;
-    [SerializeField] private float launchSpeed;
     [SerializeField] private float timeUntilLive;
     [SerializeField] private GameObject explosion;
 
@@ -20,17 +18,11 @@ public class Mine : Projectile
     {
         if (rb != null)
         {
-            rb.AddForce(transform.forward * launchSpeed);
+            rb.AddForce(transform.forward * _projectileSpeed);
             //Debug.Log("Force added lmao");
         }
         StartCoroutine(Timer(timeUntilLive));
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private IEnumerator Timer(float time)
@@ -46,21 +38,13 @@ public class Mine : Projectile
 
     public override void Detonate()
     {
-<<<<<<< Updated upstream
-        //if(isLive != false)
-        //{
-            Instantiate(explosion);
-            Debug.Log("I sploded");
-=======
         if (isLive != false)
         {
-            GameObject proj = Instantiate(explosion);
+            GameObject proj = Instantiate(explosion, transform.position, transform.rotation);
             Explosion exp = proj.GetComponent<Explosion>();
             exp.AssignOwner(owner);
             //Debug.Log("I sploded");
->>>>>>> Stashed changes
             Destroy(this.gameObject);
-
-        //}
+        }
     }
 }

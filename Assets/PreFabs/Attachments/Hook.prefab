@@ -49,6 +49,7 @@ MonoBehaviour:
   _baseDamage: 0
   _projectileSpeed: 1000
   isDetonatable: 1
+  grappleSpeed: 10
 --- !u!54 &2615392225266058248
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -63,7 +64,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!1 &1347256343073179029
 GameObject:

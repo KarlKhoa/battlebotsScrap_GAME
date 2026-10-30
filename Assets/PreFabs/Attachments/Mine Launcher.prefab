@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 5294580307335730020}
   - component: {fileID: 5340708219567719995}
   - component: {fileID: 5526044067815359564}
-  - component: {fileID: 1288223353142565449}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Mine Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8556055683540070709}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.13, z: 0.6}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7043588203140435422}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &5340708219567719995
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8556055683540070709}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2532023242728870465, guid: 6cc4c30fcb53f8a45a01ba7f0041ec26, type: 3}
 --- !u!23 &5526044067815359564
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -6478536213147159724, guid: 6cc4c30fcb53f8a45a01ba7f0041ec26, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1288223353142565449
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8556055683540070709}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9189058112204711215
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,9 +92,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7043588203140435422}
+  - component: {fileID: 3277848929392944336}
   - component: {fileID: 2281471639350302331}
   - component: {fileID: 4703314567151842701}
-  - component: {fileID: 3277848929392944336}
   m_Layer: 0
   m_Name: Mine Launcher
   m_TagString: Untagged
@@ -132,6 +118,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3277848929392944336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9189058112204711215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71af7e5b5a0317409a66100bd11edb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPosMinOffset: {x: 0, y: 0}
+  iconPosMaxOffset: {x: 0, y: 0}
+  iconRotation: {x: 0, y: 0, z: 0, w: 0}
+  iconScale: {x: 0, y: 0, z: 0}
+  selectBackdrop: {fileID: 0}
+  selectIcon: {fileID: 0}
+  selectLabel: {fileID: 0}
+  owner: {fileID: 0}
+  playerPrefab: {fileID: 0}
+  projectile: {fileID: -7088916062617294510, guid: d8ec3a97b7518934290e673f62f5e9b2,
+    type: 3}
+  cooldownTime: 0.7
 --- !u!23 &2281471639350302331
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -194,26 +204,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &3277848929392944336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9189058112204711215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b71af7e5b5a0317409a66100bd11edb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconPosMinOffset: {x: 0, y: 0}
-  iconPosMaxOffset: {x: 0, y: 0}
-  iconRotation: {x: 0, y: 0, z: 0, w: 0}
-  iconScale: {x: 0, y: 0, z: 0}
-  selectBackdrop: {fileID: 0}
-  selectIcon: {fileID: 0}
-  selectLabel: {fileID: 0}
-  owner: {fileID: 0}
-  playerPrefab: {fileID: 0}
-  projectile: {fileID: -7088916062617294510, guid: d8ec3a97b7518934290e673f62f5e9b2,
-    type: 3}

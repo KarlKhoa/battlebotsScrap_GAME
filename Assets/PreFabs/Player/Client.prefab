@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4338484692648017980
 MonoBehaviour:
@@ -60,23 +60,12 @@ MonoBehaviour:
   playerPrefab: {fileID: -9035548095944102316, guid: 18d3500d4f01ee44686b101783fb1929,
     type: 3}
   playerScore: 0
-<<<<<<< HEAD
   c_attachmentFront: {fileID: 3277848929392944336, guid: 77d5dfe0e08e9624e94df052afc3da9b,
     type: 3}
   c_attachmentBack: {fileID: 0}
   c_attachmentRight: {fileID: 0}
   c_attachmentLeft: {fileID: 0}
   livePlayer: {fileID: 0}
-=======
-  c_attachmentFront: {fileID: 8696595463102178488, guid: 5ff048db738257248a26abb9aa5e5ed1,
-    type: 3}
-  c_attachmentBack: {fileID: 6056069616700016703, guid: 5b863b0fbf9e71d4db035c624e3b4208,
-    type: 3}
-  c_attachmentRight: {fileID: 6056069616700016703, guid: 5b863b0fbf9e71d4db035c624e3b4208,
-    type: 3}
-  c_attachmentLeft: {fileID: 6056069616700016703, guid: 5b863b0fbf9e71d4db035c624e3b4208,
-    type: 3}
->>>>>>> 15c1a7a7839d4dbf977056c9320932bbe44739c5
   weapons: []
   input: {fileID: 0}
 --- !u!114 &3688418723683610991

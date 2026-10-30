@@ -23,7 +23,7 @@ public class Client : MonoBehaviour
     [FormerlySerializedAs("c_attachment4")] public Weapon c_attachmentLeft;
 
     //liveplayer is the bot being used in the scene, this can be deleted and reconstructed, and uses the player prefab as a base
-    public PlayerController LivePlayer { get; private set; }
+    public PlayerController livePlayer;
     //Create a List of weapons in inspector; currently not doing anything but could be used to keep track of players' current weapons
     public List<Weapon> weapons;
 
@@ -70,8 +70,8 @@ public class Client : MonoBehaviour
             }
 
             //creates a bot, puts it into the live player, and makes that object a child of the client (liveplayer not needed/ check)
-            LivePlayer = Instantiate(playerPrefab, this.transform);
-            GameManager.Instance.RegisterPlayer(LivePlayer);
+            livePlayer = Instantiate(playerPrefab, this.transform);
+            GameManager.Instance.RegisterPlayer(livePlayer);
 
             //during spawn request, check all empty slots of the bots weapons and they get the "none" weapon allowing players to do damage by ramming
 

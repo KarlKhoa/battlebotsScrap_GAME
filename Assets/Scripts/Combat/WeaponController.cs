@@ -71,7 +71,7 @@ public class WeaponController : MonoBehaviour
     {
         if(!attachment) return null;
         var newWeapon = Instantiate(attachment, attachmentOffset, attachmentOrientation, this.transform);
-        newWeapon.owner = client.LivePlayer; 
+        newWeapon.owner = client; 
         return newWeapon;
     }
 

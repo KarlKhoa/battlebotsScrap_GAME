@@ -29,7 +29,7 @@ public class Explosion : Projectile
                 PlayerController playerController = rb.gameObject.GetComponent<PlayerController>();
                 if(playerController != null)
                 {
-                    if(playerController.Owner != Owner)
+                    if(playerController.Owner != owner)
                     {
                         playerController.Hurt(_baseDamage);
                     }

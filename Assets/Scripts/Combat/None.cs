@@ -18,7 +18,7 @@ public class None : Weapon
             if (owner != playerController.Owner)
             {
                 //do damage if we do not own the playercontroller
-                var playerSpeed = owner.Rigidbody.velocity.magnitude;
+                var playerSpeed = owner.livePlayer.Rigidbody.velocity.magnitude;
                 playerController.Hurt(baseDamage * playerSpeed);
             }
         }

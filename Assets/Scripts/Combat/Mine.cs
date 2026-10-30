@@ -42,7 +42,7 @@ public class Mine : Projectile
         {
             GameObject proj = Instantiate(explosion, transform.position, transform.rotation);
             Explosion exp = proj.GetComponent<Explosion>();
-            exp.AssignOwner(Owner);
+            exp.AssignOwner(owner);
             //Debug.Log("I sploded");
             Destroy(this.gameObject);
         }

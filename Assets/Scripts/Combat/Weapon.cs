@@ -15,7 +15,7 @@ public abstract class Weapon : MonoBehaviour
     public Sprite selectBackdrop;
     public Sprite selectIcon;
     public Sprite selectLabel;
-    public PlayerController owner;
+    public Client owner;
     [SerializeField] private GameObject playerPrefab;
 
     public virtual void Fire(Vector3 pos, Quaternion rot){}

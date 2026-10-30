@@ -35,7 +35,7 @@ public class Bullet : Projectile
             //Debug.Log("Hit " + playerController);
 
             //if our client is the same as player we hit
-            if(Owner == playerController.Owner)
+            if(owner == playerController.Owner)
             {
                 //Debug.Log("Player was hit by their own Bullet!");
                 return; //do nothing

@@ -9,36 +9,48 @@ public class Hook : Projectile
     private bool grapplePull;
     private bool grappleDistrupted;
     [SerializeField] private float grappleSpeed;
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private LayerMask wallOverlapMask;
 
     void Start()
     {
-        if(_rigidbody != null)
+        if (_rigidbody != null)
         {
-            _rigidbody.AddForce(transform.forward * _projectileSpeed);
+            _rigidbody.velocity = transform.forward * _projectileSpeed;
         }
     }
 
     void Update()
     {
-        if(grapplePull == true)
+        Vector3 grappleDirection = (transform.position - Owner.transform.position).normalized;
+        var grapplePos = Owner.transform.position + grappleDirection * grappleSpeed;
+        Debug.DrawRay(grapplePos, Vector3.up, Color.green, 3);
+        var overlaps = Physics.OverlapSphere(grapplePos, 0.51f, wallOverlapMask);
+
+        foreach (var ol in overlaps)
         {
-            Vector3 grappleDirection = this.transform.position - owner.transform.position;
-            owner.transform.position += grappleDirection * grappleSpeed * Time.deltaTime;
+            Debug.Log(ol.gameObject.name);
         }
+
+        if (grapplePull == true && overlaps.Length == 0)
+            {
+                Owner.Rigidbody.MovePosition(grapplePos);
+            }
+        lineRenderer.SetPosition(0, Owner.transform.position);
+        lineRenderer.SetPosition(1, transform.position);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if(firstCollision != false)
         {
-        Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-        transform.SetParent(other.transform);
-        Destroy(_rigidbody);
-        Destroy(this.GetComponentInChildren<Collider>());
-        firstCollision = false;
-        isAnchored = true;
+            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            transform.SetParent(other.transform);
+            Destroy(_rigidbody);
+            Destroy(this.GetComponentInChildren<Collider>());
+            firstCollision = false;
+            isAnchored = true;
         }
-
     }
 
     public override void Detonate()
@@ -46,11 +58,11 @@ public class Hook : Projectile
         if(isAnchored == true && grapplePull == false)
         {
             grapplePull = true;
-            owner.livePlayer.ToggleMoveBackAndForthOff(true);
+            Owner.ToggleMoveBackAndForthOff(true);
         }
         else
         {
-            owner.livePlayer.ToggleMoveBackAndForthOff(false);
+            Owner.ToggleMoveBackAndForthOff(false);
             Destroy(this.gameObject);
         }
     }

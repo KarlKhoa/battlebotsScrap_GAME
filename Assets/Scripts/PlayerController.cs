@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     public bool IsAlive => playerHealth > 0;
     private bool isPaused = false;
     private Vector2 _moveInput;
-
-    private bool botMoveOff;
     //private Vector2 _pauseInput;
 
     ///When the player takes damage - returns current and max health;
@@ -59,13 +57,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //checking inputs
-        if(_moveInput == new Vector2(0,1) && botMoveOff == false)
+        if(_moveInput == new Vector2(0,1))
         {
             _isMovingForward = true;
             _isMovingBackward = false;
         }
 
-        if(_moveInput == new Vector2(0,-1) && botMoveOff == false)
+        if(_moveInput == new Vector2(0,-1))
         {
             _isMovingBackward = true;
             _isMovingForward = false;
@@ -231,11 +229,6 @@ public class PlayerController : MonoBehaviour
     public void FirstDieToStart()
     {
         Destroy(gameObject);
-    }
-
-    public void ToggleMoveBackAndForthOff(bool enabled)
-    {
-        botMoveOff = enabled;
     }
 
 }

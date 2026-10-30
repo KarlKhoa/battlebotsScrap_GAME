@@ -61,12 +61,15 @@ MonoBehaviour:
     type: 3}
   playerScore: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   c_attachmentFront: {fileID: 3277848929392944336, guid: 77d5dfe0e08e9624e94df052afc3da9b,
     type: 3}
   c_attachmentBack: {fileID: 0}
   c_attachmentRight: {fileID: 0}
   c_attachmentLeft: {fileID: 0}
 =======
+=======
+>>>>>>> parent of 15c1a7a (Grapple hook working, more ux effects added to bots)
   c_attachmentFront: {fileID: 1605874619653336979, guid: 6086938fb112b974ab3f842029ece34e,
     type: 3}
   c_attachmentBack: {fileID: 6056069616700016703, guid: 5b863b0fbf9e71d4db035c624e3b4208,
@@ -75,6 +78,9 @@ MonoBehaviour:
     type: 3}
   c_attachmentLeft: {fileID: 6056069616700016703, guid: 5b863b0fbf9e71d4db035c624e3b4208,
     type: 3}
+<<<<<<< HEAD
+>>>>>>> parent of 15c1a7a (Grapple hook working, more ux effects added to bots)
+=======
 >>>>>>> parent of 15c1a7a (Grapple hook working, more ux effects added to bots)
   livePlayer: {fileID: 0}
   weapons: []

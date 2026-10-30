@@ -10,7 +10,11 @@ PhysicMaterial:
   dynamicFriction: 0.6
   staticFriction: 0.6
 <<<<<<< HEAD
+<<<<<<< HEAD
   bounciness: 0.5
+=======
+  bounciness: 1
+>>>>>>> parent of 15c1a7a (Grapple hook working, more ux effects added to bots)
 =======
   bounciness: 1
 >>>>>>> parent of 15c1a7a (Grapple hook working, more ux effects added to bots)

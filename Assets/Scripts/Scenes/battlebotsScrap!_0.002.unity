@@ -3724,6 +3724,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 3329080214317504909, guid: f52168af565694b4bb0179f97a5b5bfa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3329080214317504911, guid: f52168af565694b4bb0179f97a5b5bfa,
         type: 3}
       propertyPath: m_Materials.Array.size

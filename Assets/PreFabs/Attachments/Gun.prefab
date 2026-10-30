@@ -57,7 +57,6 @@ MonoBehaviour:
   playerPrefab: {fileID: 0}
   projectile: {fileID: 5537074646329596652, guid: e64fac28da8f3ca4c98b74615ae467a2,
     type: 3}
-  cooldownTime: 0.7
 --- !u!95 &5286646815103006646
 Animator:
   serializedVersion: 5

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    protected Client owner;
+    public PlayerController Owner { get; protected set; }
     public float _baseDamage;
     public float _projectileSpeed;
     [SerializeField] private bool isDetonatable;
@@ -22,8 +22,8 @@ public class Projectile : MonoBehaviour
         return isDetonatable;
     }
     public virtual void Detonate() { }
-    public void AssignOwner(Client client)
+    public void AssignOwner(PlayerController client)
     {
-        owner = client;
+        Owner = client;
     }
 }

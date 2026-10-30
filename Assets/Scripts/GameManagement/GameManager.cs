@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (var client in registeredClients)
         {
-            if (!client.livePlayer || !client.livePlayer.IsAlive) continue;
+            if (!client.LivePlayer || !client.LivePlayer.IsAlive) continue;
             client.AddPoints(ScorePoints());
         }
     }
@@ -214,8 +214,8 @@ public class GameManager : MonoBehaviour
     {
         foreach (var client in registeredClients)
         {
-            if (!client.livePlayer) continue;
-            Destroy(client.livePlayer.gameObject);
+            if (!client.LivePlayer) continue;
+            Destroy(client.LivePlayer.gameObject);
         }
     }
 

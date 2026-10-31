@@ -172,6 +172,5 @@ MonoBehaviour:
   selectLabel: {fileID: 0}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}
-  projectile: {fileID: 6531360699372493160, guid: 2729ebbaf7d08ef40bd31514d7fb8d41,
-    type: 3}
+  projectile: {fileID: 0}
   cooldownTime: 0.7

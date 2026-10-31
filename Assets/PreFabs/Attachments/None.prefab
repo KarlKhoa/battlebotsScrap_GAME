@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1740361209098582683}
   - component: {fileID: -7045235656454373806}
   - component: {fileID: 6056069616700016703}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: None
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6231593839438810839}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -58,3 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78aa7c3c35934f42b344923f84a15ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconPosMinOffset: {x: 0, y: 0}
+  iconPosMaxOffset: {x: 0, y: 0}
+  iconRotation: {x: 0, y: 0, z: 0, w: 0}
+  iconScale: {x: 0, y: 0, z: 0}
+  selectBackdrop: {fileID: 0}
+  selectIcon: {fileID: 0}
+  selectLabel: {fileID: 0}
+  owner: {fileID: 0}
+  playerPrefab: {fileID: 0}

@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WeaponSelectManager weaponSelectManager;
     [SerializeField] private GameEndUIManager gameEndUIManager;
     [SerializeField] private ConfirmStartArea _welcomeMat;
-    [SerializeField] private ArenaFurniture _arenaFurniture;
     [SerializeField] private PlayerVisualManager _playerVisualsManager;
 
     public float lobbyCountdownDuration = 5;
@@ -197,7 +196,6 @@ public class GameManager : MonoBehaviour
         /*//put timer for transition screen here/if not relocating to after bind
         StartCoroutine(RoundStartCountdown());*/
         SpawnPlayersInRound();
-        SpawnArenaFurniture();
         roundCount++;
     }
 
@@ -205,7 +203,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (var client in registeredClients)
         {
-            if (!client.livePlayer || !client.livePlayer.IsAlive) continue;
+            if (!client.LivePlayer || !client.LivePlayer.IsAlive) continue;
             client.AddPoints(ScorePoints());
         }
     }
@@ -214,8 +212,8 @@ public class GameManager : MonoBehaviour
     {
         foreach (var client in registeredClients)
         {
-            if (!client.livePlayer) continue;
-            Destroy(client.livePlayer.gameObject);
+            if (!client.LivePlayer) continue;
+            Destroy(client.LivePlayer.gameObject);
         }
     }
 
@@ -269,12 +267,6 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
-    }
-
-    public void SpawnArenaFurniture()
-    {
-        _arenaFurniture.gameObject.SetActive(true);
-
     }
 
 

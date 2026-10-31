@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     private bool _isMovingBackward;
     private bool _isTurningRight;
     private bool _isTurningLeft;
+
+    private bool botMoveOff;
     
     private void Awake()
     {
@@ -57,13 +59,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //checking inputs
-        if(_moveInput == new Vector2(0,1))
+        if(_moveInput == new Vector2(0,1) && botMoveOff == false)
         {
             _isMovingForward = true;
             _isMovingBackward = false;
         }
 
-        if(_moveInput == new Vector2(0,-1))
+        if(_moveInput == new Vector2(0,-1) && botMoveOff == false)
         {
             _isMovingBackward = true;
             _isMovingForward = false;
@@ -229,6 +231,11 @@ public class PlayerController : MonoBehaviour
     public void FirstDieToStart()
     {
         Destroy(gameObject);
+    }
+
+    public void ToggleMoveBackAndForthOff(bool enabled)
+    {
+        botMoveOff = enabled;
     }
 
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,22 +23,27 @@ public class Hook : Projectile
 
     void Update()
     {
+        
+        lineRenderer.SetPosition(0, Owner.transform.position);
+        lineRenderer.SetPosition(1, transform.position);
+    }
+
+    private void FixedUpdate() //moved this into fixed update to prevent phys checks every frame
+    {
         Vector3 grappleDirection = (transform.position - Owner.transform.position).normalized;
         var grapplePos = Owner.transform.position + grappleDirection * grappleSpeed;
         Debug.DrawRay(grapplePos, Vector3.up, Color.green, 3);
         var overlaps = Physics.OverlapSphere(grapplePos, 0.51f, wallOverlapMask);
 
-        foreach (var ol in overlaps)
+        //foreach (var VARIABLE in overlaps)
+        //{
+        //    Debug.Log(VARIABLE.gameObject);
+        //}
+        
+        if (grapplePull && overlaps.Length == 0)
         {
-            Debug.Log(ol.gameObject.name);
+            Owner.Rigidbody.MovePosition(grapplePos);
         }
-
-        if (grapplePull == true && overlaps.Length == 0)
-            {
-                Owner.Rigidbody.MovePosition(grapplePos);
-            }
-        lineRenderer.SetPosition(0, Owner.transform.position);
-        lineRenderer.SetPosition(1, transform.position);
     }
 
     private void OnCollisionEnter(Collision other)

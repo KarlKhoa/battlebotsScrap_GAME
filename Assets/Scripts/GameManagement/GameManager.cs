@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameEndUIManager gameEndUIManager;
     [SerializeField] private ConfirmStartArea _welcomeMat;
     [SerializeField] private PlayerVisualManager _playerVisualsManager;
+    [SerializeField] private ArenaFurniture _arenaFurniture;
 
     public float lobbyCountdownDuration = 5;
     public float roundCountdownDuration = 4;
@@ -196,7 +197,13 @@ public class GameManager : MonoBehaviour
         /*//put timer for transition screen here/if not relocating to after bind
         StartCoroutine(RoundStartCountdown());*/
         SpawnPlayersInRound();
+        ToggleArenaFurniture();
         roundCount++;
+    }
+
+    public void ToggleArenaFurniture()
+    {
+        _arenaFurniture.gameObject.SetActive(true);
     }
 
     private void ScorePointsForLivingPlayers()

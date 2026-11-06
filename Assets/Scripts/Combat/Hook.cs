@@ -34,13 +34,23 @@ public class Hook : Projectile
         var grapplePos = Owner.transform.position + grappleDirection * grappleSpeed;
         Debug.DrawRay(grapplePos, Vector3.up, Color.green, 3);
         var overlaps = Physics.OverlapSphere(grapplePos, 0.51f, wallOverlapMask);
+        List<PlayerController> playerOverlaps = new List<PlayerController>();
 
+        foreach(Collider col in overlaps)
+        {
+            PlayerController player = col.GetComponent<PlayerController>();
+            if(player != null)
+            {
+                playerOverlaps.Add(player);
+            }
+
+        }
         //foreach (var VARIABLE in overlaps)
         //{
         //    Debug.Log(VARIABLE.gameObject);
         //}
         
-        if (grapplePull && overlaps.Length == 0)
+        if (grapplePull && overlaps.Length == 0 ) //add a statements that also includes enemy in the wall overlap mask but not the player itself, becaue the grapple pos is constantly checking ahead of itself it will check the player if left
         {
             Owner.Rigidbody.MovePosition(grapplePos);
         }

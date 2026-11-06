@@ -6,7 +6,6 @@ public class Mine : Projectile
 {
     [SerializeField] private float timeUntilLive;
     [SerializeField] private GameObject explosion;
-
     private Rigidbody rb;
     private bool isLive;
     // Start is called before the first frame update

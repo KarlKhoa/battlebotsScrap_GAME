@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2915588272512835359}
   - component: {fileID: 3562862098833353517}
   - component: {fileID: 8463282221001726401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4882,7 +4882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8908840360549957993}
   - component: {fileID: 5301018600584572318}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5017,7 +5017,7 @@ GameObject:
   - component: {fileID: 6819764945452930209}
   - component: {fileID: 5799210950135349678}
   - component: {fileID: 5755678614840841589}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10007,6 +10007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Roomba
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8cea0d696e9bb742a5fead40baf10bb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

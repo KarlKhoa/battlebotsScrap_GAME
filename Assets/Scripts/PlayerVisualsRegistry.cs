@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "BattleBots/Registries/Player Visual Registry", fileName = "New Visual Registry")]
 public class PlayerVisualsRegistry : ScriptableObject
@@ -15,6 +16,7 @@ public struct PlayerStyleData
     public Material lightDamageMat;
     public Material medDamageMat;
     public Material heavyDamageMat;
+    public Material stickyHandColourMat;
     public Color playerColour;
     public string playerName;
 }

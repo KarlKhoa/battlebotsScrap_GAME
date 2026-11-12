@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
     public void EndRound()
     {
         menuManager.ToggleTransitionUI(true);
-        StartCoroutine(RoundEndSequence(ActivePlayers[0].Owner,rounds-roundCount, rounds));
+        StartCoroutine(RoundEndSequence(ActivePlayers[0].OwningClient,rounds-roundCount, rounds));
     }
 
     private void BeginWeaponSelectionSequence()

@@ -12,6 +12,7 @@ public class Explosion : Projectile
 
     void Start()
     {
+        StartCoroutine(DeathTimer());
         Explode();
     }
 
@@ -29,7 +30,7 @@ public class Explosion : Projectile
                 PlayerController playerController = rb.gameObject.GetComponent<PlayerController>();
                 if(playerController != null)
                 {
-                    if(playerController.Owner != Owner)
+                    if(playerController.OwningClient != Owner)
                     {
                         playerController.Hurt(_baseDamage);
                     }
@@ -40,7 +41,10 @@ public class Explosion : Projectile
                 }
             }
         }
-
+    }
+    private IEnumerator DeathTimer()
+    {
+        yield return new WaitForSeconds(liveTime);
         Destroy(this.gameObject);
     }
 

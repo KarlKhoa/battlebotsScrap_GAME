@@ -15,7 +15,7 @@ public class None : Weapon
         {
             Debug.Log(playerController);
             //if our client is the same as player we hit
-            if (owner != playerController.Owner)
+            if (owner != playerController.OwningClient)
             {
                 //do damage if we do not own the playercontroller
                 var playerSpeed = owner.Rigidbody.velocity.magnitude;

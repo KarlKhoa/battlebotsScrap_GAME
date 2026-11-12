@@ -55,6 +55,9 @@ MonoBehaviour:
   wallOverlapMask:
     serializedVersion: 2
     m_Bits: 1
+  clientOverlapMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!54 &2615392225266058248
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Client _client;
     private MeshRenderer _thisMeshRenderer;
 
-    public Client Owner => _client;
+    public Client OwningClient => _client;
 
     public bool IsAlive => playerHealth > 0;
     private bool isPaused = false;
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
                     playerHealth = playerHealth - damage;
                     DoPlayerFlash(Color.red, 0.2f);
                     hurtWasSuccessful = true;
-                    Debug.Log(Owner + "took " + damage + "DMG");
+                    Debug.Log(OwningClient + "took " + damage + "DMG");
                     if (playerHealth <= 0)
                     {
                         Die();
@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
                     playerHealth = playerHealth - damage;
                     DoPlayerFlash(Color.yellow, 0.2f);
                     hurtWasSuccessful = true;
-                    Debug.Log(Owner + "'s Shield partially blocked damage!" + "Took " + damage + "DMG");
+                    Debug.Log(OwningClient + "'s Shield partially blocked damage!" + "Took " + damage + "DMG");
                     damage = damage * 2f;
                     if (playerHealth <= 0)
                     {
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
             {
                 DoPlayerFlash(Color.white, 0.2f);
                 hurtWasSuccessful = false;
-                Debug.Log(Owner + "'s Shield fully blocked damage!");
+                Debug.Log(OwningClient + "'s Shield fully blocked damage!");
             }
         }
         else
@@ -256,7 +256,7 @@ public class PlayerController : MonoBehaviour
 
     public override string ToString()
     {
-        return Owner.ToString();
+        return OwningClient.ToString();
     }
 
 }

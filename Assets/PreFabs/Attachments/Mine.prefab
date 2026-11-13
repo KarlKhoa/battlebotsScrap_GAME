@@ -49,10 +49,9 @@ MonoBehaviour:
   _baseDamage: 0
   _projectileSpeed: 250
   isDetonatable: 1
-  timeUntilLive: 2
+  timeUntilLive: 1
   explosion: {fileID: 8967817604281235085, guid: 3b035230685f63c44a2713e248e9e6f8,
     type: 3}
-  velocityDecaySpeed: 10
 --- !u!54 &-8638778691866030084
 Rigidbody:
   m_ObjectHideFlags: 0

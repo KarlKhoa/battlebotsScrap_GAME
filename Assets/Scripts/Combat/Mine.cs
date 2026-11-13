@@ -24,6 +24,14 @@ public class Mine : Projectile
 
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.GetComponent<PlayerController>() != null || other.gameObject.GetComponent<Weapon>() != null || other.gameObject.GetComponent<Projectile>() != null)
+        {
+            Detonate();
+        }    
+    }
+
     private IEnumerator Timer(float time)
     {
         yield return new WaitForSeconds(time);

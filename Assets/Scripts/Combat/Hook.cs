@@ -11,6 +11,7 @@ public class Hook : Projectile
     [SerializeField] private Transform stickyHand;
     [SerializeField] private float grappleObjectOverlapArea = 0.51f;
     [SerializeField] private float grappleSpeed;
+    [SerializeField] private float grappleTime;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private LayerMask wallOverlapMask;
     [SerializeField] private LayerMask clientOverlapMask;
@@ -71,11 +72,11 @@ public class Hook : Projectile
         {
             grapplePull = true;
             Owner.ToggleMoveBackAndForthOff(true);
+            StartCoroutine(Timer(grappleTime));
         }
         else
         {
-            Owner.ToggleMoveBackAndForthOff(false);
-            Destroy(this.gameObject);
+            GrappleOver();
         }
     }
 
@@ -87,6 +88,19 @@ public class Hook : Projectile
             Destroy(this.GetComponentInChildren<Collider>());
             firstCollision = false;
             isAnchored = true;
+    }
+
+    private void GrappleOver()
+    {
+        Owner.ToggleMoveBackAndForthOff(false);
+        Destroy(this.gameObject);
+    }
+
+    private IEnumerator Timer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GrappleOver();
+
     }
 
 

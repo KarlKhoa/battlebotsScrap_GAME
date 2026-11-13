@@ -54,6 +54,7 @@ MonoBehaviour:
   stickyHand: {fileID: 4445179155335519018}
   grappleObjectOverlapArea: 0.6
   grappleSpeed: 1
+  grappleTime: 3
   lineRenderer: {fileID: 3376836559028817511}
   wallOverlapMask:
     serializedVersion: 2

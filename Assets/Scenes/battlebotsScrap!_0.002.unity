@@ -2858,6 +2858,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8200270232886682338}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1799946390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4311863794925555883, guid: f98ef90c9ed0cd04493f1acefb886ece,
+    type: 3}
+  m_PrefabInstance: {fileID: 8200270232886682338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1909071337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4328,6 +4334,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8719270437622363534, guid: 8789ed0e604ce0542ab3b50695e4168a,
         type: 3}
+    - target: {fileID: 5616734229503120989, guid: f98ef90c9ed0cd04493f1acefb886ece,
+        type: 3}
+      propertyPath: gameEndFirstButton
+      value: 
+      objectReference: {fileID: 1799946390}
     - target: {fileID: 5616734229503120989, guid: f98ef90c9ed0cd04493f1acefb886ece,
         type: 3}
       propertyPath: pauseMenuFirstButton

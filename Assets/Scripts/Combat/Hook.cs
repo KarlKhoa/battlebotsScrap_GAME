@@ -12,13 +12,16 @@ public class Hook : Projectile
     [SerializeField] private float grappleObjectOverlapArea = 0.51f;
     [SerializeField] private float grappleSpeed;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private LayerMask wallOverlapMask;
     [SerializeField] private LayerMask clientOverlapMask;
 
 
     void Start()
     {
-
+        lineRenderer.material = GameManager.Instance.PlayerVisuals.GetGrappleMatForClient(Owner.OwningClient);
+        meshRenderer.material = GameManager.Instance.PlayerVisuals.GetGrappleMatForClient(Owner.OwningClient);
+        
         if (_rigidbody != null)
         {
             _rigidbody.velocity = transform.forward * _projectileSpeed;

@@ -16,7 +16,7 @@ public struct PlayerStyleData
     public Material lightDamageMat;
     public Material medDamageMat;
     public Material heavyDamageMat;
-    public Material stickyHandColourMat;
+    public Material GrappleColourMat;
     public Color playerColour;
     public string playerName;
 }

@@ -14,6 +14,8 @@ public class MenuManager : MonoBehaviour
 
     public GameObject weaponSelectFirstButton;
     public GameObject weaponAttachFirstButton;
+    public GameObject pauseMenuFirstButton;
+    public GameObject gameEndFirstButton;
 
     public TransitionUI transition;
 
@@ -53,7 +55,8 @@ public class MenuManager : MonoBehaviour
         gameEnd.SetActive(state);
         if(state)
         {
-
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(gameEndFirstButton);
         }
     }
 
@@ -69,6 +72,8 @@ public class MenuManager : MonoBehaviour
         if (state)
         {
             Time.timeScale = 0;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(pauseMenuFirstButton);
         }
         else if (!state)
         {

@@ -8,15 +8,17 @@ public class Hook : Projectile
     private bool isAnchored;
     private bool firstCollision = true;
     private bool grapplePull;
-    private bool grappleDistrupted;
+    [SerializeField] private Transform stickyHand;
+    [SerializeField] private float grappleObjectOverlapArea = 0.51f;
     [SerializeField] private float grappleSpeed;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private LayerMask wallOverlapMask;
     [SerializeField] private LayerMask clientOverlapMask;
-    public List<Client> enemyOverlaps;
+
 
     void Start()
     {
+
         if (_rigidbody != null)
         {
             _rigidbody.velocity = transform.forward * _projectileSpeed;
@@ -35,8 +37,9 @@ public class Hook : Projectile
         Vector3 grappleDirection = (transform.position - Owner.transform.position).normalized;
         var grapplePos = Owner.transform.position + grappleDirection * grappleSpeed;
         Debug.DrawRay(grapplePos, Vector3.up, Color.green, 3);
-        var overlaps = Physics.OverlapSphere(grapplePos, 0.51f, wallOverlapMask);
-        var clientOverlaps = Physics.OverlapSphere(grapplePos, 0.51f, clientOverlapMask);
+        var overlaps = Physics.OverlapSphere(grapplePos, grappleObjectOverlapArea, wallOverlapMask);
+        var clientOverlaps = Physics.OverlapSphere(grapplePos, grappleObjectOverlapArea, clientOverlapMask);
+        List<Client> enemyOverlaps = new List<Client>();
 
         foreach(Collider col in clientOverlaps)
         {
@@ -58,12 +61,7 @@ public class Hook : Projectile
     {
         if(firstCollision != false)
         {
-            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-            transform.SetParent(other.transform);
-            Destroy(_rigidbody);
-            Destroy(this.GetComponentInChildren<Collider>());
-            firstCollision = false;
-            isAnchored = true;
+            Anchor(other);
         }
     }
 
@@ -80,4 +78,16 @@ public class Hook : Projectile
             Destroy(this.gameObject);
         }
     }
+
+    private void Anchor(Collision col)
+    {
+            Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
+            transform.SetParent(col.transform);
+            Destroy(_rigidbody);
+            Destroy(this.GetComponentInChildren<Collider>());
+            firstCollision = false;
+            isAnchored = true;
+    }
+
+
 }

@@ -51,6 +51,8 @@ MonoBehaviour:
   _baseDamage: 0
   _projectileSpeed: 20
   isDetonatable: 1
+  stickyHand: {fileID: 4445179155335519018}
+  grappleObjectOverlapArea: 0.6
   grappleSpeed: 1
   lineRenderer: {fileID: 3376836559028817511}
   wallOverlapMask:
@@ -59,7 +61,6 @@ MonoBehaviour:
   clientOverlapMask:
     serializedVersion: 2
     m_Bits: 8
-  enemyOverlaps: []
 --- !u!54 &2615392225266058248
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -197,7 +198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &738606267888903946
 Transform:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347256343073179029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -357,7 +358,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7bf60f6203ffc6948a6601241caa0a8f,
         type: 3}
       propertyPath: m_Name
-      value: GrappleHook
+      value: Sticky Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7bf60f6203ffc6948a6601241caa0a8f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

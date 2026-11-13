@@ -53,7 +53,7 @@ MonoBehaviour:
   iconScale: {x: 1.2, y: 1.2, z: 1.2}
   selectBackdrop: {fileID: 21300000, guid: d566e2554a8c61e498728cd2431a4e87, type: 3}
   selectIcon: {fileID: 21300000, guid: 5acc3d5b31bf40a4d8806033fd3a1e87, type: 3}
-  selectLabel: {fileID: 21300000, guid: 653d79ef8c4609148aae7bfc13385deb, type: 3}
+  selectLabel: {fileID: 21300000, guid: 291dddf9c7735c24187f0fae3ccc6c4c, type: 3}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}
 --- !u!64 &894996938249348213

@@ -42,14 +42,6 @@ public class PlayerVisualManager : MonoBehaviour
         return result;
     }
 
-    public Material GetGrappleMatForClient(Client client)
-    {
-        Material result = null;
-        var index = GameManager.Instance.registeredClients.IndexOf(client);
-        result = VisualsRegistry.BotMats[index].GrappleColourMat;
-        return result;
-    }
-
     
     
     public Color GetColourForClient(Client client)

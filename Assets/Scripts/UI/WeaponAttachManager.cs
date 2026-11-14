@@ -7,6 +7,7 @@ public class WeaponAttachManager : MonoBehaviour
 {
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private WeaponSelectManager selectManager;
+    public Image weaponBindIcon;
     public List<Image> weaponBiindButtonList;
     public Sprite noBind;
     private Weapon m_selectedWeapon;
@@ -19,7 +20,13 @@ public class WeaponAttachManager : MonoBehaviour
         menuManager.ToggleWeaponBindingUI(true);
         m_selectedWeapon = toAttach;
         m_client = client;
+        WeaponBindIconDisplayUpdate();
         WeaponBindButtonDisplayUpdate();
+    }
+
+    public void WeaponBindIconDisplayUpdate()
+    {
+        weaponBindIcon.sprite = GameManager.Instance.PlayerVisuals.GetIconForClient(m_client);
     }
 
     public void AttachSlotFront()

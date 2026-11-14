@@ -18,5 +18,6 @@ public struct PlayerStyleData
     public Material heavyDamageMat;
     public Material GrappleColourMat;
     public Color playerColour;
+    public Sprite playerIcon;
     public string playerName;
 }

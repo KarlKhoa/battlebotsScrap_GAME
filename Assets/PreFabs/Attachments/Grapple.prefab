@@ -71,7 +71,7 @@ MonoBehaviour:
   iconRotation: {x: 0, y: 0, z: 0, w: 0}
   iconScale: {x: 0, y: 0, z: 0}
   selectBackdrop: {fileID: 21300000, guid: d566e2554a8c61e498728cd2431a4e87, type: 3}
-  selectIcon: {fileID: 0}
+  selectIcon: {fileID: 21300000, guid: 47aea782f39a7584cb76e43695c2d2cc, type: 3}
   selectLabel: {fileID: 21300000, guid: a7a943072f5fad447a0f356c6e360ee1, type: 3}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}

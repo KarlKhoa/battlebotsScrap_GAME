@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class None : Weapon
 {
-    private float baseDamage = 2;
 
     void OnTriggerEnter(Collider other)
     {
@@ -19,7 +18,7 @@ public class None : Weapon
             {
                 //do damage if we do not own the playercontroller
                 var playerSpeed = owner.Rigidbody.velocity.magnitude;
-                playerController.Hurt(baseDamage * playerSpeed);
+                playerController.Hurt(_baseDamage * playerSpeed);
             }
         }
         else

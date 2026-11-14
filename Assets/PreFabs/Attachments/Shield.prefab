@@ -55,6 +55,7 @@ MonoBehaviour:
   selectLabel: {fileID: 21300000, guid: 4492c46b99910874db165cccba405787, type: 3}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}
+  _baseDamage: 10
 --- !u!65 &2010324817800729564
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -8,12 +8,12 @@ public class Shield : Weapon
     private float cooldownTime = 5.0f;
     private bool _isCooldownOver = true;
     private int _usesLeft;
-    private float _baseDamage;
+    private WeaponController weaponController;
 
     void Awake()
     {
         RestoreShields();
-        _baseDamage = 3f;
+        weaponController = GetComponentInParent<WeaponController>();
     }
 
     public override void Fire(Vector3 pos, Quaternion rot)
@@ -34,16 +34,15 @@ public class Shield : Weapon
     private IEnumerator ActivateShield()
     {
         //get WeaponController and set isShieldUp to true
-        var weaponController = GetComponentInParent<WeaponController>();
-        weaponController.isShieldUp = true;
+        //weaponController.isShieldUp = true;
         Debug.Log("Shield is active!");
 
-        _usesLeft--;
+        //_usesLeft--;
         Debug.Log(owner + "'s Shields left:" + _usesLeft);
 
         yield return new WaitForSeconds(5); //leave isShieldUp active for 5sec
         
-        weaponController.isShieldUp = false;
+        //weaponController.isShieldUp = false;
         Debug.Log("Shield went down!");
 
         StartCoroutine(ResetTimer()); //start cooldown
@@ -65,10 +64,27 @@ public class Shield : Weapon
     //shield bash + reduce damage passively when a shield is hit
     void OnTriggerEnter(Collider other)
     {
-        var weaponController = GetComponentInParent<WeaponController>();
         //Debug.Log("Shield detected a collider!");
         weaponController.didHitShield = true;
-        
+        if(other.GetComponent<Weapon>() != null)
+        {
+            Weapon enemy = other.GetComponent<Weapon>();
+
+            if(enemy.owner != this.owner)
+            {
+                weaponController.isShieldUp = true;
+            }
+        }
+        if(other.GetComponent<Projectile>() != null)
+        {
+            Projectile enemy = other.GetComponent<Projectile>();
+
+            if(enemy.Owner != this.owner)
+            {
+                weaponController.isShieldUp = true;
+            }
+        }
+
         //If the gameobject we hit has a PlayerController component
         if (other.TryGetComponent<PlayerController>(out var playerController))
         {
@@ -81,7 +97,9 @@ public class Shield : Weapon
             }
             else
             {
-                playerController.Hurt(_baseDamage);
+                weaponController.isShieldUp = true;
+                var playerSpeed = owner.Rigidbody.velocity.magnitude;
+                playerController.Hurt(_baseDamage + playerSpeed);
             }
         }
         else
@@ -96,7 +114,7 @@ public class Shield : Weapon
     void OnTriggerExit(Collider other)
 
     {
-        var weaponController = GetComponentInParent<WeaponController>();
+        weaponController.isShieldUp = false;
         weaponController.didHitShield = false;
     }
 

@@ -9790,7 +9790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30740333afcf2e94493a3718d4f766ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseDamage: 20
+  _baseDamage: 15
   _projectileSpeed: 0
   isDetonatable: 0
   knockback: 10000

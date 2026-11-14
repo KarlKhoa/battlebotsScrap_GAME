@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Saw : Weapon 
 {
-    private float baseDamage;
-    private float cooldownTime = 2.0f;
+    [SerializeField]private float cooldownTime = 2.0f;
     private bool isCooldownOver = true;
     private bool isSawSpinning = false;
+    [SerializeField] private float activatedDamage;
+    private float passiveDamage;
 
     void Awake()
     {
@@ -53,7 +54,8 @@ public class Saw : Weapon
             else
             {
                 //do damage if we do not own the playercontroller
-                playerController.Hurt(baseDamage);
+                var playerSpeed = owner.Rigidbody.velocity.magnitude;
+                playerController.Hurt(passiveDamage + playerSpeed);
             }
         }
         else
@@ -65,14 +67,14 @@ public class Saw : Weapon
 
     void ResetSawDamage()
     {
-        baseDamage = 8;
+        passiveDamage = _baseDamage;
         //Debug.Log("Saw Deactivated!");
     }
 
     //saw does more damage for 3 seconds
     private IEnumerator ActivateSaw()
     {
-        baseDamage = 15;
+        passiveDamage = activatedDamage;
         isSawSpinning = true;
         Debug.Log(owner + "'s Saw is spinning!");
         yield return new WaitForSeconds(3);

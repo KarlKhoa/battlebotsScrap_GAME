@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : Projectile
 {
 
-    private const float DEFAULT_LIFETIME = 0.2f;
+    private const float DEFAULT_LIFETIME = 1f;
     
     public Rigidbody rb;
 
@@ -61,6 +61,7 @@ public class Bullet : Projectile
 
         Die();
     }
+
 
     //destroy self (optional delay)
     private void Die(float delay = 0)

@@ -176,12 +176,11 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    damage = damage * 0.5f;
-                    playerHealth = playerHealth - damage;
-                    DoPlayerFlash(Color.yellow, 0.2f);
+                    playerHealth = playerHealth - damage * 0.5f;
+                    DoPlayerFlash(Color.white, 0.2f);
                     hurtWasSuccessful = true;
-                    Debug.Log(OwningClient + "'s Shield partially blocked damage!" + "Took " + damage + "DMG");
-                    damage = damage * 2f;
+                    weaponController.isShieldUp = false;
+                    //Debug.Log(OwningClient + "'s Shield partially blocked damage!" + "Took " + damage + "DMG");
                     if (playerHealth <= 0)
                     {
                         Die();

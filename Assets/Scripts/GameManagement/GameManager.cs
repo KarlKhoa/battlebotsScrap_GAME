@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ConfirmStartArea _welcomeMat;
     [SerializeField] private PlayerVisualManager _playerVisualsManager;
     [SerializeField] private ArenaFurniture _arenaFurniture;
+    [SerializeField] private Floor _floor;
 
     public float lobbyCountdownDuration = 5;
     public float roundCountdownDuration = 4;
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
         //_isDoingRoundCountdown = true;
         _currentRoundCountdownDuration = roundCountdownDuration;
         menuManager.ToggleTransitionUI(true);
-        menuManager.transition.SetTransitionTitle($"Round {roundCount}/{rounds} starts in...");
+        menuManager.transition.SetTransitionTitle($"Round {roundCount + 1}/{rounds} starts in...");
         menuManager.transition.UpdateCountdownTimer(_currentRoundCountdownDuration);
         while (_currentRoundCountdownDuration > 0)
         {
@@ -204,6 +205,7 @@ public class GameManager : MonoBehaviour
     public void ToggleArenaFurniture()
     {
         _arenaFurniture.gameObject.SetActive(true);
+
     }
 
     private void ScorePointsForLivingPlayers()
@@ -254,6 +256,7 @@ public class GameManager : MonoBehaviour
                 player.GetComponentInChildren<PlayerController>().FirstDieToStart();
             }
         }
+        _floor.floorGuideToggle(false);
         playerInputManager.DisableJoining();
         BeginWeaponSelectionSequence();
         hasGameStartedYet = true;

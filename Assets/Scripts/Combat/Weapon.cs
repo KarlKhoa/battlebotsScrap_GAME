@@ -17,6 +17,7 @@ public abstract class Weapon : MonoBehaviour
     public Sprite selectLabel;
     public PlayerController owner;
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] protected float _baseDamage;
 
     public virtual void Fire(Vector3 pos, Quaternion rot){}
 }

@@ -28,7 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2731962794112244786}
   m_Father: {fileID: 0}
@@ -69,7 +69,7 @@ MonoBehaviour:
   iconPosMinOffset: {x: 0, y: 0}
   iconPosMaxOffset: {x: 0, y: 0}
   iconRotation: {x: 0, y: 0, z: 0, w: 0}
-  iconScale: {x: 1.2, y: 1.2, z: 1.2}
+  iconScale: {x: 1.6, y: 1.6, z: 1.6}
   selectBackdrop: {fileID: 21300000, guid: d566e2554a8c61e498728cd2431a4e87, type: 3}
   selectIcon: {fileID: 21300000, guid: 47aea782f39a7584cb76e43695c2d2cc, type: 3}
   selectLabel: {fileID: 21300000, guid: a7a943072f5fad447a0f356c6e360ee1, type: 3}

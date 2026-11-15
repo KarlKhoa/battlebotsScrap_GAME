@@ -58,7 +58,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 0}
   _baseDamage: 5
   cooldownTime: 2
-  activatedDamage: 15
+  activatedDamage: 10
 --- !u!64 &894996938249348213
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -4351,50 +4351,13 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 488211148380021561, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
+    - target: {fileID: 1429646837, guid: f98ef90c9ed0cd04493f1acefb886ece, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 488211148380021561, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 488211148380021561, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 488211148380021561, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 488211148380021561, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 488211148380021561, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364974225435136980, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.83137256
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364974225435136980, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.30717728
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364974225435136980, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.16862746
+    - target: {fileID: 2031198261, guid: f98ef90c9ed0cd04493f1acefb886ece, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3855928457458395114, guid: f98ef90c9ed0cd04493f1acefb886ece,
         type: 3}
@@ -4406,27 +4369,6 @@ PrefabInstance:
       propertyPath: _arenaFurniture
       value: 
       objectReference: {fileID: 2125655992}
-    - target: {fileID: 4797506369163222683, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5616734229286815681, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_PlayerPrefab
-      value: 
-      objectReference: {fileID: 1951510600893626972, guid: 1b4a8882e3ea4494194ec15d3c8cd6f0,
-        type: 3}
-    - target: {fileID: 5616734229449161096, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 130
-      objectReference: {fileID: 0}
-    - target: {fileID: 5616734229449161098, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_text
-      value: NEW TEXT
-      objectReference: {fileID: 0}
     - target: {fileID: 5616734229503120991, guid: f98ef90c9ed0cd04493f1acefb886ece,
         type: 3}
       propertyPath: m_Camera
@@ -4457,11 +4399,6 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 1122954378}
-    - target: {fileID: 8728141693667720543, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -100
-      objectReference: {fileID: 0}
     - target: {fileID: 8766435031830923868, guid: f98ef90c9ed0cd04493f1acefb886ece,
         type: 3}
       propertyPath: m_RootOrder
@@ -4516,21 +4453,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957521445257654929, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957521445257654929, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957521445257654929, guid: f98ef90c9ed0cd04493f1acefb886ece,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 0.21960784
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

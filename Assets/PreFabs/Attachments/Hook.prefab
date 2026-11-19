@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbd7cbf9ab8dfb4181ecb3a9c992c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseDamage: 0
+  _baseDamage: 2
   _projectileSpeed: 20
   isDetonatable: 1
   stickyHand: {fileID: 4445179155335519018}
-  grappleObjectOverlapArea: 0.6
+  grappleObjectOverlapArea: 0.51
   grappleSpeed: 1
   grappleTime: 3
   lineRenderer: {fileID: 3376836559028817511}

@@ -63,25 +63,25 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //checking inputs
-        if (_moveInput == new Vector2(0, 1) && botMoveOff == false)
+        if (_moveInput == new Vector2(0, 1) || _moveInput == new Vector2(1,1) || _moveInput == new Vector2(-1,1) && botMoveOff == false)
         {
             _isMovingForward = true;
             _isMovingBackward = false;
         }
 
-        if (_moveInput == new Vector2(0, -1) && botMoveOff == false)
+        if (_moveInput == new Vector2(0, -1) || _moveInput == new Vector2(1,-1) || _moveInput == new Vector2(-1,-1) && botMoveOff == false)
         {
             _isMovingBackward = true;
             _isMovingForward = false;
         }
 
-        if (_moveInput == new Vector2(1, 0))
+        if (_moveInput == new Vector2(1, 0) || _moveInput == new Vector2(1,-1) || _moveInput == new Vector2(1,1))
         {
             _isTurningRight = true;
             _isTurningLeft = false;
         }
 
-        if (_moveInput == new Vector2(-1, 0))
+        if (_moveInput == new Vector2(-1, 0) || _moveInput == new Vector2(-1,-1) || _moveInput == new Vector2(-1,1))
         {
             _isTurningLeft = true;
             _isTurningRight = false;
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
     {
 
         _moveInput = input.Get<Vector2>();
-        //Debug.Log(moveInput);
+        Debug.Log(_moveInput);
     }
 
     private void OnPause(InputValue input)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17627306, g: 0.22061677, b: 0.30294085, a: 1}
+  m_IndirectSpecularColor: {r: 0.17627342, g: 0.22061726, b: 0.30294174, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4374,6 +4374,12 @@ PrefabInstance:
       propertyPath: _arenaFurniture
       value: 
       objectReference: {fileID: 2125655992}
+    - target: {fileID: 5616734229286815681, guid: f98ef90c9ed0cd04493f1acefb886ece,
+        type: 3}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 1718133442325368345, guid: 3a0d05c12c073dc4292ab098b4c3a6b5,
+        type: 3}
     - target: {fileID: 5616734229503120991, guid: f98ef90c9ed0cd04493f1acefb886ece,
         type: 3}
       propertyPath: m_Camera

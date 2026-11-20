@@ -13,4 +13,21 @@ public class Grapple : Gun
         //_my
         projectile.AssignOwner(owner);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+         if (other.TryGetComponent<PlayerController>(out var playerController))
+        {
+            if (owner == playerController.OwningClient)
+            {
+                //Debug.Log("Player was hit by their own Shield");
+                return; //do nothing
+            }
+            else
+            {
+                var playerSpeed = owner.Rigidbody.velocity.magnitude;
+                playerController.Hurt(_baseDamage + playerSpeed);
+            }
+        }
+    }
 }

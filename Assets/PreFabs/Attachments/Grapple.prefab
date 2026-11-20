@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1198510246396711867}
   - component: {fileID: 4207933020902641356}
   - component: {fileID: 1605874619653336979}
-  m_Layer: 0
+  - component: {fileID: 111786548690778954}
+  m_Layer: 3
   m_Name: Grapple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,10 +76,23 @@ MonoBehaviour:
   selectLabel: {fileID: 21300000, guid: a7a943072f5fad447a0f356c6e360ee1, type: 3}
   owner: {fileID: 0}
   playerPrefab: {fileID: 0}
-  _baseDamage: 0
+  _baseDamage: 2
   projectile: {fileID: 6531360699372493160, guid: 2729ebbaf7d08ef40bd31514d7fb8d41,
     type: 3}
   cooldownTime: 0.7
+--- !u!65 &111786548690778954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8943940038978976160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2477921881971866585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,6 +156,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8313219713726668226, guid: bd38dbc122e28314c95ee694845181ad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: bd38dbc122e28314c95ee694845181ad,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -158,10 +177,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6237999676077017217, guid: bd38dbc122e28314c95ee694845181ad,
         type: 3}
+    - target: {fileID: -4979897999432568947, guid: bd38dbc122e28314c95ee694845181ad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd38dbc122e28314c95ee694845181ad,
         type: 3}
       propertyPath: m_Name
       value: GrappleCannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd38dbc122e28314c95ee694845181ad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
